@@ -353,6 +353,63 @@
             </ul>
           </div>
 
+          <!-- Project 05 — FitBuddy -->
+          <div>
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold text-base">FitBuddy</h3>
+              <span class="text-sm text-zinc-400 shrink-0 ml-4">2025.12 · 국민체육진흥공단 공공데이터 활용 경진대회</span>
+            </div>
+            <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
+              On-Device AI 자세 교정 + 안전 인증 체육시설 추천(Safety-LBS) + 대화형 AI 트레이너를 결합한 모바일 피트니스 앱. PT 회당 5~10만원 비용 부담과 영상 매체의 단방향성 한계를 동시에 해소.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">MediaPipe</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Kotlin (Android)</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">FastAPI</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">AWS EC2</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">PostGIS</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Qwen 2.5-1.5B</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KSPO 공공데이터</span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">실시간 자세 교정 (MediaPipe):</strong>
+                  카메라 프레임에서 33개 관절 키포인트를 3D 좌표로 추출 → 관절 각도 실시간 연산 → "무릎이 발끝을 넘었습니다" 식 텍스트 + TTS 음성 피드백
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">Safety-LBS (PostGIS + 공공데이터):</strong>
+                  KSPO 전국체육시설현황 API + 대중교통 정보 융합 → 사용자 위치 반경 <strong class="text-zinc-800">1km</strong> 내 <strong class="text-zinc-800">내진 설계 안전 인증 시설</strong>만 필터링 추천
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">On-Device + Cloud 하이브리드:</strong>
+                  FastAPI + AWS EC2(Gunicorn/Uvicorn 워커 병렬) 클라우드 추론 + 경량화 모델 모바일 자체 추론 옵션 → 네트워크 불안정 환경에서도 끊김 없는 피드백, 영상 외부 전송 차단
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">대화형 AI 트레이너:</strong>
+                  <code class="bg-zinc-100 px-1 rounded text-xs">Qwen 2.5-1.5B Instruct</code> 경량 LLM이 운동 기록을 컨텍스트로 받아 "오늘 컨디션에 맞는 스트레칭", "운동 전 식사" 등 문맥 대화 제공
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">정량 성과:</strong>
+                  초보 사용자 스쿼트 자세 정확도 <strong class="text-zinc-800">20% → 70%</strong>, 부상 유발 자세 패턴 <strong class="text-zinc-800">-40%</strong>, PT 대비 <strong class="text-zinc-800">95% 비용 절감</strong>
+                </span>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </section>
 
@@ -420,15 +477,17 @@
             <div class="flex flex-wrap gap-1.5">
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Python</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">SQL</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Kotlin</span>
             </div>
           </div>
           <div class="flex items-start gap-4 text-sm">
-            <span class="w-36 shrink-0 text-zinc-400">ML / DL</span>
+            <span class="w-36 shrink-0 text-zinc-400">ML / DL / CV</span>
             <div class="flex flex-wrap gap-1.5">
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">TabNet</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">PyTorch</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">scikit-learn</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">LDA</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">MediaPipe</span>
             </div>
           </div>
           <div class="flex items-start gap-4 text-sm">
@@ -440,6 +499,7 @@
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">OpenAI</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Gemini 1.5 Flash</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Ollama</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Qwen 2.5</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">RAG</span>
             </div>
           </div>
@@ -452,18 +512,29 @@
             </div>
           </div>
           <div class="flex items-start gap-4 text-sm">
-            <span class="w-36 shrink-0 text-zinc-400">Vector / Graph</span>
+            <span class="w-36 shrink-0 text-zinc-400">Vector / Graph / Geo</span>
             <div class="flex flex-wrap gap-1.5">
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">FAISS</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Embedding (L2)</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Neo4j</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">GraphRAG</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">PostGIS</span>
             </div>
           </div>
           <div class="flex items-start gap-4 text-sm">
-            <span class="w-36 shrink-0 text-zinc-400">Deploy &amp; Tools</span>
+            <span class="w-36 shrink-0 text-zinc-400">Backend &amp; Cloud</span>
             <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">FastAPI</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">AWS EC2</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Gunicorn / Uvicorn</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Streamlit</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 text-sm">
+            <span class="w-36 shrink-0 text-zinc-400">Mobile &amp; Tools</span>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Android (CameraX)</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Retrofit2</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Git / GitHub</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">CAD</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">3D Printing</span>
