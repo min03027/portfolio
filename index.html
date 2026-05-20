@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full antialiased">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>김지민 · Kim Ji Min</title>
+  <meta name="description" content="AI / Data Developer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html, body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+    code { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-full flex flex-col">
+  <div class="min-h-screen bg-white text-zinc-900 font-sans">
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur border-b border-zinc-100">
+      <div class="max-w-4xl mx-auto px-6 flex items-center justify-between h-14">
+        <span class="font-semibold text-sm tracking-tight">Kim Ji Min</span>
+        <div class="flex gap-6 text-sm text-zinc-500">
+          <a href="#projects" class="hover:text-zinc-900 transition-colors">Projects</a>
+          <a href="#awards" class="hover:text-zinc-900 transition-colors">Awards</a>
+          <a href="#certifications" class="hover:text-zinc-900 transition-colors">Certifications</a>
+          <a href="#experience" class="hover:text-zinc-900 transition-colors">Experience</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-24 space-y-24">
+      <!-- Hero -->
+      <section class="flex items-start gap-10">
+        <img
+          alt="김지민 프로필 사진"
+          width="160"
+          height="160"
+          class="rounded-full object-cover shrink-0 border border-zinc-100 bg-zinc-100"
+          style="width:160px;height:160px;"
+          src="profile.jpg"
+          onerror="this.onerror=null;this.src='https://api.dicebear.com/9.x/initials/svg?seed=Kim%20Ji%20Min&backgroundColor=e4e4e7&fontFamily=Inter';"
+        />
+        <div>
+          <h1 class="text-4xl font-bold tracking-tight mb-3">
+            김지민 <span class="text-zinc-400 font-normal">Kim Ji Min</span>
+          </h1>
+          <p class="text-lg text-zinc-500 mb-4">
+            AI / Data Developer · 삼육대학교 인공지능융합학부 (GPA 3.77 / 4.5)
+          </p>
+          <p class="text-zinc-600 leading-relaxed max-w-xl">
+            데이터 분석과 머신러닝/딥러닝을 결합해 사용자 맞춤형 추천·요약 시스템을 설계·구현합니다. 데이터 전처리부터 모델링, Streamlit 배포까지 end-to-end로 만듭니다.
+          </p>
+          <div class="flex gap-4 mt-5 text-sm">
+            <a href="mailto:jiminkim03027@gmail.com" class="text-zinc-500 hover:text-zinc-900 transition-colors">jiminkim03027@gmail.com</a>
+            <span class="text-zinc-300">·</span>
+            <a href="https://github.com/min03027" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-zinc-900 transition-colors">GitHub</a>
+            <span class="text-zinc-300">·</span>
+            <a href="https://www.linkedin.com/in/%EC%A7%80%EB%AF%BC-%EA%B9%80-7a8572410/" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-zinc-900 transition-colors">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Projects -->
+      <section id="projects">
+        <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-8">Projects</h2>
+        <div class="space-y-14">
+
+          <!-- Project 01 — 노후애 -->
+          <div>
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold text-base">노후애</h3>
+              <div class="flex items-center gap-3 shrink-0 ml-4">
+                <a href="https://github.com/min03027/senior_finance_recommender" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">GitHub</a>
+                <a href="https://kbfuture.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">Demo</a>
+              </div>
+            </div>
+            <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
+              고령층의 자산 부족 사각지대를 재무 데이터 기반 맞춤형 금융 상품 서비스로 해결. 60대 이상 자산 5년 성장률 <strong class="text-zinc-700">87%</strong>, 상/하위 20% 자산 격차 <strong class="text-zinc-700">75.3배</strong>라는 문제 인식에서 출발한 프로젝트.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Python</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">TabNet</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">FAISS</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">OpenAI</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KOSIS Data</span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">3단계 파이프라인:</strong>
+                  위험군 분류(재무 페르소나) → 제약 필터링(규제·가입 조건) → 유사도 추천(임베딩 기반 Top-3)
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">스키마 불일치 해결:</strong>
+                  상품 유형별 공통 의미 칼럼을 추출해 메타 테이블 설계, <code class="bg-zinc-100 px-1 rounded text-xs">FAISS L2</code> 임베딩으로 이종 상품 간 검색 구조 확보
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">합성 사용자 데이터:</strong>
+                  실 개인 금융 데이터 부재 → KOSIS 노령연금 수급 통계의 소득 분포 기반으로 합성 데이터 생성
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">TabNet 해석력:</strong>
+                  초기 딥러닝 모델의 분류 이유 설명 불가 문제를 <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>으로 해소, 개인별 feature attribution 확보
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">정량 성과:</strong>
+                  추천 정확도 <strong class="text-zinc-800">+27%</strong>, 취약 고객 민감 탐지도 <strong class="text-zinc-800">+23%</strong>
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">한계점:</strong>
+                  합성 데이터 의존(실 사용자 일반화 검증 미완), 금융 규제 단순화(실제 약관 수준 미반영)
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Project 02 — Stay-view -->
+          <div>
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold text-base">Stay-view</h3>
+              <div class="flex items-center gap-3 shrink-0 ml-4">
+                <a href="https://github.com/min03027/stayview" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">GitHub</a>
+                <a href="https://stayview-3.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">Demo</a>
+              </div>
+            </div>
+            <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
+              수많은 리뷰를 분석해 중요한 항목을 한눈에 확인하고 카테고리별 숙소 맞춤 추천을 제공. 여행 계획 시 숙소를 가장 중시하는 비율 <strong class="text-zinc-700">38.2%</strong>, 첫방문/재방문 사용자 간 선택 기준 차이 최대 <strong class="text-zinc-700">28.4%</strong>라는 데이터에서 출발.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Python</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KoBERT</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KoBART</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini 1.5 Flash</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">LDA</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">RAG</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">3단계 NLP 파이프라인:</strong>
+                  KoBERT 감성 + LDA 6토픽 분류 → KoBART → Gemini 2단계 요약(핵심 3줄) → 토픽 가중치 기반 Top-3 추천
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">크롤링 노이즈 제거:</strong>
+                  불용어 사전 구축으로 <strong class="text-zinc-800">유효 리뷰 11만 건</strong> 확보
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">2단계 요약 구조:</strong>
+                  KoBART 단독 요약의 품질 한계 → <code class="bg-zinc-100 px-1 rounded text-xs">KoBART</code> 1차 + <code class="bg-zinc-100 px-1 rounded text-xs">Gemini</code> 2차 고도화 하이브리드로 전환
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">유형별 가중치 차별화:</strong>
+                  첫방문/재방문에 따라 위치·소음·가격·서비스·청결·편의시설 6개 토픽 가중치를 다르게 적용
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">RAG 컨텍스트 결합:</strong>
+                  Gemini 1.5 Flash 요약 단계에 맛집·관광지 RAG 연동으로 숙소 선택 가이드까지 한 화면에서 제공
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">정량 성과:</strong>
+                  숙소 선택 시간 <strong class="text-zinc-800">-50%</strong>, 불필요 표현 <strong class="text-zinc-800">-40%</strong>, 핵심 문장 보존율 <strong class="text-zinc-800">+35%</strong>
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">한계점:</strong>
+                  크롤링 시점 기준 정적 데이터(실시간 업데이트 미구축)
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Project 03 — 또박톡 -->
+          <div>
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold text-base">또박톡</h3>
+            </div>
+            <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
+              고령층의 음성을 실시간으로 자막화하고, 어려운 의료·공공 대화를 이해하기 쉬운 요약과 체크리스트로 자동 변환해 제공. 50~60대 기억력 감퇴 경험 <strong class="text-zinc-700">33%</strong>, 70대 이상 난청 진료 경험 <strong class="text-zinc-700">34.8%</strong>라는 인구 통계에서 출발.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Whisper Small (fine-tuned)</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Faster Whisper</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Resemblyzer</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Ollama</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Python</span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">3단계 음성 파이프라인:</strong>
+                  실시간 STT(파인튜닝 Whisper) → 화자 분리 + 쉬운말 변환 → 대화 요약 + 체크리스트 정리
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">고령층 STT 정확도:</strong>
+                  AI Hub 자유대화 음성(노인남녀) 파인튜닝 + 의료 키워드 가중치 샘플링 → <strong class="text-zinc-800">WER 21.2%</strong>
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">2단계 분리 구조:</strong>
+                  의료 발화 데이터 가중치 학습 + 쉬운말 변환을 별도 모듈로 분리 → STT와 의미 변환 단계 독립적으로 디버깅·교체 가능
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">화자 분리 안정화:</strong>
+                  <code class="bg-zinc-100 px-1 rounded text-xs">1.2초 슬라이딩 윈도우</code> + 최근 <strong class="text-zinc-800">5회 판정 다수결 스무딩</strong>으로 순간 오판 평탄화
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">학습 데이터:</strong>
+                  AI Hub 자유대화 음성(노인남녀) + Kaggle Korean Medical Entities Speech + 국립국어원 공공언어 용어 목록 결합
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">모델 스택:</strong>
+                  STT <code class="bg-zinc-100 px-1 rounded text-xs">Faster Whisper</code> · 화자 분리 <code class="bg-zinc-100 px-1 rounded text-xs">Resemblyzer</code> · 요약 로컬 <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code> — 외부 전송 없이 온디바이스 처리
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Project 04 — 제주 맛집 RAG -->
+          <div>
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold text-base">어서 와용</h3>
+              <div class="flex items-center gap-3 shrink-0 ml-4">
+                <a href="https://github.com/min03027/jeju_2024" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">GitHub</a>
+                <a href="https://shcardbigcontest2024llm-min-12.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">Demo</a>
+                <span class="text-sm text-zinc-400">신한카드 빅데이터 콘테스트 2024</span>
+              </div>
+            </div>
+            <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
+              제주 관광객의 자연어 질문 한 줄로 신한카드 실제 결제 데이터·관광지 정보를 결합한 맞춤 맛집을 추천하는 RAG 대화형 서비스. 떠나고 싶은 맛집 투어 여행지 1위가 제주(<strong class="text-zinc-700">45.9%</strong>), 자연경관감상·식도락 비율 <strong class="text-zinc-700">63.1% 이상</strong>이라는 통계에서 출발.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Ko-SRoBERTa</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">FAISS</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini 1.5 Flash</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">RAG</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">신한카드 결제 데이터</span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">3단계 RAG 파이프라인:</strong>
+                  Ko-SRoBERTa + FAISS 의미 검색 → 신한카드 결제 데이터 가격 필터 → Gemini 1.5 Flash 자연어 추천답변
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">거리 모호성 해결:</strong>
+                  가맹점·관광지 데이터에 위도/경도 좌표 추가 → Gemini가 차량 이동시간을 자연어로 추정("하모리에서 약 10분 거리" 식)
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">복합 조건 검색:</strong>
+                  관광객 요구를 <strong class="text-zinc-800">가격대 / 현지인 / 위치별 / 업종별</strong> 4가지로 구조화 → 자연어 한 줄로 복합 조건 동시 검색
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">할루시네이션 차단:</strong>
+                  LLM에게 FAISS 검색 결과만 전달 → 데이터에 없는 가게는 응답 자체 불가능하도록 컨텍스트 제한
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">성과:</strong>
+                  4가지 맞춤 필터 + 자연어 한 줄 RAG 대화형 추천 + 신한카드 실 결제 데이터 기반 가격/현지인 정보 반영
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">한계점:</strong>
+                  가맹점 데이터 정적(실시간 연동 미구축), 사용자 개인화 학습 미적용
+                </span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Awards -->
+      <section id="awards">
+        <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-8">Awards</h2>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4 text-sm">
+            <span class="w-16 shrink-0 font-semibold text-zinc-800">대상</span>
+            <span class="flex-1 text-zinc-700">
+              머신러닝/딥러닝 프로젝트 공모전
+              <span class="text-zinc-400 ml-2">— 노후애 · 코리아IT아카데미 노원</span>
+            </span>
+            <a href="slides/노후애.pdf" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-zinc-700 transition-colors text-xs underline underline-offset-2 shrink-0">발표자료</a>
+            <span class="text-zinc-400 shrink-0">2025.04.09</span>
+          </div>
+          <div class="flex items-center gap-4 text-sm">
+            <span class="w-16 shrink-0 font-semibold text-zinc-800">우수상</span>
+            <span class="flex-1 text-zinc-700">
+              데이터분석기반 AI 프로젝트 공모전
+              <span class="text-zinc-400 ml-2">— Stay-view · 코리아IT아카데미 강남</span>
+            </span>
+            <a href="https://github.com/min03027/stayview" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-zinc-700 transition-colors text-xs underline underline-offset-2 shrink-0">GitHub</a>
+            <span class="text-zinc-400 shrink-0">2025.11.30</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section id="certifications">
+        <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-8">Certifications</h2>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4 text-sm">
+            <span class="w-24 shrink-0 text-zinc-400 text-xs uppercase tracking-wider">직무</span>
+            <span class="flex-1 text-zinc-700">
+              <strong class="text-zinc-800">ADsP</strong> · 데이터 분석 준전문가
+              <span class="text-zinc-400 ml-2">— 데이터산업진흥원</span>
+            </span>
+            <span class="text-zinc-400 shrink-0">2025.06.13</span>
+          </div>
+          <div class="flex items-center gap-4 text-sm">
+            <span class="w-24 shrink-0 text-zinc-400 text-xs uppercase tracking-wider">직무</span>
+            <span class="flex-1 text-zinc-700">
+              <strong class="text-zinc-800">AICE Associate</strong>
+              <span class="text-zinc-400 ml-2">— 한국경제신문 / KT</span>
+            </span>
+            <span class="text-zinc-400 shrink-0">2026.02.28</span>
+          </div>
+          <div class="flex items-center gap-4 text-sm">
+            <span class="w-24 shrink-0 text-zinc-400 text-xs uppercase tracking-wider">어학</span>
+            <span class="flex-1 text-zinc-700">
+              <strong class="text-zinc-800">OPIc</strong> · IM2
+            </span>
+            <span class="text-zinc-400 shrink-0">2025.09.10</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-8">Skills</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4 text-sm">
+            <span class="w-36 shrink-0 text-zinc-400">Language</span>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Python</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">SQL</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 text-sm">
+            <span class="w-36 shrink-0 text-zinc-400">ML / DL</span>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">TabNet</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">PyTorch</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">scikit-learn</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">LDA</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 text-sm">
+            <span class="w-36 shrink-0 text-zinc-400">NLP / LLM</span>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">KoBERT</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">KoBART</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Ko-SRoBERTa</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">OpenAI</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Gemini 1.5 Flash</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Ollama</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">RAG</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 text-sm">
+            <span class="w-36 shrink-0 text-zinc-400">Speech</span>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Whisper (fine-tuning)</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Faster Whisper</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Resemblyzer</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 text-sm">
+            <span class="w-36 shrink-0 text-zinc-400">Vector / Search</span>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">FAISS</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Embedding (L2)</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 text-sm">
+            <span class="w-36 shrink-0 text-zinc-400">Deploy &amp; Tools</span>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Streamlit</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Git / GitHub</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">CAD</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">3D Printing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience (placed last — supplementary, lower job relevance) -->
+      <section id="experience">
+        <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-8">Experience</h2>
+        <div class="space-y-10">
+          <div>
+            <div class="flex items-start justify-between mb-1">
+              <div>
+                <span class="font-semibold">니즈로봇</span>
+                <span class="text-zinc-400 ml-2 text-sm">인턴 · 3D 시제품 설계 및 제작 전담</span>
+              </div>
+              <span class="text-sm text-zinc-400 shrink-0">2023.02 — 2025.07 · 1년 6개월</span>
+            </div>
+            <ul class="mt-3 space-y-2 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span><strong class="text-zinc-800">핵심업무:</strong> 외주 CAD 설계, 3D 프린팅 제작, 부품 발주 및 기능 테스트 전 과정 담당</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span><strong class="text-zinc-800">주요성과:</strong> 시제품 <strong class="text-zinc-800">3건</strong> 제작 완료, 반복 오차 분석을 통한 설계 정밀도 개선</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="flex items-start justify-between mb-1">
+              <div>
+                <span class="font-semibold">삼육대학교 홍보대사</span>
+                <span class="text-zinc-400 ml-2 text-sm">캠퍼스 홍보 및 행사 총괄</span>
+              </div>
+              <span class="text-sm text-zinc-400 shrink-0">2023.03 — 2025.02 · 2년</span>
+            </div>
+            <ul class="mt-3 space-y-2 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span><strong class="text-zinc-800">핵심업무:</strong> 캠퍼스 투어 총괄, 코엑스 입시 박람회 운영, SNS 홍보 및 의전</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span><strong class="text-zinc-800">주요성과:</strong> 연간 <strong class="text-zinc-800">1,000명 이상</strong> 방문자 응대 및 입시 안내 성공적 수행</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="border-t border-zinc-100 py-8">
+      <div class="max-w-4xl mx-auto px-6 text-center text-xs text-zinc-400">
+        김지민 Kim Ji Min · jiminkim03027@gmail.com · <a href="https://github.com/min03027" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-700 transition-colors">github.com/min03027</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
