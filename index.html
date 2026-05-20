@@ -286,6 +286,8 @@
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Ko-SRoBERTa</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">FAISS</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Neo4j</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">GraphRAG</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini 1.5 Flash</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">RAG</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
@@ -311,6 +313,20 @@
                 <span>
                   <strong class="text-zinc-800">복합 조건 검색:</strong>
                   관광객 요구를 <strong class="text-zinc-800">가격대 / 현지인 / 위치별 / 업종별</strong> 4가지로 구조화 → 자연어 한 줄로 복합 조건 동시 검색
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">GraphRAG 스키마 (Neo4j):</strong>
+                  <code class="bg-zinc-100 px-1 rounded text-xs">Restaurant ↔ Location ↔ Cuisine ↔ Tourist_Spot</code> 다중 hop 그래프로 모델링 → 위치·업종·관광지 인접성을 동시 만족하는 후보를 그래프 traversal로 추출
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">FAISS + Graph 하이브리드 검색:</strong>
+                  의미 검색(FAISS)으로 후보군을 좁히고 → Neo4j 경로 탐색으로 관계 기반 재정렬 → LLM 컨텍스트에 검색 결과 + 추천 근거 경로 함께 전달
                 </span>
               </li>
               <li class="flex gap-2">
@@ -436,10 +452,12 @@
             </div>
           </div>
           <div class="flex items-start gap-4 text-sm">
-            <span class="w-36 shrink-0 text-zinc-400">Vector / Search</span>
+            <span class="w-36 shrink-0 text-zinc-400">Vector / Graph</span>
             <div class="flex flex-wrap gap-1.5">
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">FAISS</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Embedding (L2)</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Neo4j</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">GraphRAG</span>
             </div>
           </div>
           <div class="flex items-start gap-4 text-sm">
