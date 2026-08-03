@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full antialiased">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>동작 소개 · 김지민 Kim Ji Min</title>
+  <meta name="description" content="프로젝트별 실제 화면과 처리 흐름" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html, body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+    code { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 5rem; }
+  </style>
+</head>
+<body class="min-h-full flex flex-col">
+  <div class="min-h-screen bg-white text-zinc-900 font-sans">
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur border-b border-zinc-100">
+      <div class="max-w-4xl mx-auto px-6 flex items-center justify-between h-14">
+        <a href="index.html" class="font-semibold text-sm tracking-tight hover:text-zinc-500 transition-colors">← Kim Ji Min</a>
+        <div class="flex gap-5 text-sm text-zinc-500">
+          <a href="#lxp" class="hover:text-zinc-900 transition-colors">LXP</a>
+          <a href="#nohuae" class="hover:text-zinc-900 transition-colors">노후애</a>
+          <a href="#stayview" class="hover:text-zinc-900 transition-colors">Stay-view</a>
+          <a href="#ddobak" class="hover:text-zinc-900 transition-colors">또박톡</a>
+          <a href="#jeju" class="hover:text-zinc-900 transition-colors">어서 와용</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pt-28 pb-24">
+      <header class="mb-16">
+        <h1 class="text-3xl font-bold tracking-tight mb-3">동작 소개</h1>
+        <p class="text-zinc-600 leading-relaxed max-w-xl">
+          각 프로젝트가 실제로 어떤 화면으로 동작하고, 입력이 어떤 단계를 거쳐 결과가 되는지 정리했습니다. 아래 화면은 모두 실제 구현된 서비스를 캡처한 것입니다.
+        </p>
+      </header>
+
+      <div class="space-y-20">
+
+        <!-- LXP -->
+        <section id="lxp">
+          <div class="flex items-baseline justify-between mb-1">
+            <h2 class="text-xl font-semibold tracking-tight">Samsung Academy LXP</h2>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">실서비스 운영 중</span>
+          </div>
+          <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
+            훈련기관 LMS. 관리자·강사·훈련생이 각자 다른 화면을 쓰며, AI 학습지원 기능이 훈련생 화면에 붙어 있다.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <figure>
+              <img src="assets/lxp-dashboard.png" alt="관리자 대시보드 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+              <figcaption class="text-xs text-zinc-400 mt-2">관리자 대시보드 — 진도율·기간 경과율·이수 요건 충족을 서버 집계로 산출</figcaption>
+            </figure>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <figure>
+                <img src="assets/lxp-trainee.png" alt="훈련생 홈 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+                <figcaption class="text-xs text-zinc-400 mt-2">훈련생 홈 — 오늘 할 일과 익명 진도 순위</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/lxp-qna.png" alt="AI 학습 Q&amp;A 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+                <figcaption class="text-xs text-zinc-400 mt-2">AI 학습 Q&amp;A — 답변에 인용한 자료를 링크로 노출</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">질문 입력</strong> — 훈련생이 학습 중 질문을 남긴다.</p>
+            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">호출 전 검사</strong> — 수강 권한 · 입력 길이 1,000자 · 과정 자료 유무 · 일일 한도(전체 500 / 1인 50)를 모델을 부르기 전에 확인한다. 하나라도 걸리면 모델을 호출하지 않는다.</p>
+            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">자료 기반 답변</strong> — 과정 자료(PDF 본문 포함)를 컨텍스트로 Claude API를 호출하고, 답변이 실제 인용한 자료만 링크로 붙인다. 범위 밖 인용 번호는 버린다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">미해결 질문 이관</strong> — 해결되지 않은 질문은 담당 강사 Q&amp;A로 자동 등록되어 사람에게 이어진다.</p>
+          </div>
+          <p class="text-xs text-zinc-400 mt-5">
+            운영 주소 <a href="https://lms.samsungax.com" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">lms.samsungax.com</a> — 훈련생 계정이 있어야 접속할 수 있어 위 화면으로 대신한다.
+          </p>
+        </section>
+
+        <!-- 노후애 -->
+        <section id="nohuae">
+          <div class="flex items-baseline justify-between mb-1">
+            <h2 class="text-xl font-semibold tracking-tight">노후애</h2>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">공모전 대상</span>
+          </div>
+          <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
+            고령층의 재무 특성을 입력하면 가입 가능한 금융 상품을 이유와 함께 추천한다.
+          </p>
+
+          <figure class="mb-6">
+            <img src="assets/nohuae-pipeline.png" alt="노후애 처리 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
+            <figcaption class="text-xs text-zinc-400 mt-2">전체 처리 흐름 — 사용자 정보와 금융 상품 목록이 각각 들어와 최종 추천 리포트로 나간다</figcaption>
+          </figure>
+
+          <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">위험군 분류</strong> — 재무 특성을 <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>에 넣어 재무 페르소나를 정의한다. 개인별 feature attribution이 남아 왜 그렇게 분류됐는지 설명할 수 있다.</p>
+            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">제약 필터링</strong> — 금융 규제와 가입 조건을 반영해 애초에 가입할 수 없는 상품을 제거한다.</p>
+            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">유사도 추천</strong> — 예금·펀드처럼 기준이 다른 상품을 위험성·수익성·유동성이라는 공통 축으로 수치화한 뒤 <code class="bg-zinc-100 px-1 rounded text-xs">FAISS L2</code> 임베딩으로 비교해 Top-3를 뽑는다.</p>
+          </div>
+          <p class="text-xs text-zinc-400 mt-5">
+            <a href="https://github.com/min03027/senior_finance_recommender" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">GitHub</a>
+            <span class="text-zinc-300 mx-2">·</span>
+            <a href="https://kbfuture.streamlit.app/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">실행 데모</a> (휴면 시 기동에 시간이 걸립니다)
+          </p>
+        </section>
+
+        <!-- Stay-view -->
+        <section id="stayview">
+          <div class="flex items-baseline justify-between mb-1">
+            <h2 class="text-xl font-semibold tracking-tight">Stay-view</h2>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">공모전 우수상</span>
+          </div>
+          <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
+            지역과 호텔을 고르면 리뷰에서 뽑아낸 긍정·부정 요약과 항목별 점수를 한 화면에서 보여준다.
+          </p>
+
+          <figure class="mb-4">
+            <img src="assets/stayview-ui.png" alt="Stay-view 실행 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+            <figcaption class="text-xs text-zinc-400 mt-2">실행 화면 — 위치 지도, 긍정/부정 요약, 소음·가격·위치·서비스·청결·편의시설 6개 항목 점수</figcaption>
+          </figure>
+          <figure class="mb-6">
+            <img src="assets/stayview-pipeline.png" alt="Stay-view 처리 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
+            <figcaption class="text-xs text-zinc-400 mt-2">전처리부터 요약·추천까지의 처리 흐름</figcaption>
+          </figure>
+
+          <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">노이즈 제거</strong> — 불용어 사전을 만들어 크롤링 리뷰를 정제하고 유효 리뷰 11만 건을 확보한다.</p>
+            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">감성 + 토픽 분해</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">KoBERT</code>로 긍·부정을 판별하고 <code class="bg-zinc-100 px-1 rounded text-xs">LDA</code>로 6개 항목에 자동 분류한다.</p>
+            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">2단계 요약</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">KoBART</code>로 1차 요약한 뒤 <code class="bg-zinc-100 px-1 rounded text-xs">Gemini</code>로 다시 다듬어 핵심 3줄로 줄인다. 1차 요약만으로는 문장이 뭉개져 2차를 얹었다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">유형별 추천</strong> — 첫방문인지 재방문인지에 따라 6개 항목의 가중치를 다르게 적용해 Top-3를 뽑는다.</p>
+          </div>
+          <p class="text-xs text-zinc-400 mt-5">
+            <a href="https://github.com/min03027/stayview" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">GitHub</a>
+            <span class="text-zinc-300 mx-2">·</span>
+            <a href="https://stayview-3.streamlit.app/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">실행 데모</a> (휴면 시 기동에 시간이 걸립니다)
+          </p>
+        </section>
+
+        <!-- 또박톡 -->
+        <section id="ddobak">
+          <h2 class="text-xl font-semibold tracking-tight mb-1">또박톡</h2>
+          <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
+            고령층의 대화를 실시간 자막으로 옮기고, 의료·공공 상담 내용을 쉬운 말 요약과 체크리스트로 정리한다.
+          </p>
+
+          <figure class="mb-6">
+            <img src="assets/ddobak-pipeline.png" alt="또박톡 처리 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
+            <figcaption class="text-xs text-zinc-400 mt-2">학습 데이터 수집부터 모바일 화면까지의 처리 흐름</figcaption>
+          </figure>
+
+          <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">실시간 전사</strong> — AI Hub 노인 음성으로 파인튜닝한 <code class="bg-zinc-100 px-1 rounded text-xs">Whisper</code>가 말을 텍스트로 바꾼다. 의료 키워드에 가중치를 준 샘플링으로 학습해 WER 21.2%를 얻었다.</p>
+            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">화자 분리</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Resemblyzer</code>가 나와 상대를 구분한다. 1.2초 슬라이딩 윈도우와 최근 5회 판정 다수결로 순간 오판을 평탄화한다.</p>
+            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">쉬운말 변환</strong> — 전문용어를 쉬운 표현으로 바꾼다. 전사 정확도와 용어 변환을 한 모듈에서 처리하면 서로 간섭해 별도 단계로 분리했다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">요약과 체크리스트</strong> — 로컬 <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code>가 대화를 요약하고 할 일을 정리한다. 음성이 외부로 나가지 않는다.</p>
+          </div>
+        </section>
+
+        <!-- 어서 와용 -->
+        <section id="jeju">
+          <div class="flex items-baseline justify-between mb-1">
+            <h2 class="text-xl font-semibold tracking-tight">어서 와용</h2>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">신한카드 빅데이터 콘테스트 2024 · 본선 진출</span>
+          </div>
+          <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
+            가격대·현지인 비중·위치·업종을 슬라이더로 좁힌 뒤, 자연어로 물으면 조건에 맞는 제주 맛집을 이유와 함께 답한다.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-3 mb-4">
+            <figure>
+              <img src="assets/jeju-filter.png" alt="어서 와용 조건 선택 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+              <figcaption class="text-xs text-zinc-400 mt-2">조건 선택 — 가격대를 6단계로 좁힌다</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/jeju-chat.png" alt="어서 와용 추천 답변 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+              <figcaption class="text-xs text-zinc-400 mt-2">추천 답변 — 개점일·현지인 비중·차량 이동시간까지 답한다</figcaption>
+            </figure>
+          </div>
+          <figure class="mb-6">
+            <img src="assets/jeju-pipeline.png" alt="어서 와용 RAG 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
+            <figcaption class="text-xs text-zinc-400 mt-2">RAG 파이프라인 — 질문이 검색을 거쳐 답변이 되기까지</figcaption>
+          </figure>
+
+          <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">의미 검색</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Ko-SRoBERTa</code>로 질문을 임베딩하고 <code class="bg-zinc-100 px-1 rounded text-xs">FAISS</code>로 후보 가맹점을 좁힌다.</p>
+            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">그래프 재정렬</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Restaurant ↔ Location ↔ Cuisine ↔ Tourist_Spot</code> 다중 hop 스키마를 Neo4j에 두고, 위치·업종·관광지 인접성을 동시에 만족하는 후보를 경로 탐색으로 다시 정렬한다.</p>
+            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">결제 데이터 필터</strong> — 신한카드 실 결제 데이터로 가격대와 현지인 비중을 걸러낸다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">근거만 넘긴 답변</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Gemini 1.5 Flash</code>에 검색 결과만 컨텍스트로 준다. 데이터에 없는 가게는 답변에 등장할 수 없다. 위도·경도를 함께 넘겨 이동시간도 추측이 아닌 좌표로 계산한다.</p>
+          </div>
+          <p class="text-xs text-zinc-400 mt-5">
+            <a href="https://github.com/min03027/jeju_2024" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">GitHub</a>
+            <span class="text-zinc-300 mx-2">·</span>
+            <a href="https://shcardbigcontest2024llm-min-12.streamlit.app/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">실행 데모</a> (휴면 시 기동에 시간이 걸립니다)
+          </p>
+        </section>
+
+      </div>
+
+      <div class="mt-20 pt-8 border-t border-zinc-100">
+        <a href="index.html" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">← 포트폴리오로 돌아가기</a>
+      </div>
+    </main>
+
+    <footer class="border-t border-zinc-100 py-8">
+      <div class="max-w-4xl mx-auto px-6 text-center text-xs text-zinc-400">
+        김지민 Kim Ji Min · jiminkim03027@gmail.com · <a href="https://github.com/min03027" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-700 transition-colors">github.com/min03027</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
