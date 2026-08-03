@@ -68,7 +68,90 @@
         <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-8">Projects</h2>
         <div class="space-y-14">
 
-          <!-- Project 01 — 노후애 -->
+          <!-- Project 01 — Samsung Academy LXP -->
+          <div>
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="font-semibold text-base">Samsung Academy LXP</h3>
+              <div class="flex items-center gap-3 shrink-0 ml-4">
+                <a href="https://lms.samsungax.com" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">서비스</a>
+                <span class="text-sm text-zinc-400">2026.07 · 실서비스 운영 중</span>
+              </div>
+            </div>
+            <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
+              K-디지털 트레이닝 훈련기관의 학습데이터관리시스템(LMS)에 <strong class="text-zinc-700">AI 학습지원 기능 5종</strong>을 설계·구현. 훈련생이 실제로 사용하는 운영 서비스(<code class="bg-zinc-100 px-1 rounded text-xs">lms.samsungax.com</code>)에 태그 푸시 자동배포로 반영되며, 관리자·강사·훈련생 3개 권한군이 쓰는 시스템에 <strong class="text-zinc-700">커밋 111건</strong>을 기여.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Java 17</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Spring Boot 3</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Spring Security</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">JPA</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">PostgreSQL 16</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Claude API</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Docker Compose</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">GitHub Actions</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">사람인 채용 API</span>
+            </div>
+            <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">AI 학습 도우미 (RAG Q&amp;A):</strong>
+                  과정에 등록된 학습 자료를 근거로 즉시 답변. PDF 본문까지 추출해 컨텍스트에 싣고, <strong class="text-zinc-800">답변이 실제로 인용한 자료만</strong> 링크로 붙여 범위 밖 인용은 폐기 — 자료 밖 내용은 "일반 지식"으로 구분 표기해 수업 내용과 섞이지 않게 통제
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">모델 호출 전 4단계 게이트 — 비용 사고 직접 발견·차단:</strong>
+                  수강 권한 · 입력 길이(1,000자) · 자료 존재 여부 · 일일 한도(전체 500 / 1인 50)를 <strong class="text-zinc-800">모델을 부르기 전에</strong> 검사. 새로고침만으로 한도가 소진되던 문제를 발견해 분석 결과 캐시(<code class="bg-zinc-100 px-1 rounded text-xs">AiAdviceCache</code>)를 추가 설계
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">채용공고 기반 직무 로드맵:</strong>
+                  사람인·워크넷 API로 공고를 주 1회 배치 수집 → 직무별 요구 역량 추출 → 훈련생 이수 이력과 대조해 <code class="bg-zinc-100 px-1 rounded text-xs">done / current / locked</code> 3상태 지도로 제시. <strong class="text-zinc-800">개발 직군 10종</strong> 지원
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">AI 학습진단 → 보완 과제 (사람이 확정하는 구조):</strong>
+                  훈련생 질문·평가 결과에서 취약 영역을 진단하고 과제 초안(제목·설명·평가기준)까지 생성하되 <strong class="text-zinc-800">배부 확정은 강사</strong>가 하도록 설계 — 훈련생 부담이 늘어나는 결정을 모델이 자동으로 내리지 않게 함. 다수가 막힌 주제는 개인이 아닌 <strong class="text-zinc-800">수업 보완 영역</strong>으로 별도 집계
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">지어낸 데이터 제거 — 표본 차트를 실데이터로 교체:</strong>
+                  대시보드에 남아 있던 가짜/표본 차트를 서버 집계(진도율·기간 경과율·이수 요건 충족)로 전면 교체하고 관리자·강사가 <strong class="text-zinc-800">같은 산출 기준</strong>을 보도록 통일. 계산 불가 구간(<code class="bg-zinc-100 px-1 rounded text-xs">elapsed &lt; 0</code>)은 0/100으로 채우지 않고 <strong class="text-zinc-800">아예 그리지 않는</strong> 원칙 적용
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">장애·개인정보 안전장치:</strong>
+                  모델 장애·한도 초과도 <code class="bg-zinc-100 px-1 rounded text-xs">200 + 안내 문구</code>로 내려 채팅 화면이 죽지 않게 하고, API 키 부재 시 AI 기능만 꺼진 채 앱은 정상 기동. 진단용 질문·개인정보 컬럼은 <code class="bg-zinc-100 px-1 rounded text-xs">AES-256/GCM</code> 암호화 저장
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">운영 반영:</strong>
+                  <code class="bg-zinc-100 px-1 rounded text-xs">v*</code> 태그 푸시 → GitHub Actions 테스트 통과 → self-hosted 러너가 Docker Compose 재배포 + <code class="bg-zinc-100 px-1 rounded text-xs">/login</code> 헬스체크. 테스트 실패 시 배포 차단
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">한계점:</strong>
+                  커리큘럼 추천·학습진단은 화면·데이터 구조까지 완성하고 추천/진단 엔진은 미완(현재 시연 데이터), 출석률 기반 자동 알림은 미착수. 저장소는 private
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Project 02 — 노후애 -->
           <div>
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-semibold text-base">노후애</h3>
@@ -135,7 +218,7 @@
             </ul>
           </div>
 
-          <!-- Project 02 — Stay-view -->
+          <!-- Project 03 — Stay-view -->
           <div>
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-semibold text-base">Stay-view</h3>
@@ -209,7 +292,7 @@
             </ul>
           </div>
 
-          <!-- Project 03 — 또박톡 -->
+          <!-- Project 04 — 또박톡 -->
           <div>
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-semibold text-base">또박톡</h3>
@@ -270,7 +353,7 @@
             </ul>
           </div>
 
-          <!-- Project 04 — 제주 맛집 RAG -->
+          <!-- Project 05 — 제주 맛집 RAG -->
           <div>
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-semibold text-base">어서 와용</h3>
@@ -353,7 +436,7 @@
             </ul>
           </div>
 
-          <!-- Project 05 — FitBuddy -->
+          <!-- Project 06 — FitBuddy -->
           <div>
             <div class="flex items-start justify-between mb-2">
               <h3 class="font-semibold text-base">FitBuddy</h3>
@@ -493,6 +576,7 @@
             <div class="flex flex-wrap gap-1.5">
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Python</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">SQL</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Java 17</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Kotlin</span>
             </div>
           </div>
@@ -516,6 +600,7 @@
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Gemini 1.5 Flash</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Ollama</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Qwen 2.5</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Claude API</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">RAG</span>
             </div>
           </div>
@@ -540,7 +625,13 @@
           <div class="flex items-start gap-4 text-sm">
             <span class="w-36 shrink-0 text-zinc-400">Backend &amp; Cloud</span>
             <div class="flex flex-wrap gap-1.5">
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Spring Boot 3</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Spring Security</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">JPA / Hibernate</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">FastAPI</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">PostgreSQL</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Docker Compose</span>
+              <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">GitHub Actions (CI/CD)</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">AWS EC2</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Gunicorn / Uvicorn</span>
               <span class="bg-zinc-100 text-zinc-700 px-2 py-0.5 rounded text-xs">Streamlit</span>
