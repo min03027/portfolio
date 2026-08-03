@@ -14,6 +14,17 @@
     code { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
     html { scroll-behavior: smooth; }
     section[id] { scroll-margin-top: 5rem; }
+
+    @page { margin: 14mm 12mm; }
+    @media print {
+      nav { display: none !important; }
+      main { padding-top: 0 !important; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      h1, h2, h3 { break-after: avoid; }
+      li, figure, .flex.items-center.gap-4 { break-inside: avoid; }
+      a { color: inherit !important; text-decoration: none !important; }
+      img { max-width: 100% !important; }
+    }
   </style>
 </head>
 <body class="min-h-full flex flex-col">
