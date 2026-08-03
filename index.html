@@ -181,7 +181,7 @@
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              재무 데이터로 고령층을 위험군별로 분류하고, 규제·가입 조건을 통과한 금융 상품만 골라 추천하는 서비스. 예금·펀드처럼 기준이 서로 다른 상품을 하나의 의미 축으로 묶어 비교 검색이 되도록 만들었다.
+              9문항 설문으로 재무 유형을 진단하고 <strong class="text-zinc-700">예상 연금액 계산 · 맞춤 상품 추천 · 노후 자산 시뮬레이션</strong>까지 한 화면에서 제공하는 시니어 금융 서비스. 예금·펀드처럼 기준이 서로 다른 상품을 하나의 의미 축으로 묶어 비교 검색이 되도록 만들었다.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Python</span>
@@ -190,35 +190,42 @@
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">OpenAI</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KOSIS Data</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KOSIS</span>
+              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">금융감독원 상품 공시</span>
             </div>
             <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
                 <span>
-                  <strong class="text-zinc-800">3단계 파이프라인:</strong>
-                  위험군 분류(재무 페르소나) → 제약 필터링(규제·가입 조건) → 유사도 추천(임베딩 기반 Top-3)
+                  <strong class="text-zinc-800">재무 페르소나 6종 분류:</strong>
+                  연금·소득·자산·지출 기준으로 <strong class="text-zinc-800">위험취약형 · 자산운용형 · 균형형 · 고소비형 · 연금의존형 · 자산의존형</strong> 6종 세그먼트를 정의하고 <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>으로 학습. 초기 딥러닝 모델이 분류 이유를 설명하지 못하는 문제를 TabNet의 <strong class="text-zinc-800">개인별 feature attribution</strong>으로 해소해, 어떤 항목이 그 판정을 만들었는지 제시
                 </span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
                 <span>
-                  <strong class="text-zinc-800">스키마 불일치 직접 진단·해결:</strong>
-                  팀에서 정의되지 않았던 이종 상품 간 검색 한계를 스스로 발견 → 공통 의미 칼럼 추출 + 상품 유형별 메타 테이블 + <code class="bg-zinc-100 px-1 rounded text-xs">FAISS L2</code> 임베딩 구조를 자발 제안·구현
+                  <strong class="text-zinc-800">이종 상품 통합 검색 — 스키마 불일치 직접 진단·해결:</strong>
+                  예금과 펀드는 컬럼 자체가 달라 함께 검색할 수 없다는 한계를 스스로 발견 → 최소투자금액·예상수익률·권장투자기간을 <strong class="text-zinc-800">공통 축</strong>으로 삼고 스케일을 맞춘 벡터 구조를 자발 제안·구현. 룰로 가입 불가 상품을 걸러 상위 <strong class="text-zinc-800">10개</strong>로 압축 → <code class="bg-zinc-100 px-1 rounded text-xs">FAISS IndexFlatL2</code> 완전 탐색으로 최종 <strong class="text-zinc-800">3개</strong> 추천</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">노후 자산 시뮬레이션:</strong>
+                  물가상승률을 <code class="bg-zinc-100 px-1 rounded text-xs">0~8%</code> 범위에서 조절해 자산 고갈 시점을 추정하고, 추천 상품 적용 시나리오와 기본 시나리오(연 2%)의 자산 추이를 그래프로 비교
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">예상 연금액 계산:</strong>
+                  월소득과 국민연금 가입기간으로 예상 월 수령액을 산출하고, 조기노령연금 <strong class="text-zinc-800">최대 30% 감액</strong> 같은 유형별 주의사항을 함께 안내
                 </span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
                 <span>
                   <strong class="text-zinc-800">합성 사용자 데이터:</strong>
-                  실 개인 금융 데이터 부재 → KOSIS 노령연금 수급 통계의 소득 분포 기반으로 합성 데이터 생성
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">TabNet 해석력:</strong>
-                  초기 딥러닝 모델의 분류 이유 설명 불가 문제를 <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>으로 해소, 개인별 feature attribution 확보
+                  실 개인 금융 데이터 부재 → KOSIS 노인가구 소득·보건복지부 국민연금 급여실적 분포를 기반으로 합성 데이터 생성. 상품 데이터는 금융감독원 정기예적금·자유예적금·펀드 공시 사용
                 </span>
               </li>
               <li class="flex gap-2">

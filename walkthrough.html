@@ -87,18 +87,39 @@
             <span class="text-sm text-zinc-400 shrink-0 ml-4">공모전 대상</span>
           </div>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
-            고령층의 재무 특성을 입력하면 가입 가능한 금융 상품을 이유와 함께 추천한다.
+            9문항 설문으로 재무 유형을 진단하고, 예상 연금액 계산 · 맞춤 상품 추천 · 노후 자산 시뮬레이션까지 이어진다.
           </p>
 
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+            <figure>
+              <img src="assets/nohuae-persona.png" alt="설문과 재무 유형 진단 결과 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+              <figcaption class="text-xs text-zinc-400 mt-2">① 유형 진단</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/nohuae-pension.png" alt="예상 연금액 계산 결과 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+              <figcaption class="text-xs text-zinc-400 mt-2">② 연금 계산</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/nohuae-recommend.png" alt="맞춤 상품 추천 Top-3 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+              <figcaption class="text-xs text-zinc-400 mt-2">③ 상품 추천</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/nohuae-simulation.png" alt="노후 자산 시뮬레이션 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
+              <figcaption class="text-xs text-zinc-400 mt-2">④ 노후 시뮬레이션</figcaption>
+            </figure>
+          </div>
           <figure class="mb-6">
             <img src="assets/nohuae-pipeline.png" alt="노후애 처리 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
             <figcaption class="text-xs text-zinc-400 mt-2">전체 처리 흐름 — 사용자 정보와 금융 상품 목록이 각각 들어와 최종 추천 리포트로 나간다</figcaption>
           </figure>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
-            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">위험군 분류</strong> — 재무 특성을 <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>에 넣어 재무 페르소나를 정의한다. 개인별 feature attribution이 남아 왜 그렇게 분류됐는지 설명할 수 있다.</p>
-            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">제약 필터링</strong> — 금융 규제와 가입 조건을 반영해 애초에 가입할 수 없는 상품을 제거한다.</p>
-            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">유사도 추천</strong> — 예금·펀드처럼 기준이 다른 상품을 위험성·수익성·유동성이라는 공통 축으로 수치화한 뒤 <code class="bg-zinc-100 px-1 rounded text-xs">FAISS L2</code> 임베딩으로 비교해 Top-3를 뽑는다.</p>
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">설문 입력</strong> — 나이·가구원수·피부양자·금융자산·투자성향 등 9문항을 단계별로 받는다. 한 화면에 한 문항씩 두고 진행률을 표시한다.</p>
+            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">재무 유형 진단</strong> — 연금·소득·자산·지출 기준으로 정의한 6종 세그먼트(위험취약형·자산운용형·균형형·고소비형·연금의존형·자산의존형) 중 하나로 분류한다. <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>을 쓴 이유는 개인별 feature attribution이 남아 어떤 항목이 그 판정을 만들었는지 설명할 수 있기 때문이다.</p>
+            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">연금 계산</strong> — 월소득과 국민연금 가입기간으로 예상 월 수령액을 산출하고, 조기노령연금은 만 60세부터 받을 수 있으나 최대 30% 감액된다는 식의 유형별 주의사항을 함께 보여준다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">제약 필터링</strong> — 최소투자금액·권장투자기간·투자성향으로 애초에 가입할 수 없는 상품을 제거하고, 예상 수익률 기준 상위 10개로 좁힌다.</p>
+            <p><span class="text-zinc-400 mr-2">05</span><strong class="text-zinc-800">유사도 추천</strong> — 예금·펀드처럼 기준이 다른 상품을 최소투자금액·예상수익률·권장투자기간이라는 공통 축으로 스케일을 맞춰 벡터화하고, <code class="bg-zinc-100 px-1 rounded text-xs">FAISS IndexFlatL2</code> 완전 탐색으로 사용자 벡터와 가장 가까운 3개를 뽑는다.</p>
+            <p><span class="text-zinc-400 mr-2">06</span><strong class="text-zinc-800">노후 시뮬레이션</strong> — 물가상승률을 0~8% 범위에서 조절해 자산 고갈 시점을 추정하고, 추천 상품을 적용한 시나리오와 기본 시나리오(연 2%)의 자산 추이를 나란히 그린다. 조건을 바꿔 다시 추천받을 수도 있다.</p>
           </div>
           <p class="text-xs text-zinc-400 mt-5">
             <a href="https://github.com/min03027/senior_finance_recommender" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">GitHub</a>
