@@ -307,7 +307,7 @@
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              고령층의 대화를 실시간 자막으로 옮기고, 의료·공공 상담 내용을 쉬운 말 요약과 체크리스트로 정리해주는 서비스. 음성 처리 전 과정을 외부 전송 없이 기기 안에서 끝낸다.
+              고령층의 대화를 실시간 자막으로 옮기고, 의료·공공 상담 내용을 쉬운 말 요약과 복약 체크리스트로 정리해주는 서비스. 진료 내용을 다루는 만큼 음성부터 요약까지 전 과정을 외부 전송 없이 로컬에서 처리한다.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Whisper Small (fine-tuned)</span>
@@ -349,14 +349,14 @@
                 <span class="text-zinc-300 mt-1">—</span>
                 <span>
                   <strong class="text-zinc-800">학습 데이터:</strong>
-                  AI Hub 자유대화 음성(노인남녀) + Kaggle Korean Medical Entities Speech + 국립국어원 공공언어 용어 목록 결합
+                  AI Hub 자유대화 음성(노인남녀) <strong class="text-zinc-800">13.3만 건</strong> + Kaggle Korean Medical Entities Speech + 국립국어원 공공언어 용어 목록 결합
                 </span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
                 <span>
-                  <strong class="text-zinc-800">모델 스택:</strong>
-                  STT <code class="bg-zinc-100 px-1 rounded text-xs">Faster Whisper</code> · 화자 분리 <code class="bg-zinc-100 px-1 rounded text-xs">Resemblyzer</code> · 요약 로컬 <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code> — 외부 전송 없이 온디바이스 처리
+                  <strong class="text-zinc-800">전 구간 로컬 추론 — 클라우드 LLM을 쓰지 않은 이유:</strong>
+                  다루는 내용이 진료·복약 지시라 대화가 외부로 나가면 안 된다고 판단 → 요약·쉬운말 변환을 외부 API 대신 로컬 <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code> 서버로 처리. STT <code class="bg-zinc-100 px-1 rounded text-xs">Faster Whisper</code>, 화자 분리 <code class="bg-zinc-100 px-1 rounded text-xs">Resemblyzer</code>도 로컬 구동. 응답 속도를 양보하는 대신 <strong class="text-zinc-800">음성이 기기를 벗어나지 않는</strong> 구조를 택했다
                 </span>
               </li>
             </ul>

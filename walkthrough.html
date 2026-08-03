@@ -143,7 +143,29 @@
         <section id="ddobak">
           <h2 class="text-xl font-semibold tracking-tight mb-1">또박톡</h2>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
-            고령층의 대화를 실시간 자막으로 옮기고, 의료·공공 상담 내용을 쉬운 말 요약과 체크리스트로 정리한다.
+            고령층의 대화를 실시간 자막으로 옮기고, 의료·공공 상담 내용을 쉬운 말 요약과 복약 체크리스트로 정리한다.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-3">
+            <figure>
+              <img src="assets/ddobak-home.png" alt="또박톡 메인 메뉴 화면" loading="lazy" class="w-full">
+              <figcaption class="text-xs text-zinc-400 mt-2 text-center">메인 메뉴</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/ddobak-live.png" alt="또박톡 실시간 자막 화면" loading="lazy" class="w-full">
+              <figcaption class="text-xs text-zinc-400 mt-2 text-center">실시간 자막</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/ddobak-summary.png" alt="또박톡 요약 결과 화면" loading="lazy" class="w-full">
+              <figcaption class="text-xs text-zinc-400 mt-2 text-center">자동 요약 · 복약 알림</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/ddobak-settings.png" alt="또박톡 환경 설정 화면" loading="lazy" class="w-full">
+              <figcaption class="text-xs text-zinc-400 mt-2 text-center">글자 크기 조절</figcaption>
+            </figure>
+          </div>
+          <p class="text-xs text-zinc-400 mb-6 leading-relaxed">
+            실시간 자막 화면에서 파란 글씨를 누르면 쉬운 말로 다시 들려준다 — <code class="bg-zinc-100 px-1 rounded">식후 → 밥 먹은 뒤</code>, <code class="bg-zinc-100 px-1 rounded">복용 → 드세요</code>. 요약 화면의 할 일에는 각각 복약 알림이 붙는다.
           </p>
 
           <figure class="mb-6">
@@ -155,7 +177,8 @@
             <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">실시간 전사</strong> — AI Hub 노인 음성으로 파인튜닝한 <code class="bg-zinc-100 px-1 rounded text-xs">Whisper</code>가 말을 텍스트로 바꾼다. 의료 키워드에 가중치를 준 샘플링으로 학습해 WER 21.2%를 얻었다.</p>
             <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">화자 분리</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Resemblyzer</code>가 나와 상대를 구분한다. 1.2초 슬라이딩 윈도우와 최근 5회 판정 다수결로 순간 오판을 평탄화한다.</p>
             <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">쉬운말 변환</strong> — 전문용어를 쉬운 표현으로 바꾼다. 전사 정확도와 용어 변환을 한 모듈에서 처리하면 서로 간섭해 별도 단계로 분리했다.</p>
-            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">요약과 체크리스트</strong> — 로컬 <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code>가 대화를 요약하고 할 일을 정리한다. 음성이 외부로 나가지 않는다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">요약과 체크리스트</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code>가 대화를 요약해 할 일·필요한 물건·복약 시간으로 구조화하고 알림으로 연결한다.</p>
+            <p class="pt-1"><span class="text-zinc-400 mr-2">＊</span><strong class="text-zinc-800">외부 API를 쓰지 않은 이유</strong> — 요약과 쉬운말 변환은 클라우드 LLM이 품질도 속도도 낫다. 그럼에도 로컬에 <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code> 서버를 띄워 붙인 것은, 이 서비스가 다루는 내용이 진료 내용과 복약 지시이기 때문이다. 응답 속도를 양보하는 대신 음성과 대화가 기기를 벗어나지 않는 구조를 택했다. 요약은 통화가 끝난 뒤 처리라 실시간성이 덜 중요했던 점도 함께 고려했다.</p>
           </div>
         </section>
 
