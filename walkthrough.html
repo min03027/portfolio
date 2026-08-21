@@ -15,13 +15,40 @@
     html { scroll-behavior: smooth; }
     section[id] { scroll-margin-top: 5rem; }
 
+    .pipeline { --accent: #2563eb; --accent-soft: #eff6ff; margin: 1.5rem 0; padding: 1.25rem; border: 1px solid #e4e4e7; border-radius: .75rem; background: #fafafa; }
+    .pipeline[data-accent="emerald"] { --accent: #059669; --accent-soft: #ecfdf5; }
+    .pipeline[data-accent="violet"] { --accent: #7c3aed; --accent-soft: #f5f3ff; }
+    .pipeline[data-accent="amber"] { --accent: #d97706; --accent-soft: #fffbeb; }
+    .pipeline[data-accent="rose"] { --accent: #e11d48; --accent-soft: #fff1f2; }
+    .pipeline-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .pipeline-title { font-size: .75rem; font-weight: 700; letter-spacing: .08em; color: #3f3f46; text-transform: uppercase; }
+    .pipeline-legend { display: flex; align-items: center; gap: .4rem; font-size: .68rem; color: #a1a1aa; white-space: nowrap; }
+    .pipeline-legend::before { content: ''; width: .5rem; height: .5rem; border-radius: 999px; background: var(--accent); }
+    .pipeline-flow { display: grid; grid-template-columns: repeat(var(--steps), minmax(0, 1fr)); gap: 1.65rem; align-items: stretch; }
+    .pipeline-step { position: relative; min-width: 0; padding: .9rem .8rem; border: 1px solid #e4e4e7; border-radius: .65rem; background: white; box-shadow: 0 1px 2px rgb(0 0 0 / .025); }
+    .pipeline-step:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -1.25rem; width: .85rem; transform: translateY(-50%); color: var(--accent); font-size: 1rem; font-weight: 700; text-align: center; }
+    .pipeline-step.is-model { border-color: color-mix(in srgb, var(--accent) 35%, white); background: var(--accent-soft); }
+    .pipeline-step.is-output { border-color: #d4d4d8; background: #f4f4f5; }
+    .pipeline-num { display: block; margin-bottom: .4rem; font: 500 .65rem/1 'JetBrains Mono', monospace; color: var(--accent); }
+    .pipeline-step strong { display: block; color: #27272a; font-size: .78rem; line-height: 1.25; }
+    .pipeline-step small { display: block; margin-top: .3rem; color: #71717a; font-size: .67rem; line-height: 1.45; word-break: keep-all; }
+    .pipeline-tag { display: inline-block; margin-top: .45rem; padding: .18rem .38rem; border-radius: .3rem; background: white; color: var(--accent); font: 500 .61rem/1.2 'JetBrains Mono', monospace; border: 1px solid color-mix(in srgb, var(--accent) 18%, white); }
+    .pipeline-note { margin-top: .8rem; padding-top: .75rem; border-top: 1px dashed #d4d4d8; color: #71717a; font-size: .68rem; line-height: 1.5; }
+    @media (max-width: 640px) {
+      .pipeline { padding: 1rem; }
+      .pipeline-head { align-items: flex-start; }
+      .pipeline-legend { display: none; }
+      .pipeline-flow { grid-template-columns: 1fr; gap: 1.35rem; }
+      .pipeline-step:not(:last-child)::after { content: '↓'; top: auto; right: 50%; bottom: -1.12rem; transform: translateX(50%); }
+    }
+
     @page { margin: 14mm 12mm; }
     @media print {
       nav { display: none !important; }
       main { padding-top: 0 !important; }
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       h1, h2, h3 { break-after: avoid; }
-      li, figure, .flex.items-center.gap-4 { break-inside: avoid; }
+      li, figure, .pipeline, .flex.items-center.gap-4 { break-inside: avoid; }
       a { color: inherit !important; text-decoration: none !important; }
       img { max-width: 100% !important; }
     }
@@ -32,13 +59,11 @@
     <!-- Nav -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur border-b border-zinc-100">
       <div class="max-w-4xl mx-auto px-6 flex items-center justify-between h-14">
-        <a href="index.html" class="font-semibold text-sm tracking-tight hover:text-zinc-500 transition-colors">← Kim Ji Min</a>
-        <div class="flex gap-5 text-sm text-zinc-500">
-          <a href="#lxp" class="hover:text-zinc-900 transition-colors">LXP</a>
-          <a href="#nohuae" class="hover:text-zinc-900 transition-colors">노후애</a>
-          <a href="#stayview" class="hover:text-zinc-900 transition-colors">Stay-view</a>
-          <a href="#ddobak" class="hover:text-zinc-900 transition-colors">또박톡</a>
-          <a href="#jeju" class="hover:text-zinc-900 transition-colors">어서 와용</a>
+        <a href="index.html" class="font-semibold text-sm tracking-tight hover:text-zinc-600 transition-colors">&larr; Kim Ji Min</a>
+        <div class="flex gap-6 text-sm text-zinc-500">
+          <a href="index.html" class="hover:text-zinc-900 transition-colors">포트폴리오</a>
+          <a href="career.html" class="hover:text-zinc-900 transition-colors">경력기술서</a>
+          <span class="text-zinc-900">동작 소개</span>
         </div>
       </div>
     </nav>
@@ -57,7 +82,7 @@
         <section id="lxp">
           <div class="flex items-baseline justify-between mb-1">
             <h2 class="text-xl font-semibold tracking-tight">Samsung Academy LXP</h2>
-            <span class="text-sm text-zinc-400 shrink-0 ml-4">실서비스 운영 중</span>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">실사용 중 · 진행 중</span>
           </div>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
             훈련기관 LMS. 관리자·강사·훈련생이 각자 다른 화면을 쓰며, AI 학습지원 기능이 훈련생 화면에 붙어 있다.
@@ -78,6 +103,18 @@
                 <figcaption class="text-xs text-zinc-400 mt-2">AI 학습 Q&amp;A — 답변에 인용한 자료를 링크로 노출</figcaption>
               </figure>
             </div>
+          </div>
+
+          <div class="pipeline" data-accent="violet" aria-label="Samsung Academy LXP AI 학습 Q&A 파이프라인">
+            <div class="pipeline-head"><h3 class="pipeline-title">AI 학습 Q&amp;A pipeline</h3><span class="pipeline-legend">모델 · 핵심 처리</span></div>
+            <div class="pipeline-flow" style="--steps: 5">
+              <div class="pipeline-step"><span class="pipeline-num">01 · INPUT</span><strong>훈련생 질문</strong><small>과정 안에서 최대 1,000자 입력</small></div>
+              <div class="pipeline-step"><span class="pipeline-num">02 · GUARD</span><strong>호출 전 검사</strong><small>수강 권한 · 자료 유무 · 일일 한도 확인</small></div>
+              <div class="pipeline-step"><span class="pipeline-num">03 · CONTEXT</span><strong>과정 자료 구성</strong><small>PDF 본문과 질문을 컨텍스트로 조합</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">04 · GENERATE</span><strong>근거 기반 답변</strong><small>자료 범위 안에서 답변과 인용 생성</small><span class="pipeline-tag">Claude API</span></div>
+              <div class="pipeline-step is-output"><span class="pipeline-num">05 · OUTPUT</span><strong>답변 또는 강사 이관</strong><small>유효 인용만 노출 · 미해결 질문 자동 등록</small></div>
+            </div>
+            <p class="pipeline-note">모델 호출 전에 권한과 사용량을 차단하고, 생성 뒤에는 실제 자료 범위를 벗어난 인용 번호를 다시 제거합니다.</p>
           </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
@@ -119,10 +156,18 @@
               <figcaption class="text-xs text-zinc-400 mt-2">④ 노후 시뮬레이션</figcaption>
             </figure>
           </div>
-          <figure class="mb-6">
-            <img src="assets/nohuae-pipeline.png" alt="노후애 처리 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
-            <figcaption class="text-xs text-zinc-400 mt-2">전체 처리 흐름 — 사용자 정보와 금융 상품 목록이 각각 들어와 최종 추천 리포트로 나간다</figcaption>
-          </figure>
+          <div class="pipeline" data-accent="emerald" aria-label="노후애 금융 상품 추천 파이프라인">
+            <div class="pipeline-head"><h3 class="pipeline-title">Finance recommendation pipeline</h3><span class="pipeline-legend">모델 · 핵심 처리</span></div>
+            <div class="pipeline-flow" style="--steps: 6">
+              <div class="pipeline-step"><span class="pipeline-num">01 · INPUT</span><strong>9문항 설문</strong><small>연령 · 소득 · 자산 · 투자성향</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">02 · CLASSIFY</span><strong>재무 유형 진단</strong><small>6개 세그먼트 분류 + 판단 근거 산출</small><span class="pipeline-tag">TabNet</span></div>
+              <div class="pipeline-step"><span class="pipeline-num">03 · CALCULATE</span><strong>예상 연금 계산</strong><small>월 수령액과 유형별 주의사항</small></div>
+              <div class="pipeline-step"><span class="pipeline-num">04 · FILTER</span><strong>가입 제약 필터</strong><small>투자금 · 기간 · 성향 → 후보 10개</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">05 · RANK</span><strong>유사 상품 탐색</strong><small>공통 축 벡터화 후 최근접 Top-3</small><span class="pipeline-tag">FAISS · L2</span></div>
+              <div class="pipeline-step is-output"><span class="pipeline-num">06 · OUTPUT</span><strong>추천 + 시뮬레이션</strong><small>추천 전후 자산 추이와 고갈 시점 비교</small></div>
+            </div>
+            <p class="pipeline-note">두 입력을 결합합니다: 사용자 설문은 개인 벡터를 만들고, 금융 상품 목록은 가입 제약을 거쳐 비교 가능한 후보 벡터가 됩니다.</p>
+          </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
             <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">설문 입력</strong> — 나이·가구원수·피부양자·금융자산·투자성향 등 9문항을 단계별로 받는다. 한 화면에 한 문항씩 두고 진행률을 표시한다.</p>
@@ -153,10 +198,17 @@
             <img src="assets/stayview-ui.png" alt="Stay-view 실행 화면" loading="lazy" class="w-full rounded-lg border border-zinc-200">
             <figcaption class="text-xs text-zinc-400 mt-2">실행 화면 — 위치 지도, 긍정/부정 요약, 소음·가격·위치·서비스·청결·편의시설 6개 항목 점수</figcaption>
           </figure>
-          <figure class="mb-6">
-            <img src="assets/stayview-pipeline.png" alt="Stay-view 처리 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
-            <figcaption class="text-xs text-zinc-400 mt-2">전처리부터 요약·추천까지의 처리 흐름</figcaption>
-          </figure>
+          <div class="pipeline" data-accent="amber" aria-label="Stay-view 호텔 리뷰 분석 파이프라인">
+            <div class="pipeline-head"><h3 class="pipeline-title">Review intelligence pipeline</h3><span class="pipeline-legend">모델 · 핵심 처리</span></div>
+            <div class="pipeline-flow" style="--steps: 5">
+              <div class="pipeline-step"><span class="pipeline-num">01 · DATA</span><strong>호텔 리뷰 11만 건</strong><small>크롤링 후 불용어와 노이즈 제거</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">02 · ANALYZE</span><strong>감성 · 토픽 분해</strong><small>긍·부정 판별 + 6개 평가 항목 분류</small><span class="pipeline-tag">KoBERT · LDA</span></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">03 · SUMMARIZE</span><strong>1차 압축 요약</strong><small>리뷰 묶음에서 핵심 문장 추출</small><span class="pipeline-tag">KoBART</span></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">04 · REFINE</span><strong>3줄 요약 정제</strong><small>뭉개진 문장을 읽기 쉽게 재구성</small><span class="pipeline-tag">Gemini</span></div>
+              <div class="pipeline-step is-output"><span class="pipeline-num">05 · OUTPUT</span><strong>호텔 비교 · Top-3</strong><small>6개 항목 점수와 방문 유형별 추천</small></div>
+            </div>
+            <p class="pipeline-note">요약은 KoBART로 정보량을 먼저 줄인 뒤 Gemini로 문장 품질을 보완하는 2단계 구조입니다.</p>
+          </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
             <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">노이즈 제거</strong> — 불용어 사전을 만들어 크롤링 리뷰를 정제하고 유효 리뷰 11만 건을 확보한다.</p>
@@ -203,10 +255,17 @@
             실시간 자막 화면에서 파란 글씨를 누르면 쉬운 말로 다시 들려준다 — <code class="bg-zinc-100 px-1 rounded">식후 → 밥 먹은 뒤</code>, <code class="bg-zinc-100 px-1 rounded">복용 → 드세요</code>. 요약 화면의 할 일에는 각각 복약 알림이 붙는다.
           </p>
 
-          <figure class="mb-6">
-            <img src="assets/ddobak-pipeline.png" alt="또박톡 처리 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
-            <figcaption class="text-xs text-zinc-400 mt-2">학습 데이터 수집부터 모바일 화면까지의 처리 흐름</figcaption>
-          </figure>
+          <div class="pipeline" data-accent="rose" aria-label="또박톡 실시간 대화 지원 파이프라인">
+            <div class="pipeline-head"><h3 class="pipeline-title">Private speech pipeline</h3><span class="pipeline-legend">모델 · 핵심 처리</span></div>
+            <div class="pipeline-flow" style="--steps: 5">
+              <div class="pipeline-step"><span class="pipeline-num">01 · INPUT</span><strong>실시간 대화 음성</strong><small>고령 사용자와 상담 상대의 발화</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">02 · STT</span><strong>노인 음성 전사</strong><small>의료 키워드 가중 학습 · WER 21.2%</small><span class="pipeline-tag">Whisper</span></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">03 · DIARIZE</span><strong>화자 분리</strong><small>1.2초 창 + 최근 5회 다수결</small><span class="pipeline-tag">Resemblyzer</span></div>
+              <div class="pipeline-step"><span class="pipeline-num">04 · SIMPLIFY</span><strong>쉬운말 실시간 변환</strong><small>전문용어를 고령층 친화 표현으로 치환</small></div>
+              <div class="pipeline-step is-output"><span class="pipeline-num">05 · LOCAL LLM</span><strong>요약 · 할 일 · 알림</strong><small>대화 종료 후 기기 안에서 구조화</small><span class="pipeline-tag">Ollama</span></div>
+            </div>
+            <p class="pipeline-note">진료·복약 데이터가 외부로 나가지 않도록 전사 이후 요약까지 로컬에서 처리하며, 실시간 자막과 종료 후 요약을 분리했습니다.</p>
+          </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
             <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">실시간 전사</strong> — AI Hub 노인 음성으로 파인튜닝한 <code class="bg-zinc-100 px-1 rounded text-xs">Whisper</code>가 말을 텍스트로 바꾼다. 의료 키워드에 가중치를 준 샘플링으로 학습해 WER 21.2%를 얻었다.</p>
@@ -237,10 +296,18 @@
               <figcaption class="text-xs text-zinc-400 mt-2">추천 답변 — 개점일·현지인 비중·차량 이동시간까지 답한다</figcaption>
             </figure>
           </div>
-          <figure class="mb-6">
-            <img src="assets/jeju-pipeline.png" alt="어서 와용 RAG 파이프라인" loading="lazy" class="w-full rounded-lg border border-zinc-200 bg-white">
-            <figcaption class="text-xs text-zinc-400 mt-2">RAG 파이프라인 — 질문이 검색을 거쳐 답변이 되기까지</figcaption>
-          </figure>
+          <div class="pipeline" aria-label="어서 와용 제주 맛집 RAG 파이프라인">
+            <div class="pipeline-head"><h3 class="pipeline-title">Hybrid RAG pipeline</h3><span class="pipeline-legend">모델 · 핵심 처리</span></div>
+            <div class="pipeline-flow" style="--steps: 6">
+              <div class="pipeline-step"><span class="pipeline-num">01 · INPUT</span><strong>자연어 질문 + 조건</strong><small>가격대 · 위치 · 업종 · 현지인 비중</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">02 · RETRIEVE</span><strong>의미 기반 후보 검색</strong><small>질문 임베딩 → 유사 가맹점 탐색</small><span class="pipeline-tag">Ko-SRoBERTa · FAISS</span></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">03 · RERANK</span><strong>관계 그래프 재정렬</strong><small>위치 · 업종 · 관광지 다중 hop 탐색</small><span class="pipeline-tag">Neo4j</span></div>
+              <div class="pipeline-step"><span class="pipeline-num">04 · FILTER</span><strong>실결제 조건 검증</strong><small>가격대와 현지인 비중으로 후보 축소</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">05 · GENERATE</span><strong>검색 근거로 답변</strong><small>선별된 가맹점 정보만 컨텍스트로 전달</small><span class="pipeline-tag">Gemini 1.5 Flash</span></div>
+              <div class="pipeline-step is-output"><span class="pipeline-num">06 · OUTPUT</span><strong>맛집 + 추천 이유</strong><small>개점일 · 현지인 비중 · 좌표 기반 이동시간</small></div>
+            </div>
+            <p class="pipeline-note">벡터 검색의 의미 유사도, 그래프의 관계성, 카드 결제 데이터의 수치 조건을 순서대로 결합해 환각 가능한 후보를 먼저 차단합니다.</p>
+          </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
             <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">의미 검색</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Ko-SRoBERTa</code>로 질문을 임베딩하고 <code class="bg-zinc-100 px-1 rounded text-xs">FAISS</code>로 후보 가맹점을 좁힌다.</p>
