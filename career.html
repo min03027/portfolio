@@ -59,14 +59,32 @@
       </header>
 
       <section id="intro">
-        <p class="text-sm text-zinc-600 leading-relaxed max-w-2xl">
-          이 문서는 <strong class="text-zinc-800">개발 과정에서 내린 판단과 그 근거</strong>를 정리한 것입니다.
-          만든 기능과 화면, 사용한 기술의 목록은 <a href="index.html" class="text-zinc-800 underline underline-offset-2 hover:text-zinc-500 transition-colors">포트폴리오</a>에 있습니다.
-        </p>
-        <p class="text-sm text-zinc-500 leading-relaxed max-w-2xl mt-3">
-          기능을 만드는 것보다 <strong class="text-zinc-700">무엇을 만들지 않을지 정하는 쪽</strong>에서 배운 것이 많았습니다.
-          호출을 막고, 근거 없는 출처를 폐기하고, 산출할 수 없는 값을 비워두고, 클라우드를 쓰지 않기로 한 판단들이 아래에 있습니다.
-        </p>
+        <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-6">요약</h2>
+        <dl class="space-y-3 text-sm text-zinc-600 leading-relaxed">
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">담당 분야</dt>
+            <dd>AI 서비스 백엔드 · LLM 파이프라인 설계 · 데이터 기반 추천/검색</dd>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">프로젝트</dt>
+            <dd>4건 &mdash; 실사용 서비스 1건(진행 중) · 공모전 수상 2건 · 대회 본선 1건</dd>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">주요 성과</dt>
+            <dd>
+              <ul class="space-y-1.5">
+                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>LLM 호출 게이트·캐시 설계로 일일 API 한도 소진 문제 해결, 배포 일정 내 반영</span></li>
+                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>4개 서비스 기능 요구사항 <strong class="text-zinc-800">211건</strong> 코드 대조 감사, 판정 근거 오탐 <strong class="text-zinc-800">3건</strong> 정정</span></li>
+                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>고령층 STT <strong class="text-zinc-800">WER 21.2%</strong> (목표 25% 이하) &mdash; 음성 13.3만 건 파인튜닝</span></li>
+                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>금융 상품 추천 정확도 <strong class="text-zinc-800">+27%p</strong> (키워드 매칭 baseline 대비, 합성 데이터 평가)</span></li>
+              </ul>
+            </dd>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:gap-4">
+            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">문서 구성</dt>
+            <dd>프로젝트별로 담당 업무와 그 과정에서 내린 기술적 판단 및 근거를 기술했습니다. 구현 기능·화면·기술 스택 목록은 <a href="index.html" class="text-zinc-800 underline underline-offset-2 hover:text-zinc-500 transition-colors">포트폴리오</a>에 있습니다.</dd>
+          </div>
+        </dl>
       </section>
 
       <!-- 01 -->
@@ -84,33 +102,33 @@
         <div class="space-y-8">
 
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 호출 한도를 늘리지 않고, 호출 자체를 줄였다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; LLM 호출 비용 통제 : 호출 전 차단 게이트 설계</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>배포 전 테스트에서 일일 API 호출 한도가 예상보다 빠르게 소진됐습니다. 배포 일정은 얼마 남지 않은 상태였습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">원인</dt><dd>요청 처리 흐름을 단계별로 좁혀 검증한 결과, <strong class="text-zinc-800">같은 질문의 재조회</strong>와 <strong class="text-zinc-800">애초에 답변이 불가능한 요청</strong>(과정에 등록된 자료가 없는 경우)이 호출량의 상당 부분을 차지하고 있었습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">대안</dt><dd><span class="text-zinc-400">①</span> 한도 상향 &nbsp; <span class="text-zinc-400">②</span> 더 저렴한 모델로 교체 &nbsp; <span class="text-zinc-400">③</span> 호출 전 차단 게이트</dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> ①은 비용을, ②는 답변 품질을 맞바꾸는 임시책이고 소진 속도 자체는 그대로였습니다. 낭비되는 호출이 대부분이라면 그 호출을 없애는 것이 근본 해결이라고 판단했습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> ①은 비용을, ②는 답변 품질을 대가로 지불하는 임시 조치이며 소진 속도 자체는 개선되지 않습니다. 소진의 주 원인이 불필요한 호출이므로, 해당 호출을 제거하는 것이 근본 해결이라고 판단했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>수강 권한 &rarr; 입력 길이 1,000자 &rarr; 자료 유무 &rarr; 일일 한도(전체 500 / 1인 50) 순서로 <strong class="text-zinc-800">모델 호출 전에</strong> 검사하도록 게이트를 앞단에 배치하고, 동일 분석 요청은 저장된 결과로 응답하도록 캐시를 뒀습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">결과</dt><dd>배포 일정 내 해결, 이후 한도 소진 없이 운영 중입니다.</dd></div>
             </dl>
           </div>
 
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; 모델이 만든 인용을 그대로 믿지 않기로 했다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; RAG 인용 검증 : 범위 밖 인용 폐기 및 출처 분리 표기</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>RAG 답변에 인용 번호가 붙어 나왔지만, 실제로 전달한 자료의 범위를 벗어난 번호가 섞여 나오는 경우가 있었습니다. 훈련생이 링크를 눌렀을 때 근거가 없는 자료로 연결될 수 있는 상태였습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">대안</dt><dd><span class="text-zinc-400">①</span> 인용을 그대로 노출 &nbsp; <span class="text-zinc-400">②</span> 인용 기능 자체를 제거 &nbsp; <span class="text-zinc-400">③</span> 검증 후 걸러서 노출</dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> 학습 서비스에서 근거 링크는 답변만큼 중요하다고 봤습니다. 다만 <strong class="text-zinc-800">틀린 근거는 근거가 없는 것보다 나쁘다</strong>고 판단해, 검증을 통과한 것만 남기기로 했습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> 학습 서비스에서 근거 링크는 답변만큼 중요하다고 봤습니다. 다만 다만 잘못된 근거로 연결되는 링크는 답변 전체의 신뢰도를 떨어뜨리므로, 검증을 통과한 인용만 노출하기로 했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>답변이 실제로 인용한 자료만 링크로 노출하고 범위 밖 인용 번호는 폐기했습니다. 자료에 없는 내용은 지우는 대신 <strong class="text-zinc-800">"일반 지식"으로 분리 표기</strong>해, 답변은 살리되 출처가 있는 것과 없는 것을 구분했습니다. RAG로 해결되지 않은 질문은 담당 강사 Q&amp;A로 자동 이관해 훈련생이 같은 질문을 반복하지 않도록 했습니다.</dd></div>
             </dl>
           </div>
 
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 3 &nbsp;—&nbsp; 산출할 수 없는 지표는 0으로 채우지 않고 비워뒀다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 3 &nbsp;—&nbsp; 대시보드 지표 산출 기준 통일 : 산출 불가 구간 미표시 처리</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>대시보드의 진도율·기간 경과율·이수 요건 충족은 관리자와 강사가 각각 다른 기준으로 보고 있었고, 데이터가 없는 구간에서 무엇을 보여줄지 정해져 있지 않았습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">대안</dt><dd><span class="text-zinc-400">①</span> 0으로 채움 &nbsp; <span class="text-zinc-400">②</span> 직전 값 유지 &nbsp; <span class="text-zinc-400">③</span> 미표시</dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> 이 지표는 훈련생의 이수 판정과 연결됩니다. 0%와 "아직 산출 불가"는 전혀 다른 의미인데 화면에서는 구분되지 않습니다. <strong class="text-zinc-800">빈칸은 오해를 부르지만 잘못된 숫자는 잘못된 결정을 부른다</strong>고 봤습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> 이 지표는 훈련생의 이수 판정과 연결됩니다. 0%와 "아직 산출 불가"는 의미가 다르지만 화면에서는 구분되지 않아, <strong class="text-zinc-800">잘못된 수치가 이수 판정에 반영될 위험</strong>이 있다고 판단했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>세 지표를 서버 집계로 옮겨 관리자·강사 산출 기준을 통일하고, 산출 불가 구간은 미표시로 처리했습니다. 훈련생에게는 개별 수치 대신 익명 진도 순위로 제공했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">확장</dt><dd>같은 원칙을 기동 조건에도 적용했습니다. API 키가 없으면 <strong class="text-zinc-800">AI 기능만 비활성화하고 앱은 정상 기동</strong>하도록 해, AI가 LMS 본체를 멈추지 않게 했습니다.</dd></div>
             </dl>
@@ -120,20 +138,20 @@
             <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-6">플랫폼 기능 구현 검증 <span class="normal-case tracking-normal font-normal">(진행 중)</span></p>
 
             <div class="decision mb-8">
-              <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 4 &nbsp;—&nbsp; 판정을 2단계가 아니라 4단계로 나눴다</h3>
+              <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 4 &nbsp;—&nbsp; 기능 구현 검증 체계 설계 : 4단계 판정 기준 수립</h3>
               <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
                 <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>취업캠퍼스 · 몰입클라쓰 · 비즈워크래프트 · LXP <strong class="text-zinc-800">4개 서비스</strong>가 각자 기능 명세를 갖고 있었지만, 명세에 적힌 것이 실제로 구현돼 있는지 확인된 적이 없었습니다. 팀이 소규모라 "된다고 알고 있는 기능"과 "실제로 되는 기능"의 차이를 아무도 추적하지 못하는 상태였습니다.</dd></div>
                 <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">대안</dt><dd><span class="text-zinc-400">①</span> 구현 / 미구현 2단계 &nbsp; <span class="text-zinc-400">②</span> 구현 / 부분구현 / 미구현 / <strong class="text-zinc-800">확인필요</strong> 4단계</dd></div>
-                <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">②.</strong> 2단계로 하면 애매한 항목을 어느 한쪽으로 밀어 넣어야 하는데, 그 순간 감사 결과 자체를 믿을 수 없게 됩니다. <strong class="text-zinc-800">"확인이 안 된다"는 것도 결과</strong>이므로 별도 상태로 남겼습니다.</dd></div>
+                <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">②.</strong> 2단계로 판정하면 근거가 불충분한 항목을 임의로 어느 한쪽에 배정해야 하고, 그 경우 감사 결과 전체의 신뢰도가 떨어집니다. <strong class="text-zinc-800">확인이 불가능하다는 사실 역시 감사 결과</strong>이므로 별도 상태로 분리했습니다.</dd></div>
                 <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>기능 요구사항 <strong class="text-zinc-800">211건</strong>을 엔티티 · 서비스 · 템플릿 코드까지 따라가며 4단계로 판정하고, 상태별 색상(초록 / 노랑 / 빨강 / 파랑)으로 구분한 감사 리포트로 정리했습니다.</dd></div>
               </dl>
             </div>
 
             <div class="decision">
-              <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 5 &nbsp;—&nbsp; 내가 내린 판정을 다시 검증 대상으로 삼았다</h3>
+              <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 5 &nbsp;—&nbsp; 판정 근거 재검증 : 오탐 정정 및 반복 오기재 일괄 수정</h3>
               <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
                 <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>1차 판정을 마친 뒤, 판정 근거로 적어둔 문구 중 일부가 실제 코드와 어긋난다는 것을 발견했습니다. 같은 문구가 여러 항목에 반복 인용돼 있었습니다.</dd></div>
-                <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd>감사의 신뢰도는 판정 개수가 아니라 <strong class="text-zinc-800">판정 근거의 정확도</strong>에서 나온다고 봤습니다. 판정을 끝난 것으로 두지 않고, 근거 자체를 다시 검증했습니다.</dd></div>
+                <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd>감사 결과의 신뢰도는 판정 건수가 아니라 <strong class="text-zinc-800">판정 근거의 정확도</strong>에 좌우된다고 판단해, 1차 판정을 확정으로 두지 않고 근거를 재검증했습니다.</dd></div>
                 <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>근거가 부정확했던 <strong class="text-zinc-800">3건</strong>을 코드 재확인으로 정정하고, 반복 오기재된 근거 문구는 전수 검색해 일괄 정정했습니다.</dd></div>
                 <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">결과</dt><dd>구현 완료 판정이 <strong class="text-zinc-800">21건 &rarr; 23건</strong>으로 보정됐습니다. 211개 항목 전체에 코드 라인 단위 근거가 남아, 이후 개발 우선순위를 추측이 아니라 근거로 정할 수 있게 됐습니다.</dd></div>
               </dl>
@@ -157,21 +175,21 @@
 
         <div class="space-y-8">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 응답 속도를 포기하고 클라우드를 쓰지 않았다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 전 구간 로컬 추론 채택 : 진료 정보 외부 전송 차단</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>요약과 쉬운말 변환에는 정확도와 응답 속도가 앞서는 클라우드 LLM API를 쓰려고 했습니다. 개발 중간에, 이 서비스가 실제로 다루는 대화가 <strong class="text-zinc-800">진료 내용과 복약 지시</strong>라는 점을 다시 봤습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">대안</dt><dd><span class="text-zinc-400">①</span> 클라우드 전면 사용 &nbsp; <span class="text-zinc-400">②</span> 민감 구간만 로컬 &nbsp; <span class="text-zinc-400">③</span> 전 구간 로컬</dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> ②는 어디까지가 민감 구간인지 매번 판정해야 하는데, 대화는 진료 얘기와 일상 얘기가 섞여 흐릅니다. 판정이 한 번만 틀려도 진료 내용이 나가므로, <strong class="text-zinc-800">경계를 정하는 대신 경계를 없애기로</strong> 했습니다.</dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">비용</dt><dd>응답 속도와 요약 품질을 일부 양보했습니다. 다만 <strong class="text-zinc-800">요약은 통화가 끝난 뒤에 처리하는 단계</strong>라 실시간성이 덜 중요했고, 실시간이 필요한 자막(STT)은 경량 모델로 별도 처리하면 된다고 봤습니다. 양보한 것이 서비스의 핵심 경험은 아니라고 판단했습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> ②는 어디까지가 민감 구간인지 매번 판정해야 하는데, 실제 대화에서는 진료 내용과 일상 대화가 섞여 나타납니다. 판정이 한 번만 틀려도 진료 내용이 외부로 전송되므로, <strong class="text-zinc-800">구간을 나누지 않고 전 구간을 로컬로 처리</strong>하기로 했습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">비용</dt><dd>응답 속도와 요약 품질을 일부 양보했습니다. 다만 <strong class="text-zinc-800">요약은 통화가 끝난 뒤에 처리하는 단계</strong>라 실시간성이 덜 중요했고, 실시간이 필요한 자막(STT)은 경량 모델로 별도 처리하면 된다고 봤습니다. 양보한 항목이 서비스의 핵심 사용 경험에 해당하지 않는다고 판단했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>요약·쉬운말 변환은 로컬 Ollama, STT는 Faster Whisper, 화자 분리는 Resemblyzer로 전부 로컬 구동했습니다. 학습 환경과 추론 환경이 달라 생긴 문제들은 원인을 찾아 해결하고 기간 내 동작하는 결과물을 완성했습니다.</dd></div>
             </dl>
           </div>
 
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; 성능을 올리기 전에 오류를 분리할 수 있게 만들었다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; 파이프라인 모듈 분리 : 단계별 오류 측정 구조 확보</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>STT와 쉬운말 변환을 한 모듈에서 처리하니, 결과가 틀렸을 때 <strong class="text-zinc-800">음성을 잘못 들은 것인지 변환을 잘못한 것인지 구분할 수 없었습니다.</strong></dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd>모델을 더 키우기 전에 <strong class="text-zinc-800">측정이 가능한 구조</strong>부터 만들어야 한다고 판단했습니다. 의료 발화 가중치 학습과 쉬운말 변환을 별도 모듈로 분리해 각 단계 오류를 독립적으로 측정할 수 있게 했습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd>모델 성능을 올리기에 앞서 <strong class="text-zinc-800">단계별 오류를 측정할 수 있는 구조</strong>가 먼저 필요하다고 판단했습니다. 의료 발화 가중치 학습과 쉬운말 변환을 별도 모듈로 분리해 각 단계 오류를 독립적으로 측정할 수 있게 했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>분리 후 오류 패턴을 다시 보니 의료 전문용어에 집중돼 있었습니다. AI Hub 자유대화 음성(노인남녀) <strong class="text-zinc-800">13.3만 건</strong> 파인튜닝에 <strong class="text-zinc-800">의료 키워드 가중치 샘플링</strong>을 적용하고, 화자 분리는 1.2초 슬라이딩 윈도우에 최근 5회 판정 다수결 스무딩을 걸어 순간 오판을 평탄화했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">결과</dt><dd><strong class="text-zinc-800">WER 21.2%</strong> <span class="text-zinc-400">(목표 25% 이하 · 학습에 쓰지 않은 고령층 발화 홀드아웃셋 기준)</span></dd></div>
             </dl>
@@ -193,20 +211,20 @@
 
         <div class="space-y-8">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 임베딩으로 안 풀리는 조건이 있다고 인정하고 그래프를 얹었다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 벡터 + 그래프 하이브리드 검색 설계 : 관계 조건 처리</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>FAISS 의미 검색은 "저렴한 흑돼지집"은 찾았지만 "성산일출봉 근처 현지인이 가는 흑돼지집"은 못 찾았습니다. 질문이 <strong class="text-zinc-800">장소와 업종과 인접성의 관계</strong>를 담고 있는데, 벡터 유사도는 관계를 따라갈 수 없기 때문이었습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">대안</dt><dd><span class="text-zinc-400">①</span> 프롬프트 개선 &nbsp; <span class="text-zinc-400">②</span> 메타데이터 필터 추가 &nbsp; <span class="text-zinc-400">③</span> 그래프 DB 병행</dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> ①②는 조건이 늘어날 때마다 규칙을 덧붙여야 하는 방식이고, 관계를 <em>표현</em>하지는 못합니다. 데이터 구조가 이미 관계형이라면 검색도 관계로 하는 것이 맞다고 봤습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> ①②는 조건이 늘어날 때마다 규칙을 덧붙여야 하고, 항목 간 관계 자체를 표현하지 못합니다. 데이터가 이미 관계 구조를 갖고 있으므로 검색도 관계 기반으로 수행하는 것이 적합하다고 판단했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd><code class="bg-zinc-100 px-1 rounded text-xs">Restaurant &harr; Location &harr; Cuisine &harr; Tourist_Spot</code> 다중 hop 스키마를 Neo4j로 설계하고, FAISS로 후보군을 좁힌 뒤 Neo4j 경로 탐색으로 재정렬하는 하이브리드 구조를 만들었습니다. LLM에는 검색 결과와 함께 <strong class="text-zinc-800">추천 근거 경로</strong>를 전달했습니다.</dd></div>
             </dl>
           </div>
 
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; 지어내지 말라고 시키는 대신, 지어낼 수 없게 만들었다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; 할루시네이션 차단 : 프롬프트 지시 대신 컨텍스트 제한</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>초기 답변이 데이터에 없는 가게를 언급하거나, "근처" "가까운"처럼 <strong class="text-zinc-800">검증할 수 없는 표현</strong>으로 위치를 설명했습니다.</dd></div>
-              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd>프롬프트로 "지어내지 마라"고 지시하는 방식은 지켜졌는지 확인할 방법이 없습니다. <strong class="text-zinc-800">지시가 아니라 구조로 막아야</strong> 검증이 가능하다고 판단했습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd>프롬프트 지시는 준수 여부를 확인할 방법이 없습니다. <strong class="text-zinc-800">구조적으로 불가능하게 만들어야</strong> 검증이 가능하다고 판단했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">실행</dt><dd>LLM 컨텍스트에 FAISS 검색 결과만 전달해, 데이터에 없는 가게는 답변 자체가 불가능하게 했습니다. 위치는 가맹점·관광지에 위도/경도를 추가해 컨텍스트에 함께 넘기고, 모호한 표현 대신 <strong class="text-zinc-800">차량 이동시간</strong>으로 답하게 했습니다.</dd></div>
             </dl>
           </div>
@@ -227,7 +245,7 @@
 
         <div class="space-y-8">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 법적 가입 조건을 모델에 맡기지 않았다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 가입 요건 필터와 추천 모델 분리 : 책임 범위 구분</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>금융 상품에는 최소투자금액·권장투자기간·투자성향처럼 <strong class="text-zinc-800">충족하지 못하면 애초에 가입이 불가능한 조건</strong>이 있습니다. 이 조건까지 학습 데이터에 넣어 모델이 알아서 걸러내게 할 수도 있었습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd>모델은 확률로 답하기 때문에 <strong class="text-zinc-800">가입 불가 상품을 낮은 확률로 추천</strong>합니다. 반드시 지켜야 하는 규칙과 추천의 품질은 성격이 다르므로, 규칙은 룰로 확정하고 모델은 품질만 맡도록 책임을 분리했습니다.</dd></div>
@@ -236,9 +254,9 @@
           </div>
 
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; 정확도가 아니라 설명 가능성으로 모델을 골랐다</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 2 &nbsp;—&nbsp; 설명 가능성 기준 모델 선정 : TabNet 채택</h3>
             <dl class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
-              <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>고령층에게 금융 상품을 추천하는 서비스에서, 왜 이 판정이 나왔는지 설명할 수 없으면 사용자가 결과를 받아들일 근거가 없습니다.</dd></div>
+              <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">상황</dt><dd>고령층 대상 금융 상품 추천 서비스로, 판정 사유를 설명할 수 없으면 사용자가 추천 결과를 신뢰하기 어렵습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">대안</dt><dd><span class="text-zinc-400">①</span> XGBoost &nbsp; <span class="text-zinc-400">②</span> RandomForest &nbsp; <span class="text-zinc-400">③</span> TabNet</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 font-medium text-zinc-800">선택</dt><dd><strong class="text-zinc-800">③.</strong> TabNet은 attention mask로 <strong class="text-zinc-800">개인별로 어떤 항목이 그 판정을 만들었는지</strong> 추적할 수 있습니다. 표형 데이터 정확도와 설명력을 함께 비교한 뒤 선택했습니다.</dd></div>
               <div class="flex gap-4"><dt class="w-12 shrink-0 text-zinc-400">결과</dt><dd>위험군 분류 정확도 <strong class="text-zinc-800">65%</strong>, 키워드 매칭 baseline 대비 추천 정확도 <strong class="text-zinc-800">+27%p</strong> · 취약 고객 탐지 민감도 <strong class="text-zinc-800">+23%p</strong>. <span class="text-zinc-400">실 개인 금융 데이터가 없어 KOSIS·보건복지부 분포 기반 합성 데이터로 평가했으며, 실서비스 도입 효과가 아닙니다.</span></dd></div>
