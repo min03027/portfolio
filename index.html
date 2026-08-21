@@ -61,7 +61,7 @@
             AI / Data Developer · 삼육대학교 인공지능융합학부 (GPA 3.86 / 4.5)
           </p>
           <p class="text-zinc-600 leading-relaxed max-w-xl">
-            데이터 분석과 LLM을 결합한 추천·요약 시스템을 만듭니다. 문제 정의부터 데이터 수집·모델링·배포까지 직접 하며, 현재 훈련기관 LMS의 AI 기능을 맡아 실서비스에 반영하고 있습니다.
+            LLM 기능은 성능만큼 <strong class="text-zinc-800">비용과 신뢰</strong>가 좌우한다고 봅니다. 훈련기관 LMS의 AI 학습지원을 단독으로 맡아 호출 게이트로 API 비용을 통제하고 검증된 인용만 노출하도록 설계해 실사용 서버에 배포했으며, 이어서 플랫폼 기능 명세 211건을 소스코드와 대조해 검증하고 있습니다.
           </p>
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-5 text-sm">
             <a href="mailto:jiminkim03027@gmail.com" class="whitespace-nowrap text-zinc-500 hover:text-zinc-900 transition-colors">jiminkim03027@gmail.com</a>
@@ -117,7 +117,7 @@
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              K-디지털 트레이닝 훈련기관의 학습데이터관리시스템(LMS). 관리자·강사·훈련생 <strong class="text-zinc-700">3개 권한군</strong>이 쓰는 운영 서비스에서 <strong class="text-zinc-700">AI 학습지원 영역 전체</strong>(Q&amp;A · 직무 로드맵 · 학습진단 · 커리큘럼 추천 · 대시보드 지표)를 단독으로 맡아 설계·구현. 훈련생이 실제로 사용하는 서버에 태그 배포로 반영.
+              K-디지털 트레이닝 훈련기관의 학습데이터관리시스템(LMS). 관리자·강사·훈련생 <strong class="text-zinc-700">3개 권한군</strong>이 쓰는 운영 서비스에서 <strong class="text-zinc-700">AI 학습지원 영역 전체</strong>(Q&amp;A · 직무 로드맵 · 학습진단 · 커리큘럼 추천 · 대시보드 지표)를 단독으로 맡아 설계·구현. 훈련생이 실제로 사용하는 서버에 태그 배포로 반영. 이후 플랫폼 <strong class="text-zinc-700">4개 서비스</strong>의 기능 구현 검증까지 범위 확대.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Java 17</span>
@@ -164,6 +164,13 @@
                 <span>
                   <strong class="text-zinc-800">대시보드 지표 서버 연동:</strong>
                   진도율·기간 경과율·이수 요건 충족을 서버 집계로 산출하고 관리자·강사 산출 기준을 통일. 훈련생에게는 익명 진도 순위로 제공하며, 산출 불가 구간은 기본값으로 채우지 않고 미표시 처리
+                </span>
+              </li>
+              <li class="flex gap-2">
+                <span class="text-zinc-300 mt-1">—</span>
+                <span>
+                  <strong class="text-zinc-800">플랫폼 기능 구현 검증:</strong>
+                  취업캠퍼스 · 몰입클라쓰 · 비즈워크래프트 · LXP 4개 서비스의 기능 명세 <strong class="text-zinc-800">211건</strong>을 엔티티 · 서비스 · 템플릿 코드까지 추적해 <code class="bg-zinc-100 px-1 rounded text-xs">구현 / 부분구현 / 미구현 / 확인필요</code> 4단계로 판정. 1차 판정 근거의 오탐 <strong class="text-zinc-800">3건</strong>을 코드 재확인으로 정정하고, 상태별 색상 구분 감사 리포트로 시각화
                 </span>
               </li>
               <li class="flex gap-2">
