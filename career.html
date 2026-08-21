@@ -24,6 +24,11 @@
       h1, h2, h3, h4 { break-after: avoid; }
       .decision { break-inside: avoid; }
       a { color: inherit !important; text-decoration: none !important; }
+      /* 인쇄 시 4쪽 안에 들어오도록 여백 축소 */
+      main { padding-bottom: 0 !important; }
+      main > * + * { margin-top: 2.5rem !important; }
+      footer { padding-top: 0.75rem !important; padding-bottom: 0 !important; }
+      section[id] > .space-y-6 > .decision + .decision { margin-top: 1.15rem !important; }
     }
   </style>
 </head>
