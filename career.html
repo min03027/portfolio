@@ -59,46 +59,62 @@
       </header>
 
       <section id="intro">
-        <h2 class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-6">요약</h2>
-        <dl class="space-y-3 text-sm text-zinc-600 leading-relaxed">
-          <div class="flex flex-col sm:flex-row sm:gap-4">
-            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">담당 분야</dt>
-            <dd>AI 서비스 백엔드 · LLM 파이프라인 설계 · 데이터 기반 추천/검색</dd>
-          </div>
-          <div class="flex flex-col sm:flex-row sm:gap-4">
-            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">프로젝트</dt>
-            <dd>4건 &mdash; 실사용 서비스 1건(진행 중) · 공모전 수상 2건 · 대회 본선 1건</dd>
-          </div>
-          <div class="flex flex-col sm:flex-row sm:gap-4">
-            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">주요 성과</dt>
-            <dd>
-              <ul class="space-y-1.5">
-                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>LLM 호출 게이트·캐시 설계로 일일 API 한도 소진 문제 해결, 배포 일정 내 반영</span></li>
-                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>4개 서비스 기능 요구사항 <strong class="text-zinc-800">211건</strong> 코드 대조 감사, 판정 근거 오탐 <strong class="text-zinc-800">3건</strong> 정정</span></li>
-                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>고령층 STT <strong class="text-zinc-800">WER 21.2%</strong> (목표 25% 이하) &mdash; 음성 13.3만 건 파인튜닝</span></li>
-                <li class="flex gap-2"><span class="text-zinc-300">·</span><span>금융 상품 추천 정확도 <strong class="text-zinc-800">+27%p</strong> (키워드 매칭 baseline 대비, 합성 데이터 평가)</span></li>
-              </ul>
-            </dd>
-          </div>
-          <div class="flex flex-col sm:flex-row sm:gap-4">
-            <dt class="sm:w-28 shrink-0 font-medium text-zinc-800">문서 구성</dt>
-            <dd>프로젝트별로 담당 업무와 그 과정에서 내린 기술적 판단 및 근거를 기술했습니다. 구현 기능·화면·기술 스택 목록은 <a href="index.html" class="text-zinc-800 underline underline-offset-2 hover:text-zinc-500 transition-colors">포트폴리오</a>에 있습니다.</dd>
-          </div>
-        </dl>
+        <table class="w-full text-sm border-t-2 border-zinc-800 border-b-2 mb-8">
+          <tbody>
+            <tr class="border-b border-zinc-100">
+              <th class="bg-zinc-50 text-left font-medium text-zinc-700 px-3 py-2 w-24">이름</th>
+              <td class="px-3 py-2 text-zinc-600">김지민</td>
+              <th class="bg-zinc-50 text-left font-medium text-zinc-700 px-3 py-2 w-24">주요업무</th>
+              <td class="px-3 py-2 text-zinc-600">LLM·RAG 파이프라인 설계, AI 서비스 백엔드</td>
+            </tr>
+            <tr>
+              <th class="bg-zinc-50 text-left font-medium text-zinc-700 px-3 py-2">학력</th>
+              <td class="px-3 py-2 text-zinc-600">삼육대학교 인공지능융합학부 (2027.02 졸업예정)</td>
+              <th class="bg-zinc-50 text-left font-medium text-zinc-700 px-3 py-2">지원분야</th>
+              <td class="px-3 py-2 text-zinc-600">AI 엔지니어</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+          <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">프로젝트</span>
+          <span class="flex-1">4건 &mdash; 실사용 서비스 1건(진행 중) · 공모전 수상 2건 · 대회 본선 1건</span>
+        </div>
+        <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
+          <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">문서 구성</span>
+          <span class="flex-1">프로젝트별 담당업무·업무성과와 그 과정에서 내린 기술적 판단을 기술했습니다. 구현 기능·화면·기술 스택 목록은 <a href="index.html" class="text-zinc-800 underline underline-offset-2 hover:text-zinc-500 transition-colors">포트폴리오</a>에 있습니다.</span>
+        </div>
       </section>
 
       <!-- 01 -->
       <section id="lxp">
-        <div class="border-b border-zinc-200 pb-3 mb-8">
-          <div class="flex items-baseline justify-between">
+        <div class="border-b border-zinc-200 pb-4 mb-8">
+          <div class="flex items-baseline justify-between mb-3">
             <h2 class="text-lg font-semibold tracking-tight">01 &nbsp; Samsung Academy LXP</h2>
-            <span class="text-sm text-zinc-400 shrink-0 ml-4">2026.07 — 진행 중</span>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">실사용 서비스 · 진행 중</span>
           </div>
-          <p class="text-sm text-zinc-500 mt-2 leading-relaxed">
-            K-디지털 트레이닝 훈련기관 LMS. 외부 팀 합류 프로젝트로, 팀은 <strong class="text-zinc-700">2인에서 3인</strong>으로 늘었고 저는 <strong class="text-zinc-700">AI 학습지원 영역을 단독</strong>으로 맡았습니다. 훈련생이 실제로 쓰는 서버(<code class="bg-zinc-100 px-1 rounded text-xs">lms.samsungax.com</code>)에 배포되어 사용 중이며, 이후 플랫폼 전체의 기능 구현 검증까지 범위를 넓혔습니다.
-          </p>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">진행기간</span>
+            <span class="flex-1">2026년 7월 ~ 진행 중</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">참여인원</span>
+            <span class="flex-1">3명 (2명 &rarr; 3명 증원) · <strong class="text-zinc-800">AI 학습지원 영역 단독 담당</strong></span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">담당업무</span>
+            <span class="flex-1">Java 17 · Spring Boot 3 기반 AI 학습지원 전 영역(RAG Q&amp;A · 직무 로드맵 · 학습진단 · 커리큘럼 추천 · 대시보드 지표) 설계·구현, Claude API 연동 및 호출 통제 구조 개발, GitHub Actions 태그 배포 파이프라인 구성, 플랫폼 4개 서비스 기능 구현 검증</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>호출 전 게이트(권한 · 입력 1,000자 · 자료 유무 · 일일 한도 500/50)와 결과 캐시 도입으로 <strong class="text-zinc-800">일일 API 한도 소진 문제 해결</strong>, 배포 일정 내 반영</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>채용공고 기반 직무 로드맵으로 <strong class="text-zinc-800">개발 직군 10종</strong> 지원</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>기능 요구사항 <strong class="text-zinc-800">211건</strong> 코드 대조 감사, 판정 근거 오탐 3건 정정 &rarr; 구현 완료 판정 <strong class="text-zinc-800">21건 &rarr; 23건</strong> 보정</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>훈련생 실사용 서버(<code class="bg-zinc-100 px-1 rounded text-xs">lms.samsungax.com</code>) 배포·운영, 개인정보 컬럼 AES-256/GCM 암호화 적용</span></li></ul></span>
+          </div>
         </div>
 
+        <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-6">주요 판단</p>
         <div class="space-y-8">
 
           <div class="decision">
@@ -163,16 +179,34 @@
 
       <!-- 02 -->
       <section id="ddobak">
-        <div class="border-b border-zinc-200 pb-3 mb-8">
-          <div class="flex items-baseline justify-between">
+        <div class="border-b border-zinc-200 pb-4 mb-8">
+          <div class="flex items-baseline justify-between mb-3">
             <h2 class="text-lg font-semibold tracking-tight">02 &nbsp; 또박톡</h2>
-            <span class="text-sm text-zinc-400 shrink-0 ml-4">2025.09 — 2025.11 · <strong class="text-zinc-700 font-semibold">우수상</strong></span>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">공모전 우수상</span>
           </div>
-          <p class="text-sm text-zinc-500 mt-2 leading-relaxed">
-            고령층의 대화를 실시간 자막으로 옮기고, 의료·공공 상담 내용을 쉬운 말 요약과 복약 체크리스트로 정리하는 서비스. <strong class="text-zinc-700">음성 파이프라인 설계와 STT 파인튜닝</strong>을 담당했습니다.
-          </p>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">진행기간</span>
+            <span class="flex-1">2025년 9월 ~ 2025년 11월</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">참여인원</span>
+            <span class="flex-1"><span class="bg-amber-50 text-amber-700 px-1 rounded">◆ 인원 수 확인 필요</span> · 음성 파이프라인 설계 및 STT 파인튜닝 담당</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">담당업무</span>
+            <span class="flex-1">Whisper Small 파인튜닝 및 음성 파이프라인 설계 &mdash; AI Hub 고령층 자유대화 음성 13.3만 건 학습, 의료 키워드 가중치 샘플링 적용, Faster Whisper · Resemblyzer · Ollama 기반 전 구간 로컬 추론 구성</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>고령층 STT <strong class="text-zinc-800">WER 21.2%</strong> 달성 (목표 25% 이하 · 학습 미사용 홀드아웃셋 기준)</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>진료·복약 정보 <strong class="text-zinc-800">외부 전송 0건</strong> &mdash; STT부터 요약까지 전 구간 로컬 처리 구조 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>화자 분리 다수결 스무딩(1.2초 창 · 최근 5회) 적용으로 순간 오판 평탄화</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>데이터분석기반 AI 프로젝트 공모전 <strong class="text-zinc-800">우수상</strong> (코리아IT아카데미 강남)</span></li></ul></span>
+          </div>
         </div>
 
+        <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-6">주요 판단</p>
         <div class="space-y-8">
           <div class="decision">
             <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 전 구간 로컬 추론 채택 : 진료 정보 외부 전송 차단</h3>
@@ -199,16 +233,34 @@
 
       <!-- 03 -->
       <section id="jeju">
-        <div class="border-b border-zinc-200 pb-3 mb-8">
-          <div class="flex items-baseline justify-between">
+        <div class="border-b border-zinc-200 pb-4 mb-8">
+          <div class="flex items-baseline justify-between mb-3">
             <h2 class="text-lg font-semibold tracking-tight">03 &nbsp; 어서 와용</h2>
-            <span class="text-sm text-zinc-400 shrink-0 ml-4">2025.01 — 2025.04 · <strong class="text-zinc-700 font-semibold">본선 진출</strong></span>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">대회 본선 진출</span>
           </div>
-          <p class="text-sm text-zinc-500 mt-2 leading-relaxed">
-            자연어 질문 한 줄로 가격대·현지인·위치·업종을 동시에 검색해 제주 맛집을 추천하는 서비스. 개인 프로젝트이며 신한카드 빅데이터 콘테스트 2024 본선에 진출했습니다.
-          </p>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">진행기간</span>
+            <span class="flex-1">2025년 1월 ~ 2025년 4월</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">참여인원</span>
+            <span class="flex-1">1명 (개인 프로젝트)</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">담당업무</span>
+            <span class="flex-1">Ko-SRoBERTa + FAISS 의미 검색과 Neo4j 다중 hop 그래프 탐색을 결합한 하이브리드 RAG 파이프라인 설계·구현, 신한카드 실 결제 데이터 연동 및 가격/현지인 지표 필터 개발</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>가격대 · 현지인 · 위치 · 업종 <strong class="text-zinc-800">4개 복합 조건</strong> 자연어 한 줄 동시 검색 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>컨텍스트 제한 구조로 데이터에 없는 가맹점 응답 <strong class="text-zinc-800">차단</strong>, 위경도 기반 이동시간 추정으로 위치 모호성 해소</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>신한카드 빅데이터 콘테스트 2024 <strong class="text-zinc-800">본선 진출</strong></span></li></ul></span>
+          </div>
         </div>
 
+        <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-6">주요 판단</p>
         <div class="space-y-8">
           <div class="decision">
             <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 벡터 + 그래프 하이브리드 검색 설계 : 관계 조건 처리</h3>
@@ -233,16 +285,34 @@
 
       <!-- 04 -->
       <section id="nohuae">
-        <div class="border-b border-zinc-200 pb-3 mb-8">
-          <div class="flex items-baseline justify-between">
+        <div class="border-b border-zinc-200 pb-4 mb-8">
+          <div class="flex items-baseline justify-between mb-3">
             <h2 class="text-lg font-semibold tracking-tight">04 &nbsp; 노후애</h2>
-            <span class="text-sm text-zinc-400 shrink-0 ml-4">2025.07 — 2025.08 · KB국민은행 Future Finance A.I Challenge</span>
+            <span class="text-sm text-zinc-400 shrink-0 ml-4">KB Future Finance A.I Challenge</span>
           </div>
-          <p class="text-sm text-zinc-500 mt-2 leading-relaxed">
-            KB국민은행 Future Finance A.I Challenge 출품작. 설문으로 재무 유형을 진단하고 예상 연금액·맞춤 상품·노후 자산 시뮬레이션을 제공하는 시니어 금융 서비스입니다. 팀 3인 중 <strong class="text-zinc-700">데이터 전처리·TabNet 학습·FAISS 인덱싱</strong>을 담당했습니다.
-          </p>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">진행기간</span>
+            <span class="flex-1">2025년 7월 ~ 2025년 8월</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">참여인원</span>
+            <span class="flex-1">3명 (담당 비중 40%)</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">담당업무</span>
+            <span class="flex-1">데이터 전처리, TabNet 재무 유형 분류 모델 학습, FAISS 인덱싱 및 이종 상품(예금·펀드) 통합 검색 구조 설계</span>
+          </div>
+          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
+            <span class="text-zinc-300">·</span>
+            <span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>추천 정확도 <strong class="text-zinc-800">+27%p</strong> · 취약 고객 탐지 민감도 <strong class="text-zinc-800">+23%p</strong> (키워드 매칭 baseline 대비 · 합성 데이터 평가)</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>위험군 분류 정확도 <strong class="text-zinc-800">65%</strong>, feature attribution으로 개인별 판정 근거 산출</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>스키마가 다른 예금·펀드를 공통 축으로 통합해 비교 검색 가능하도록 벡터 구조 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>KB국민은행 Future Finance A.I Challenge 출품 <span class="bg-amber-50 text-amber-700 px-1 rounded">◆ 수상 여부 확인 필요</span></span></li></ul></span>
+          </div>
         </div>
 
+        <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-6">주요 판단</p>
         <div class="space-y-8">
           <div class="decision">
             <h3 class="text-sm font-semibold text-zinc-900 mb-3">판단 1 &nbsp;—&nbsp; 가입 요건 필터와 추천 모델 분리 : 책임 범위 구분</h3>
