@@ -63,7 +63,7 @@
             AI / Data Developer · 삼육대학교 인공지능융합학부 (GPA 3.86 / 4.5)
           </p>
           <p class="text-zinc-600 leading-relaxed max-w-2xl">
-            LLM 기능은 성능만큼 <strong class="text-zinc-800">비용과 신뢰</strong>가 좌우한다고 봅니다. 훈련기관 LMS의 AI 학습지원을 단독으로 맡아 호출 게이트로 API 비용을 통제하고 검증된 인용만 노출하도록 설계해 실사용 서버에 배포했으며, 이어서 플랫폼 기능 명세 211건을 소스코드와 대조해 검증하고 있습니다.
+            LLM 기능은 성능만큼 <strong class="text-zinc-800">비용과 신뢰</strong>가 좌우한다고 봅니다. 훈련기관 LMS의 AI 학습지원을 단독으로 맡아 호출 게이트로 API 비용을 통제하고 검증된 인용만 노출하도록 설계해 운영 서버에 배포했으며, 이어서 플랫폼 기능 명세 211건을 소스코드와 대조해 검증하고 있습니다.
           </p>
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-5 text-sm">
             <a href="mailto:jiminkim03027@gmail.com" class="whitespace-nowrap text-zinc-500 hover:text-zinc-900 transition-colors">jiminkim03027@gmail.com</a>
@@ -102,13 +102,13 @@
           </div>
           <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
             <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
-            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>호출 전 게이트와 결과 캐시 도입으로 <strong class="text-zinc-800">일일 API 한도 소진 문제 해결</strong>, 배포 일정 내 반영</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>채용공고 기반 직무 로드맵 <strong class="text-zinc-800">개발 직군 10종</strong> 지원</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>기능 요구사항 <strong class="text-zinc-800">211건</strong> 코드 대조 감사, 오탐 3건 정정 &rarr; 구현 완료 판정 <strong class="text-zinc-800">21건 &rarr; 23건</strong> 보정</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>훈련생 실사용 서버(<code class="bg-zinc-100 px-1 rounded text-xs">lms.samsungax.com</code>) 배포·운영</span></li></ul></span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>호출 전 게이트와 결과 캐시 도입으로 <strong class="text-zinc-800">일일 API 한도 소진 문제 해결</strong>, 배포 일정 내 반영</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>채용공고 기반 직무 로드맵 <strong class="text-zinc-800">개발 직군 10종</strong> 지원</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>기능 요구사항 <strong class="text-zinc-800">211건</strong> 코드 대조 감사, 오탐 3건 정정 &rarr; 구현 완료 판정 <strong class="text-zinc-800">21건 &rarr; 23건</strong> 보정</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>운영 서버(<code class="bg-zinc-100 px-1 rounded text-xs">lms.samsungax.com</code>) 배포·운영</span></li></ul></span>
           </div>
         </div>
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
         <div class="space-y-6">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">① &nbsp;LLM 호출 비용 통제 : 호출 전 차단 게이트 설계</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>LLM 호출 비용 통제 : 호출 전 차단 게이트 설계</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>배포 전 테스트에서 일일 API 한도가 빠르게 소진. 요청 흐름을 단계별로 좁혀 검증한 결과 <strong class="text-zinc-800">같은 질문의 재조회</strong>와 <strong class="text-zinc-800">답변이 불가능한 요청</strong>(등록 자료 없음)이 호출량의 상당 부분을 차지.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>한도 상향이나 저가 모델 교체는 비용·품질을 대가로 하는 임시 조치이며 소진 속도는 그대로. 불필요 호출 자체를 제거하기로 결정 &rarr; 수강 권한 · 입력 1,000자 · 자료 유무 · 일일 한도(500/50)를 <strong class="text-zinc-800">모델 호출 전에</strong> 검사하는 게이트를 앞단 배치, 재조회는 결과 캐시로 응답.</dd></div>
@@ -116,7 +116,7 @@
             </dl>
           </div>
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">② &nbsp;RAG 인용 검증 : 범위 밖 인용 폐기 및 출처 분리 표기</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">2.</span>RAG 인용 검증 : 범위 밖 인용 폐기 및 출처 분리 표기</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>답변에 붙는 인용 번호 중 실제 전달한 자료 범위를 벗어난 것이 섞여, 근거 없는 자료로 링크가 연결될 수 있는 상태.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>학습 서비스에서 근거 링크는 답변만큼 중요하나, 잘못된 근거는 답변 전체의 신뢰도를 떨어뜨림. 인용 기능을 제거하는 대신 <strong class="text-zinc-800">검증을 통과한 인용만 노출</strong>하기로 결정. 자료에 없는 내용은 삭제하지 않고 <strong class="text-zinc-800">"일반 지식"으로 분리 표기</strong>해 출처 유무를 구분.</dd></div>
@@ -124,7 +124,7 @@
             </dl>
           </div>
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">③ &nbsp;지표 산출 기준 통일 : 산출 불가 구간 미표시 처리</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">3.</span>지표 산출 기준 통일 : 산출 불가 구간 미표시 처리</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>진도율·기간 경과율·이수 요건 충족을 관리자와 강사가 서로 다른 기준으로 조회. 데이터가 없는 구간의 표시 방식도 미정.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>해당 지표는 훈련생 이수 판정과 연결됨. 0%와 "산출 불가"는 의미가 다르나 화면에서 구분되지 않아 <strong class="text-zinc-800">잘못된 수치가 이수 판정에 반영될 위험</strong>이 있다고 보고, 0으로 채우지 않고 미표시 처리.</dd></div>
@@ -132,7 +132,7 @@
             </dl>
           </div>
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">④ &nbsp;기능 구현 검증 : 4단계 판정 기준 수립 및 근거 재검증</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">4.</span>기능 구현 검증 : 4단계 판정 기준 수립 및 근거 재검증</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>취업캠퍼스 · 몰입클라쓰 · 비즈워크래프트 · LXP <strong class="text-zinc-800">4개 서비스</strong>의 기능 명세가 실제 구현과 일치하는지 확인된 적 없음.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>2단계(구현/미구현) 판정은 근거가 불충분한 항목을 임의 배정하게 되어 감사 신뢰도를 떨어뜨림. <strong class="text-zinc-800">확인필요</strong>를 포함한 4단계로 분리. 1차 판정 후에는 판정 자체가 아니라 <strong class="text-zinc-800">판정 근거</strong>를 재검증 대상으로 삼음.</dd></div>
@@ -169,7 +169,7 @@
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
         <div class="space-y-6">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">① &nbsp;전 구간 로컬 추론 채택 : 진료 정보 외부 전송 차단</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>전 구간 로컬 추론 채택 : 진료 정보 외부 전송 차단</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>요약·쉬운말 변환에 정확도와 속도가 앞서는 클라우드 LLM API를 사용하려 했으나, 서비스가 다루는 대화가 <strong class="text-zinc-800">진료 내용과 복약 지시</strong>임을 확인.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>민감 구간만 로컬로 처리하는 방식은 매번 경계를 판정해야 하는데, 실제 대화는 진료 내용과 일상 대화가 섞여 나타나 판정이 한 번만 틀려도 외부로 전송됨. 구간을 나누지 않고 <strong class="text-zinc-800">전 구간 로컬 처리</strong>로 결정. 양보한 응답 속도는 통화 종료 후 처리되는 요약 단계라 핵심 사용 경험에 해당하지 않는다고 판단.</dd></div>
@@ -177,7 +177,7 @@
             </dl>
           </div>
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">② &nbsp;파이프라인 모듈 분리 : 단계별 오류 측정 구조 확보</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">2.</span>파이프라인 모듈 분리 : 단계별 오류 측정 구조 확보</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>STT와 쉬운말 변환을 한 모듈에서 처리해, 결과가 틀렸을 때 <strong class="text-zinc-800">음성 인식 오류인지 변환 오류인지 구분 불가</strong>.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>모델 성능을 올리기에 앞서 단계별 오류를 측정할 수 있는 구조가 먼저 필요하다고 판단, 의료 발화 가중치 학습과 쉬운말 변환을 별도 모듈로 분리.</dd></div>
@@ -214,7 +214,7 @@
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
         <div class="space-y-6">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">① &nbsp;벡터 + 그래프 하이브리드 검색 설계 : 관계 조건 처리</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>벡터 + 그래프 하이브리드 검색 설계 : 관계 조건 처리</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>FAISS 의미 검색은 "저렴한 흑돼지집"은 찾으나 "성산일출봉 근처 현지인이 가는 흑돼지집"은 처리 불가. 질문이 <strong class="text-zinc-800">장소·업종·인접성의 관계</strong>를 포함하는데 벡터 유사도로는 관계 탐색이 안 됨.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>프롬프트 개선이나 메타데이터 필터는 조건이 늘 때마다 규칙을 덧붙여야 하고 관계 자체를 표현하지 못함. 데이터가 이미 관계 구조를 가지므로 검색도 관계 기반으로 수행하기로 결정.</dd></div>
@@ -250,7 +250,7 @@
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
         <div class="space-y-6">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5">① &nbsp;가입 요건 필터와 추천 모델 분리 : 책임 범위 구분</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>가입 요건 필터와 추천 모델 분리 : 책임 범위 구분</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>금융 상품에는 최소투자금액·권장투자기간·투자성향처럼 충족하지 못하면 <strong class="text-zinc-800">가입 자체가 불가능한 조건</strong>이 존재. 학습 데이터에 포함해 모델이 걸러내게 할 수도 있었음.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>모델은 확률로 답하므로 가입 불가 상품을 낮은 확률로 추천함. 반드시 지켜야 하는 규칙과 추천 품질은 성격이 다르므로 <strong class="text-zinc-800">규칙은 룰로 확정하고 모델은 품질만 담당</strong>하도록 책임 분리. 모델은 정확도가 아니라 판정 근거를 설명할 수 있는지 기준으로 TabNet을 선정.</dd></div>
