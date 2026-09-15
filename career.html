@@ -159,7 +159,7 @@
           </div>
           <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
             <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
-            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>고령층 STT <strong class="text-zinc-800">WER 21.2%</strong> (목표 25% 이하 · 학습 미사용 홀드아웃셋 기준)</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>진료·복약 정보 <strong class="text-zinc-800">외부 전송 0건</strong> &mdash; STT부터 요약까지 전 구간 로컬 처리</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>데이터분석기반 AI 프로젝트 공모전 <strong class="text-zinc-800">우수상</strong></span></li></ul></span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>프로젝트 음성 인식 평가에서 <strong class="text-zinc-800">단어 오류율(WER) 21.2%</strong> 기록</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>진료·복약 정보 보호를 위해 <strong class="text-zinc-800">STT부터 요약까지 전 구간 로컬 처리</strong> 구조 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>데이터분석기반 AI 프로젝트 공모전 <strong class="text-zinc-800">우수상</strong></span></li></ul></span>
           </div>
         </div>
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
@@ -214,7 +214,7 @@
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>FAISS 의미 검색은 "저렴한 흑돼지집"은 찾으나 "성산일출봉 근처 현지인이 가는 흑돼지집"은 처리 불가. 질문이 <strong class="text-zinc-800">장소·업종·인접성의 관계</strong>를 포함하는데 벡터 유사도로는 관계 탐색이 안 됨.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>프롬프트 개선이나 메타데이터 필터는 조건이 늘 때마다 규칙을 덧붙여야 하고 관계 자체를 표현하지 못함. 데이터가 이미 관계 구조를 가지므로 검색도 관계 기반으로 수행하기로 결정.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd><code class="bg-zinc-100 px-1 rounded text-xs">Restaurant &harr; Location &harr; Cuisine &harr; Tourist_Spot</code> 다중 hop 스키마를 Neo4j로 설계, FAISS로 후보 축소 후 그래프 경로 탐색으로 재정렬. LLM에는 검색 결과만 전달해 데이터에 없는 가맹점은 응답 불가능하도록 제한하고, 위경도 기반 이동시간으로 위치 모호성 해소.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd><code class="bg-zinc-100 px-1 rounded text-xs">Restaurant &harr; Location &harr; Cuisine &harr; Tourist_Spot</code> 다중 hop 스키마를 Neo4j로 설계, FAISS로 후보 축소 후 그래프 경로 탐색으로 재정렬. 검색 결과와 추천 근거 경로를 LLM에 전달하고, 가맹점·관광지 좌표를 위치 정보로 함께 제공.</dd></div>
             </dl>
           </div>
         </div>
@@ -240,7 +240,7 @@
           </div>
           <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
             <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
-            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>추천 정확도 <strong class="text-zinc-800">+27%p</strong> · 취약 고객 탐지 민감도 <strong class="text-zinc-800">+23%p</strong> (키워드 매칭 baseline 대비 · 합성 데이터 평가)</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>위험군 분류 정확도 <strong class="text-zinc-800">65%</strong>, 스키마가 다른 예금·펀드를 공통 축으로 통합해 비교 검색 구현</span></li></ul></span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span><strong class="text-zinc-800">공공 통계 분포 기반 합성 데이터</strong>로 재무 유형 분류와 판정 근거 표시 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>가입 요건 필터와 추천 모델을 분리하고, 스키마가 다른 예금·펀드를 공통 축으로 통합해 비교 검색 구현</span></li></ul></span>
           </div>
         </div>
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>

@@ -220,7 +220,7 @@
             <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">의미 검색</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Ko-SRoBERTa</code>로 질문을 임베딩하고 <code class="bg-zinc-100 px-1 rounded text-xs">FAISS</code>로 후보 가맹점을 좁힌다.</p>
             <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">그래프 재정렬</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Restaurant ↔ Location ↔ Cuisine ↔ Tourist_Spot</code> 다중 hop 스키마를 Neo4j에 두고, 위치·업종·관광지 인접성을 동시에 만족하는 후보를 경로 탐색으로 다시 정렬한다.</p>
             <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">결제 데이터 필터</strong> — 신한카드 실 결제 데이터로 가격대와 현지인 비중을 걸러낸다.</p>
-            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">근거만 넘긴 답변</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Gemini 1.5 Flash</code>에 검색 결과만 컨텍스트로 준다. 데이터에 없는 가게는 답변에 등장할 수 없다. 위도·경도를 함께 넘겨 이동시간도 추측이 아닌 좌표로 계산한다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">검색 근거를 활용한 답변</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Gemini 1.5 Flash</code>에 검색 결과와 추천 근거 경로를 컨텍스트로 전달한다. 가맹점·관광지의 위도·경도를 함께 제공해 위치 정보를 보강한다.</p>
           </div>
           <p class="text-xs text-zinc-400 mt-5">
             <a href="https://github.com/min03027/jeju_2024" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">GitHub</a>

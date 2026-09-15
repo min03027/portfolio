@@ -159,68 +159,28 @@
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              K-디지털 트레이닝 훈련기관의 학습데이터관리시스템(LMS). 관리자·강사·훈련생 <strong class="text-zinc-700">3개 권한군</strong>이 쓰는 운영 서비스에서 <strong class="text-zinc-700">AI 학습지원 영역 전체</strong>(Q&amp;A · 직무 로드맵 · 학습진단 · 커리큘럼 추천 · 대시보드 지표)를 단독으로 맡아 설계·구현. 운영 서버에 태그 배포로 반영. 이후 플랫폼 <strong class="text-zinc-700">4개 서비스</strong>의 기능 구현 검증까지 범위 확대.
+              K-디지털 트레이닝 훈련기관을 위한 LMS의 AI 학습지원 기능을 개발하고 운영 서버에 배포한 외주 프로젝트.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Java 17</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Spring Boot 3</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Spring Security</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">JPA</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">PostgreSQL 16</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Claude API</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Docker Compose</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">GitHub Actions</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">사람인 채용 API</span>
             </div>
             <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">RAG 학습 Q&amp;A:</strong>
-                  과정에 등록된 자료(PDF 본문 포함)를 근거로 답변하고, 답변이 실제 인용한 자료만 링크로 노출. 범위 밖 인용 번호는 폐기하고, 자료에 없는 내용은 "일반 지식"으로 분리 표기. 해결되지 않은 질문은 담당 강사 Q&amp;A로 자동 이관
-                </span>
+                <span><strong class="text-zinc-800">담당 범위:</strong> 과정 자료 기반 Q&amp;A, 채용공고 기반 직무 로드맵, 학습진단·커리큘럼 추천·대시보드 지표 등 <strong class="text-zinc-800">AI 학습지원 영역을 단독 설계·구현</strong>.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">호출 게이트 · 비용 통제:</strong>
-                  수강 권한 · 입력 길이 1,000자 · 자료 유무 · 일일 한도(전체 500 / 1인 50)를 모델 호출 전에 검사. 재조회 시 모델을 다시 부르지 않도록 분석 결과 캐시 도입
-                </span>
+                <span><strong class="text-zinc-800">호출 제어와 답변 근거:</strong> API 한도 소진 문제에 대응해 권한·자료 유무·일일 한도를 호출 전에 검사하고 재조회 결과를 캐시. 답변의 인용 자료를 표시하고 미해결 질문은 강사에게 이관.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">채용공고 기반 직무 로드맵:</strong>
-                  사람인·워크넷 API 주 1회 배치 수집 → 직무별 요구 역량 추출 → 훈련생 이수 이력과 대조해 <code class="bg-zinc-100 px-1 rounded text-xs">done / current / locked</code> 3상태로 제시. 개발 직군 <strong class="text-zinc-800">10종</strong> 지원
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">학습진단 · 보완 과제 생성:</strong>
-                  훈련생 질문과 평가 결과로 취약 영역을 진단하고 과제 초안(제목·설명·평가기준)을 생성, 배부는 강사 승인 후 확정. 다수가 공통으로 막힌 주제는 개인 지도가 아닌 수업 보완 영역으로 별도 집계
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">대시보드 지표 서버 연동:</strong>
-                  진도율·기간 경과율·이수 요건 충족을 서버 집계로 산출하고 관리자·강사 산출 기준을 통일. 훈련생에게는 익명 진도 순위로 제공하며, 산출 불가 구간은 기본값으로 채우지 않고 미표시 처리
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">플랫폼 기능 구현 검증:</strong>
-                  취업캠퍼스 · 몰입클라쓰 · 비즈워크래프트 · LXP 4개 서비스의 기능 명세 <strong class="text-zinc-800">211건</strong>을 엔티티 · 서비스 · 템플릿 코드까지 추적해 <code class="bg-zinc-100 px-1 rounded text-xs">구현 / 부분구현 / 미구현 / 확인필요</code> 4단계로 판정. 1차 판정 근거의 오탐 <strong class="text-zinc-800">3건</strong>을 코드 재확인으로 정정하고, 상태별 색상 구분 감사 리포트로 시각화
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">배포 · 보안:</strong>
-                  <code class="bg-zinc-100 px-1 rounded text-xs">v*</code> 태그 푸시 → GitHub Actions 테스트 → self-hosted 러너 Docker Compose 재배포 → 헬스체크, 테스트 실패 시 배포 차단. 개인정보 컬럼 <code class="bg-zinc-100 px-1 rounded text-xs">AES-256/GCM</code> 암호화, API 키 부재 시 AI 기능만 비활성화하고 앱은 정상 기동
-                </span>
+                <span><strong class="text-zinc-800">운영 배포:</strong> GitHub Actions 테스트와 Docker Compose 배포·헬스체크를 연결해 운영 서버에 반영. 테스트 실패 시 배포를 차단하고, API 키가 없어도 비AI 기능은 정상 기동하도록 구성.</span>
               </li>
             </ul>
           </div>
@@ -234,7 +194,7 @@
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              고령층의 대화를 실시간 자막으로 옮기고, 의료·공공 상담 내용을 쉬운 말 요약과 복약 체크리스트로 정리해주는 서비스. 진료 내용을 다루는 만큼 음성부터 요약까지 전 과정을 외부 전송 없이 로컬에서 처리한다.
+              고령층의 의료·공공 상담을 실시간 자막과 쉬운 말 요약·복약 체크리스트로 정리하는 로컬 음성 서비스.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Whisper Small (fine-tuned)</span>
@@ -246,45 +206,15 @@
             <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">3단계 음성 파이프라인:</strong>
-                  실시간 STT(파인튜닝 Whisper) → 화자 분리 + 쉬운말 변환 → 대화 요약 + 체크리스트 정리
-                </span>
+                <span><strong class="text-zinc-800">담당 범위:</strong> 고령층 음성 인식을 위한 <strong class="text-zinc-800">Whisper Small 파인튜닝과 음성 처리 파이프라인</strong> 개발. AI Hub 고령층 음성 데이터에 의료 키워드 가중 샘플링 적용.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">고령층 STT 정확도 (목표 초과 달성):</strong>
-                  AI Hub 자유대화 음성(노인남녀) 파인튜닝 + 의료 키워드 가중치 샘플링 → 목표 <span class="text-zinc-400">WER 25%</span> 이하를 넘어 <strong class="text-zinc-800">WER 21.2%</strong> 달성
-                </span>
+                <span><strong class="text-zinc-800">음성 인식 결과:</strong> 프로젝트 평가에서 <strong class="text-zinc-800">단어 오류율(WER) 21.2%</strong> 기록.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">2단계 분리 구조 — 통합 설계 한계 직접 분석 후 제안:</strong>
-                  통합 파이프라인의 전문용어 오류 패턴을 스스로 분석 → 의료 발화 가중치 학습과 쉬운말 변환을 별도 모듈로 분리하는 구조를 자발 설계·구현
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">화자 분리 안정화:</strong>
-                  <code class="bg-zinc-100 px-1 rounded text-xs">1.2초 슬라이딩 윈도우</code> + 최근 <strong class="text-zinc-800">5회 판정 다수결 스무딩</strong>으로 순간 오판 평탄화
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">학습 데이터:</strong>
-                  AI Hub 자유대화 음성(노인남녀) <strong class="text-zinc-800">13.3만 건</strong> + Kaggle Korean Medical Entities Speech + 국립국어원 공공언어 용어 목록 결합
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">전 구간 로컬 추론 — 클라우드 LLM을 쓰지 않은 이유:</strong>
-                  다루는 내용이 진료·복약 지시라 대화가 외부로 나가면 안 된다고 판단 → 요약·쉬운말 변환을 외부 API 대신 로컬 <code class="bg-zinc-100 px-1 rounded text-xs">Ollama</code> 서버로 처리. STT <code class="bg-zinc-100 px-1 rounded text-xs">Faster Whisper</code>, 화자 분리 <code class="bg-zinc-100 px-1 rounded text-xs">Resemblyzer</code>도 로컬 구동. 응답 속도를 양보하는 대신 <strong class="text-zinc-800">음성이 기기를 벗어나지 않는</strong> 구조를 택했다
-                </span>
+                <span><strong class="text-zinc-800">설계 판단:</strong> 전문용어 인식과 쉬운 말 변환을 별도 모듈로 분리. 음성 인식·화자 분리·요약을 로컬에서 처리하도록 구성해 외부 API로 상담 내용을 보내지 않는 구조 채택.</span>
               </li>
             </ul>
           </div>
@@ -292,80 +222,34 @@
           <!-- Project 03 — 제주 맛집 RAG -->
           <div>
             <div class="mb-5">
-              <h3 class="font-semibold text-lg leading-relaxed">제12회 AI·데이터 분석활용 빅콘테스트 경진대회</h3>
-              <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
-                <span class="rounded bg-zinc-100 px-2.5 py-1 text-xs font-semibold text-zinc-700">본선 진출</span>
-                <span class="text-zinc-500">생성형AI 분야</span>
-                <span class="text-zinc-300" aria-hidden="true">/</span>
-                <span class="font-medium text-zinc-700">어서 와용</span>
-              </div>
+              <h3 class="font-semibold text-base">제12회 AI·데이터 분석활용 빅콘테스트 경진대회<span class="block mt-1 text-sm font-normal text-zinc-500">생성형AI 분야 · 어서 와용 · 본선 진출</span></h3>
               <div class="mt-3 flex items-center gap-4">
                 <a href="https://github.com/min03027/jeju_2024" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">GitHub</a>
                 <a href="walkthrough.html#jeju" class="text-xs text-zinc-400 hover:text-zinc-700 transition-colors underline underline-offset-2">동작 보기</a>
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              자연어 질문 한 줄로 가격대·현지인·위치·업종 네 가지 조건을 동시에 검색해 제주 맛집을 추천하는 대화형 서비스. 신한카드 실 결제 데이터와 관광지 정보를 벡터·그래프 두 방식으로 함께 탐색한다.
+              신한카드 결제 데이터와 관광지 정보를 활용해 가격대·현지인 이용·위치·업종 조건에 맞는 제주 맛집을 추천하는 서비스.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Ko-SRoBERTa</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">FAISS</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Neo4j</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">GraphRAG</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini 1.5 Flash</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">RAG</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">신한카드 결제 데이터</span>
             </div>
             <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">3단계 RAG 파이프라인:</strong>
-                  Ko-SRoBERTa + FAISS 의미 검색 → 신한카드 결제 데이터 가격 필터 → Gemini 1.5 Flash 자연어 추천답변
-                </span>
+                <span><strong class="text-zinc-800">담당 범위:</strong> 개인 프로젝트로 데이터 가공부터 검색·추천 화면까지 구현. 자연어 질문을 가격대·현지인 이용·위치·업종 조건으로 구조화.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">거리 모호성 직접 식별·해결:</strong>
-                  초기 LLM 답변의 위치 정보 모호성을 스스로 발견 → 가맹점·관광지 데이터에 위도/경도 좌표를 추가하고 Gemini 컨텍스트에 함께 전달해 차량 이동시간을 자연어로 추정하는 보강안 능동 제안
-                </span>
+                <span><strong class="text-zinc-800">검색 설계:</strong> <strong class="text-zinc-800">FAISS 의미 검색과 Neo4j 관계 탐색을 결합</strong>해 후보를 좁히고, 가맹점·지역·업종·관광지 관계를 기준으로 재정렬.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">복합 조건 검색:</strong>
-                  관광객 요구를 <strong class="text-zinc-800">가격대 / 현지인 / 위치별 / 업종별</strong> 4가지로 구조화 → 자연어 한 줄로 복합 조건 동시 검색
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">GraphRAG 스키마 (Neo4j):</strong>
-                  <code class="bg-zinc-100 px-1 rounded text-xs">Restaurant ↔ Location ↔ Cuisine ↔ Tourist_Spot</code> 다중 hop 그래프로 모델링 → 위치·업종·관광지 인접성을 동시 만족하는 후보를 그래프 traversal로 추출
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">FAISS + Graph 하이브리드 검색:</strong>
-                  의미 검색(FAISS)으로 후보군을 좁히고 → Neo4j 경로 탐색으로 관계 기반 재정렬 → LLM 컨텍스트에 검색 결과 + 추천 근거 경로 함께 전달
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">할루시네이션 차단:</strong>
-                  LLM에게 FAISS 검색 결과만 전달 → 데이터에 없는 가게는 응답 자체 불가능하도록 컨텍스트 제한
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">성과:</strong>
-                  4가지 맞춤 필터 + 자연어 한 줄 RAG 대화형 추천 + 신한카드 실 결제 데이터 기반 가격/현지인 정보 반영
-                </span>
+                <span><strong class="text-zinc-800">추천 근거 제공:</strong> 검색 결과와 그래프 경로를 LLM 입력에 함께 전달해 추천 이유를 설명하도록 구성. 위치 정보 보강을 위해 가맹점·관광지 좌표 추가.</span>
               </li>
             </ul>
           </div>
@@ -380,7 +264,7 @@
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              숙소 리뷰 <strong class="text-zinc-700">11만 건</strong>을 감성·토픽별로 분해해 핵심 3줄로 요약하고, 첫방문인지 재방문인지에 따라 다른 기준으로 숙소를 추천하는 서비스.
+              숙소 리뷰를 감성·토픽별로 분석하고 핵심 요약과 방문 유형별 숙소 추천을 제공하는 서비스.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Python</span>
@@ -388,51 +272,20 @@
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KoBART</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini 1.5 Flash</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">LDA</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">RAG</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
             </div>
             <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">3단계 NLP 파이프라인:</strong>
-                  KoBERT 감성 + LDA 6토픽 분류 → KoBART → Gemini 2단계 요약(핵심 3줄) → 토픽 가중치 기반 Top-3 추천
-                </span>
+                <span><strong class="text-zinc-800">데이터 처리:</strong> 불용어 사전과 크롤링 노이즈 제거로 <strong class="text-zinc-800">유효 리뷰 11만 건</strong> 확보. KoBERT 감성 분석과 LDA로 위치·소음·가격 등 주요 토픽 분류.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">크롤링 노이즈 제거:</strong>
-                  불용어 사전 구축으로 <strong class="text-zinc-800">유효 리뷰 11만 건</strong> 확보
-                </span>
+                <span><strong class="text-zinc-800">요약 구조 개선:</strong> KoBART 단독 요약의 한계를 분석하고 <strong class="text-zinc-800">KoBART → Gemini 2단계 요약</strong>을 제안·적용해 핵심 3줄 요약 제공.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">2단계 요약 구조 — 한계 직접 발견 후 능동 제안:</strong>
-                  팀 초기 설계의 <code class="bg-zinc-100 px-1 rounded text-xs">KoBART</code> 단독 요약 품질 한계를 스스로 진단 → <code class="bg-zinc-100 px-1 rounded text-xs">Gemini</code> 2차 고도화 하이브리드 구조를 추가 제안·적용
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">유형별 가중치 차별화:</strong>
-                  첫방문/재방문에 따라 위치·소음·가격·서비스·청결·편의시설 6개 토픽 가중치를 다르게 적용
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">RAG 컨텍스트 결합:</strong>
-                  Gemini 1.5 Flash 요약 단계에 맛집·관광지 RAG 연동으로 숙소 선택 가이드까지 한 화면에서 제공
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">정량 성과 (목표 초과 달성):</strong>
-                  선택 시간 단축 목표 <span class="text-zinc-400">-30%</span> → 달성 <strong class="text-zinc-800">-50%</strong>, 불필요 표현 목표 <span class="text-zinc-400">-25%</span> → <strong class="text-zinc-800">-40%</strong>, 보존율 목표 <span class="text-zinc-400">+20%</span> → <strong class="text-zinc-800">+35%</strong> — 세 지표 모두 초과
-                </span>
+                <span><strong class="text-zinc-800">추천 구현:</strong> 첫방문·재방문에 따라 토픽 가중치를 달리해 숙소를 추천하고, 주변 맛집·관광지 검색 결과를 선택 가이드에 결합.</span>
               </li>
             </ul>
           </div>
@@ -447,59 +300,26 @@
               </div>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              9문항 설문으로 재무 유형을 진단하고 <strong class="text-zinc-700">예상 연금액 계산 · 맞춤 상품 추천 · 노후 자산 시뮬레이션</strong>까지 한 화면에서 제공하는 시니어 금융 서비스. 예금·펀드처럼 기준이 서로 다른 상품을 하나의 의미 축으로 묶어 비교 검색이 되도록 만들었다.
+              설문 기반 재무 유형 진단, 금융상품 비교 추천, 노후 자산 시뮬레이션을 연결한 시니어 금융 서비스 프로토타입.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Python</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">TabNet</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">FAISS</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">OpenAI</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Gemini</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Streamlit</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KOSIS</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">금융감독원 상품 공시</span>
             </div>
             <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">재무 페르소나 6종 분류:</strong>
-                  연금·소득·자산·지출 기준으로 <strong class="text-zinc-800">위험취약형 · 자산운용형 · 균형형 · 고소비형 · 연금의존형 · 자산의존형</strong> 6종 세그먼트를 정의하고 <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>으로 학습. 초기 딥러닝 모델이 분류 이유를 설명하지 못하는 문제를 TabNet의 <strong class="text-zinc-800">개인별 feature attribution</strong>으로 해소해, 어떤 항목이 그 판정을 만들었는지 제시
-                </span>
+                <span><strong class="text-zinc-800">담당 범위와 데이터:</strong> 데이터 전처리·TabNet 분류·FAISS 검색 구현 담당. 실제 개인 금융정보 대신 <strong class="text-zinc-800">공공 통계 분포 기반 합성 사용자 데이터</strong>로 개발하고 상품 공시 데이터 연결.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">이종 상품 통합 검색 — 스키마 불일치 직접 진단·해결:</strong>
-                  예금과 펀드는 컬럼 자체가 달라 함께 검색할 수 없다는 한계를 스스로 발견 → 최소투자금액·예상수익률·권장투자기간을 <strong class="text-zinc-800">공통 축</strong>으로 삼고 스케일을 맞춘 벡터 구조를 자발 제안·구현. 룰로 가입 불가 상품을 걸러 상위 <strong class="text-zinc-800">10개</strong>로 압축 → <code class="bg-zinc-100 px-1 rounded text-xs">FAISS IndexFlatL2</code> 완전 탐색으로 최종 <strong class="text-zinc-800">3개</strong> 추천</span>
+                <span><strong class="text-zinc-800">분류와 조건 분리:</strong> TabNet으로 재무 유형을 분류하고 판정에 기여한 입력 항목을 표시. 가입 조건은 별도 규칙으로 검사해 조건을 충족하지 못한 상품을 추천 후보에서 제외.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">노후 자산 시뮬레이션:</strong>
-                  물가상승률을 <code class="bg-zinc-100 px-1 rounded text-xs">0~8%</code> 범위에서 조절해 자산 고갈 시점을 추정하고, 추천 상품 적용 시나리오와 기본 시나리오(연 2%)의 자산 추이를 그래프로 비교
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">예상 연금액 계산:</strong>
-                  월소득과 국민연금 가입기간으로 예상 월 수령액을 산출하고, 조기노령연금 <strong class="text-zinc-800">최대 30% 감액</strong> 같은 유형별 주의사항을 함께 안내
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">합성 사용자 데이터:</strong>
-                  실 개인 금융 데이터 부재 → KOSIS 노인가구 소득·보건복지부 국민연금 급여실적 분포를 기반으로 합성 데이터 생성. 상품 데이터는 금융감독원 정기예적금·자유예적금·펀드 공시 사용
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">정량 성과 (목표 초과 달성):</strong>
-                  추천 정확도 목표 <span class="text-zinc-400">+20%</span> → 달성 <strong class="text-zinc-800">+27%</strong>, 취약 고객 민감 탐지도 목표 <span class="text-zinc-400">+15%</span> → 달성 <strong class="text-zinc-800">+23%</strong>
-                </span>
+                <span><strong class="text-zinc-800">통합 상품 검색:</strong> 스키마가 다른 예금·펀드를 투자금액·수익률·투자기간의 공통 축으로 정리해 FAISS로 비교 검색. 추천 결과와 자산 추이 시뮬레이션을 한 화면에 연결.</span>
               </li>
             </ul>
           </div>
@@ -511,52 +331,27 @@
               <span class="text-sm text-zinc-400 shrink-0 ml-4">2025.12</span>
             </div>
             <p class="text-sm text-zinc-500 mb-3 leading-relaxed">
-              카메라로 운동 자세를 실시간 교정하고, 주변 안전 인증 체육시설을 찾아주는 모바일 앱. 자세 판정을 기기 안에서 처리해 네트워크가 끊겨도 피드백이 이어지며, 운동 기록을 기억하는 대화형 트레이너를 함께 제공한다.
+              카메라 기반 운동 자세 피드백, 주변 체육시설 검색, 운동 기록 기반 대화형 트레이너를 제공하는 모바일 앱.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-4">
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">MediaPipe</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Kotlin (Android)</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">FastAPI</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">AWS EC2</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">PostGIS</span>
               <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">Qwen 2.5-1.5B</span>
-              <span class="text-xs bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded">KSPO 공공데이터</span>
             </div>
             <ul class="space-y-2.5 text-sm text-zinc-600 leading-relaxed">
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">실시간 자세 교정 (MediaPipe):</strong>
-                  카메라 프레임에서 33개 관절 키포인트를 3D 좌표로 추출 → 관절 각도 실시간 연산 → "무릎이 발끝을 넘었습니다" 식 텍스트 + TTS 음성 피드백
-                </span>
+                <span><strong class="text-zinc-800">자세 피드백:</strong> MediaPipe 관절 좌표에서 각도를 계산해 텍스트·음성 피드백 구현. <strong class="text-zinc-800">기기 내 자세 판정 옵션</strong>으로 네트워크 없이도 해당 기능을 사용할 수 있도록 구성.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">Safety-LBS — 기획에 없던 영역 자발 발굴:</strong>
-                  팀 초기 기획안에 없던 <strong class="text-zinc-800">사용자 안전</strong>(시설 내진·소방 인증) 측면을 추가 제안 → KSPO 전국체육시설현황 API + 대중교통 정보를 융합해 반경 <strong class="text-zinc-800">1km</strong> 내 안전 인증 시설만 필터링하는 기능을 자처해 설계·구현
-                </span>
+                <span><strong class="text-zinc-800">직접 제안한 기능:</strong> 초기 기획에 없던 체육시설 안전 정보와 대중교통 정보를 결합한 <strong class="text-zinc-800">위치 기반 시설 검색</strong>을 제안·구현.</span>
               </li>
               <li class="flex gap-2">
                 <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">On-Device + Cloud 하이브리드:</strong>
-                  FastAPI + AWS EC2(Gunicorn/Uvicorn 워커 병렬) 클라우드 추론 + 경량화 모델 모바일 자체 추론 옵션 → 네트워크 불안정 환경에서도 끊김 없는 피드백, 영상 외부 전송 차단
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">대화형 AI 트레이너:</strong>
-                  <code class="bg-zinc-100 px-1 rounded text-xs">Qwen 2.5-1.5B Instruct</code> 경량 LLM이 운동 기록을 컨텍스트로 받아 "오늘 컨디션에 맞는 스트레칭", "운동 전 식사" 등 문맥 대화 제공
-                </span>
-              </li>
-              <li class="flex gap-2">
-                <span class="text-zinc-300 mt-1">—</span>
-                <span>
-                  <strong class="text-zinc-800">정량 성과 (목표 초과 달성):</strong>
-                  자세 정확도 목표 <span class="text-zinc-400">60%</span> → 달성 <strong class="text-zinc-800">70%</strong>(20% → 70%), 부상 유발 패턴 감소 목표 <span class="text-zinc-400">-30%</span> → <strong class="text-zinc-800">-40%</strong>, PT 대비 비용 절감 목표 <span class="text-zinc-400">90%</span> → <strong class="text-zinc-800">95%</strong>
-                </span>
+                <span><strong class="text-zinc-800">대화형 트레이너:</strong> Qwen 경량 모델에 운동 기록을 컨텍스트로 제공해 이전 운동 이력을 반영한 대화 기능 연결.</span>
               </li>
             </ul>
           </div>
