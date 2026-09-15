@@ -204,23 +204,23 @@
             </figure>
           </div>
           <div class="pipeline" aria-label="어서 와용 제주 맛집 RAG 파이프라인">
-            <div class="pipeline-head"><h3 class="pipeline-title">Hybrid RAG pipeline</h3><span class="pipeline-legend">모델 · 핵심 처리</span></div>
+            <div class="pipeline-head"><h3 class="pipeline-title">RAG search pipeline</h3><span class="pipeline-legend">공개 코드 기준</span></div>
             <div class="pipeline-flow" style="--steps: 6">
               <div class="pipeline-step"><span class="pipeline-num">01 · INPUT</span><strong>자연어 질문 + 조건</strong><small>가격대 · 위치 · 업종 · 현지인 비중</small></div>
               <div class="pipeline-step is-model"><span class="pipeline-num">02 · RETRIEVE</span><strong>의미 기반 후보 검색</strong><small>질문 임베딩 → 유사 가맹점 탐색</small><span class="pipeline-tag">Ko-SRoBERTa · FAISS</span></div>
-              <div class="pipeline-step is-model"><span class="pipeline-num">03 · RERANK</span><strong>관계 그래프 재정렬</strong><small>위치 · 업종 · 관광지 다중 hop 탐색</small><span class="pipeline-tag">Neo4j</span></div>
-              <div class="pipeline-step"><span class="pipeline-num">04 · FILTER</span><strong>실결제 조건 검증</strong><small>가격대와 현지인 비중으로 후보 축소</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">03 · TOUR</span><strong>관광지 별도 검색</strong><small>관광지 381건 중 유사 후보 1건</small><span class="pipeline-tag">FAISS</span></div>
+              <div class="pipeline-step"><span class="pipeline-num">04 · FILTER</span><strong>가격대 필터</strong><small>선택한 이용금액 구간으로 후보 축소</small></div>
               <div class="pipeline-step is-model"><span class="pipeline-num">05 · GENERATE</span><strong>검색 근거로 답변</strong><small>선별된 가맹점 정보만 컨텍스트로 전달</small><span class="pipeline-tag">Gemini 1.5 Flash</span></div>
-              <div class="pipeline-step is-output"><span class="pipeline-num">06 · OUTPUT</span><strong>맛집 + 추천 이유</strong><small>개점일 · 현지인 비중 · 좌표 기반 이동시간</small></div>
+              <div class="pipeline-step is-output"><span class="pipeline-num">06 · OUTPUT</span><strong>맛집 + 추천 이유</strong><small>가맹점 · 관광지 정보를 활용한 답변</small></div>
             </div>
-            <p class="pipeline-note">벡터 검색의 의미 유사도, 그래프의 관계성, 카드 결제 데이터의 수치 조건을 순서대로 결합해 환각 가능한 후보를 먼저 차단합니다.</p>
+            <p class="pipeline-note">가맹점 월별 원본 67,575행에서 가맹점명별 최신월 9,346건을 선별합니다. 가맹점·관광지를 각각 검색하고 가격대 필터를 적용한 결과를 LLM에 전달합니다.</p>
           </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
-            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">의미 검색</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Ko-SRoBERTa</code>로 질문을 임베딩하고 <code class="bg-zinc-100 px-1 rounded text-xs">FAISS</code>로 후보 가맹점을 좁힌다.</p>
-            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">그래프 재정렬</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Restaurant ↔ Location ↔ Cuisine ↔ Tourist_Spot</code> 다중 hop 스키마를 Neo4j에 두고, 위치·업종·관광지 인접성을 동시에 만족하는 후보를 경로 탐색으로 다시 정렬한다.</p>
-            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">결제 데이터 필터</strong> — 신한카드 실 결제 데이터로 가격대와 현지인 비중을 걸러낸다.</p>
-            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">검색 근거를 활용한 답변</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">Gemini 1.5 Flash</code>에 검색 결과와 추천 근거 경로를 컨텍스트로 전달한다. 가맹점·관광지의 위도·경도를 함께 제공해 위치 정보를 보강한다.</p>
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">의미 검색</strong> — 가맹점명 기준 9,346건의 768차원 임베딩을 사용한다. 질문을 <code class="bg-zinc-100 px-1 rounded text-xs">Ko-SRoBERTa</code>로 변환하고 FAISS에서 기본 후보 9건을 검색한다.</p>
+            <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">관광지 검색</strong> — 관광지 381건의 별도 임베딩·인덱스에서 질문과 유사한 관광지 1건을 검색한다.</p>
+            <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">가격대 필터</strong> — 검색된 가맹점 후보에 사용자가 선택한 건당평균이용금액구간을 적용한다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">검색 근거를 활용한 답변</strong> — 선별된 가맹점과 관광지 텍스트를 <code class="bg-zinc-100 px-1 rounded text-xs">Gemini 1.5 Flash</code>에 전달해 추천 답변을 생성한다. 실제 도로 이동시간이나 추천 정확도를 검증한 결과는 아니다.</p>
           </div>
           <p class="text-xs text-zinc-400 mt-5">
             <a href="https://github.com/min03027/jeju_2024" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">GitHub</a>
@@ -246,20 +246,20 @@
           <div class="pipeline" data-accent="amber" aria-label="Stay-view 호텔 리뷰 분석 파이프라인">
             <div class="pipeline-head"><h3 class="pipeline-title">Review intelligence pipeline</h3><span class="pipeline-legend">모델 · 핵심 처리</span></div>
             <div class="pipeline-flow" style="--steps: 5">
-              <div class="pipeline-step"><span class="pipeline-num">01 · DATA</span><strong>호텔 리뷰 11만 건</strong><small>크롤링 후 불용어와 노이즈 제거</small></div>
+              <div class="pipeline-step"><span class="pipeline-num">01 · DATA</span><strong>호텔 리뷰 전처리</strong><small>크롤링 후 불용어와 노이즈 제거</small></div>
               <div class="pipeline-step is-model"><span class="pipeline-num">02 · ANALYZE</span><strong>감성 · 토픽 분해</strong><small>긍·부정 판별 + 6개 평가 항목 분류</small><span class="pipeline-tag">KoBERT · LDA</span></div>
               <div class="pipeline-step is-model"><span class="pipeline-num">03 · SUMMARIZE</span><strong>1차 압축 요약</strong><small>리뷰 묶음에서 핵심 문장 추출</small><span class="pipeline-tag">KoBART</span></div>
               <div class="pipeline-step is-model"><span class="pipeline-num">04 · REFINE</span><strong>3줄 요약 정제</strong><small>뭉개진 문장을 읽기 쉽게 재구성</small><span class="pipeline-tag">Gemini</span></div>
-              <div class="pipeline-step is-output"><span class="pipeline-num">05 · OUTPUT</span><strong>호텔 비교 · Top-3</strong><small>6개 항목 점수와 방문 유형별 추천</small></div>
+              <div class="pipeline-step is-output"><span class="pipeline-num">05 · OUTPUT</span><strong>호텔 비교 · Top-5</strong><small>9개 지역 · 호텔 요약 데이터 394행</small></div>
             </div>
-            <p class="pipeline-note">요약은 KoBART로 정보량을 먼저 줄인 뒤 Gemini로 문장 품질을 보완하는 2단계 구조입니다.</p>
+            <p class="pipeline-note">리뷰 분석·요약은 사전 처리 단계입니다. 공개 앱은 결과 CSV 394행을 읽어 9개 지역의 호텔 요약과 6개 항목 점수를 표시하며, 원본 리뷰 건수와는 구분합니다.</p>
           </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
-            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">노이즈 제거</strong> — 불용어 사전을 만들어 크롤링 리뷰를 정제하고 유효 리뷰 11만 건을 확보한다.</p>
+            <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">배포 데이터</strong> — 긍정·부정 요약, 6개 항목 점수, 주소·좌표를 포함한 호텔 요약 데이터 394행을 CSV로 로드한다.</p>
             <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">감성 + 토픽 분해</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">KoBERT</code>로 긍·부정을 판별하고 <code class="bg-zinc-100 px-1 rounded text-xs">LDA</code>로 6개 항목에 자동 분류한다.</p>
             <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">2단계 요약</strong> — <code class="bg-zinc-100 px-1 rounded text-xs">KoBART</code>로 1차 요약한 뒤 <code class="bg-zinc-100 px-1 rounded text-xs">Gemini</code>로 다시 다듬어 핵심 3줄로 줄인다. 1차 요약만으로는 문장이 뭉개져 2차를 얹었다.</p>
-            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">유형별 추천</strong> — 첫방문인지 재방문인지에 따라 6개 항목의 가중치를 다르게 적용해 Top-3를 뽑는다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">항목별 비교</strong> — 지역과 정렬 항목을 선택하면 점수순으로 정렬하고 호텔명 중복을 제외해 Top-5를 표시한다. 지도와 길찾기 링크로 위치도 확인할 수 있다.</p>
           </div>
           <p class="text-xs text-zinc-400 mt-5">
             <a href="https://github.com/min03027/stayview" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">GitHub</a>
@@ -301,19 +301,19 @@
               <div class="pipeline-step"><span class="pipeline-num">01 · INPUT</span><strong>9문항 설문</strong><small>연령 · 소득 · 자산 · 투자성향</small></div>
               <div class="pipeline-step is-model"><span class="pipeline-num">02 · CLASSIFY</span><strong>재무 유형 진단</strong><small>6개 세그먼트 분류 + 판단 근거 산출</small><span class="pipeline-tag">TabNet</span></div>
               <div class="pipeline-step"><span class="pipeline-num">03 · CALCULATE</span><strong>예상 연금 계산</strong><small>월 수령액과 유형별 주의사항</small></div>
-              <div class="pipeline-step"><span class="pipeline-num">04 · FILTER</span><strong>가입 제약 필터</strong><small>투자금 · 기간 · 성향 → 후보 10개</small></div>
-              <div class="pipeline-step is-model"><span class="pipeline-num">05 · RANK</span><strong>유사 상품 탐색</strong><small>공통 축 벡터화 후 최근접 Top-3</small><span class="pipeline-tag">FAISS · L2</span></div>
+              <div class="pipeline-step"><span class="pipeline-num">04 · FILTER</span><strong>투자 조건 필터</strong><small>투자금 · 기간 · 성향 → 유형별 후보</small></div>
+              <div class="pipeline-step is-model"><span class="pipeline-num">05 · RANK</span><strong>유사 상품 탐색</strong><small>예·적금 최대 2개 + 펀드 최대 1개</small><span class="pipeline-tag">FAISS · L2</span></div>
               <div class="pipeline-step is-output"><span class="pipeline-num">06 · OUTPUT</span><strong>추천 + 시뮬레이션</strong><small>추천 전후 자산 추이와 고갈 시점 비교</small></div>
             </div>
-            <p class="pipeline-note">두 입력을 결합합니다: 사용자 설문은 개인 벡터를 만들고, 금융 상품 목록은 가입 제약을 거쳐 비교 가능한 후보 벡터가 됩니다.</p>
+            <p class="pipeline-note">예·적금 1,122행·펀드 9,598행의 공시 원본을 불러와 상품명 중복을 정리합니다. 일부 누락 속성은 난수로 보완한 프로토타입이며, 실제 약관·투자 적합성 검증을 의미하지 않습니다.</p>
           </div>
 
           <div class="border-l-2 border-zinc-200 pl-5 space-y-3 text-sm text-zinc-600 leading-relaxed">
             <p><span class="text-zinc-400 mr-2">01</span><strong class="text-zinc-800">설문 입력</strong> — 나이·가구원수·피부양자·금융자산·투자성향 등 9문항을 단계별로 받는다. 한 화면에 한 문항씩 두고 진행률을 표시한다.</p>
             <p><span class="text-zinc-400 mr-2">02</span><strong class="text-zinc-800">재무 유형 진단</strong> — 연금·소득·자산·지출 기준으로 정의한 6종 세그먼트(위험취약형·자산운용형·균형형·고소비형·연금의존형·자산의존형) 중 하나로 분류한다. <code class="bg-zinc-100 px-1 rounded text-xs">TabNet</code>을 쓴 이유는 개인별 feature attribution이 남아 어떤 항목이 그 판정을 만들었는지 설명할 수 있기 때문이다.</p>
             <p><span class="text-zinc-400 mr-2">03</span><strong class="text-zinc-800">연금 계산</strong> — 월소득과 국민연금 가입기간으로 예상 월 수령액을 산출하고, 조기노령연금은 만 60세부터 받을 수 있으나 최대 30% 감액된다는 식의 유형별 주의사항을 함께 보여준다.</p>
-            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">제약 필터링</strong> — 최소투자금액·권장투자기간·투자성향으로 애초에 가입할 수 없는 상품을 제거하고, 예상 수익률 기준 상위 10개로 좁힌다.</p>
-            <p><span class="text-zinc-400 mr-2">05</span><strong class="text-zinc-800">유사도 추천</strong> — 예금·펀드처럼 기준이 다른 상품을 최소투자금액·예상수익률·권장투자기간이라는 공통 축으로 스케일을 맞춰 벡터화하고, <code class="bg-zinc-100 px-1 rounded text-xs">FAISS IndexFlatL2</code> 완전 탐색으로 사용자 벡터와 가장 가까운 3개를 뽑는다.</p>
+            <p><span class="text-zinc-400 mr-2">04</span><strong class="text-zinc-800">조건 필터링</strong> — 투자금액·기간·위험성향 조건을 적용하고 예상 수익률 기준으로 유형별 최대 500개 후보를 남긴다.</p>
+            <p><span class="text-zinc-400 mr-2">05</span><strong class="text-zinc-800">유사도 추천</strong> — 최소투자금액·예상수익률·권장투자기간을 3차원 벡터로 구성한다. <code class="bg-zinc-100 px-1 rounded text-xs">FAISS IndexFlatL2</code>로 예·적금 최대 2개와 펀드 최대 1개를 각각 검색해 합친다.</p>
             <p><span class="text-zinc-400 mr-2">06</span><strong class="text-zinc-800">노후 시뮬레이션</strong> — 물가상승률을 0~8% 범위에서 조절해 자산 고갈 시점을 추정하고, 추천 상품을 적용한 시나리오와 기본 시나리오(연 2%)의 자산 추이를 나란히 그린다. 조건을 바꿔 다시 추천받을 수도 있다.</p>
           </div>
           <p class="text-xs text-zinc-400 mt-5">

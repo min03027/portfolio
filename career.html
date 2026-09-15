@@ -106,9 +106,9 @@
           <div class="decision">
             <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>LLM 호출 비용 통제 : 호출 전 차단 게이트 설계</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>배포 전 테스트에서 일일 API 한도가 빠르게 소진. 요청 흐름을 단계별로 좁혀 검증한 결과 <strong class="text-zinc-800">같은 질문의 재조회</strong>와 <strong class="text-zinc-800">답변이 불가능한 요청</strong>(등록 자료 없음)이 호출량의 상당 부분을 차지.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>한도 상향이나 저가 모델 교체는 비용·품질을 대가로 하는 임시 조치이며 소진 속도는 그대로. 불필요 호출 자체를 제거하기로 결정 &rarr; 수강 권한 · 입력 1,000자 · 자료 유무 · 일일 한도(500/50)를 <strong class="text-zinc-800">모델 호출 전에</strong> 검사하는 게이트를 앞단 배치, 재조회는 결과 캐시로 응답.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd>배포 일정 내 해결, 이후 한도 소진 없이 운영 중.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>추천·로드맵 화면을 재조회할 때마다 모델을 호출하면, 내용이 바뀌지 않아도 사용자별 일일 한도를 소진하는 문제.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>사용자·기능·조건을 캐시 키로 분리해 분석 결과 재사용. 실패 결과는 저장하지 않아 복구 후 재시도할 수 있도록 하고, 권한·입력 길이·일일 한도는 모델 호출 전에 검사.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd><strong class="text-zinc-800">동일 키 20회 조회 시 생성 함수 1회 호출</strong>을 검사하는 캐시 테스트 포함. AI 패키지에 권한·인용·장애 처리 등 <strong class="text-zinc-800">41개 테스트</strong> 구성. <a href="https://github.com/min03027/portfolio/blob/main/docs/project-metrics-evidence.md#lxp" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 underline underline-offset-2">코드·집계 근거</a></dd></div>
             </dl>
           </div>
           <div class="decision">
@@ -200,21 +200,21 @@
           </div>
           <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
             <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">담당업무</span>
-            <span class="flex-1">Ko-SRoBERTa + FAISS 의미 검색과 Neo4j 다중 hop 그래프 탐색을 결합한 하이브리드 RAG 파이프라인 설계·구현, 신한카드 실 결제 데이터 연동</span>
+            <span class="flex-1">신한카드 가맹점 데이터 전처리, Ko-SRoBERTa + FAISS 의미 검색, 가격대 필터와 Gemini 추천 답변을 연결한 RAG 구현</span>
           </div>
           <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
             <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
-            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>가격대 · 현지인 · 위치 · 업종 <strong class="text-zinc-800">4개 복합 조건</strong> 자연어 한 줄 동시 검색 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>제12회 AI·데이터 분석활용 빅콘테스트 생성형AI 분야 <strong class="text-zinc-800">본선 진출</strong></span></li></ul></span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>가맹점 월별 데이터 <strong class="text-zinc-800">67,575행</strong>에서 가맹점명 기준 최신월 <strong class="text-zinc-800">9,346건</strong> 선별, 관광지 <strong class="text-zinc-800">381건</strong> 연계 검색</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>제12회 AI·데이터 분석활용 빅콘테스트 생성형AI 분야 <strong class="text-zinc-800">본선 진출</strong></span></li></ul></span>
           </div>
         </div>
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
         <div class="space-y-6">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>벡터 + 그래프 하이브리드 검색 설계 : 관계 조건 처리</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>가맹점·관광지 검색과 가격대 필터 연결</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>FAISS 의미 검색은 "저렴한 흑돼지집"은 찾으나 "성산일출봉 근처 현지인이 가는 흑돼지집"은 처리 불가. 질문이 <strong class="text-zinc-800">장소·업종·인접성의 관계</strong>를 포함하는데 벡터 유사도로는 관계 탐색이 안 됨.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>프롬프트 개선이나 메타데이터 필터는 조건이 늘 때마다 규칙을 덧붙여야 하고 관계 자체를 표현하지 못함. 데이터가 이미 관계 구조를 가지므로 검색도 관계 기반으로 수행하기로 결정.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd><code class="bg-zinc-100 px-1 rounded text-xs">Restaurant &harr; Location &harr; Cuisine &harr; Tourist_Spot</code> 다중 hop 스키마를 Neo4j로 설계, FAISS로 후보 축소 후 그래프 경로 탐색으로 재정렬. 검색 결과와 추천 근거 경로를 LLM에 전달하고, 가맹점·관광지 좌표를 위치 정보로 함께 제공.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>가맹점 데이터는 월별로 반복되며, 맛집과 주변 관광지 정보는 별도 데이터로 구성되어 있어 검색 입력을 정리할 필요.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>가맹점명별 최신월을 선택하고 가맹점·관광지를 각각 벡터 검색. 가격대는 별도 필터로 적용한 뒤 두 검색 결과를 함께 LLM에 전달하는 구조로 구현.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd>가맹점 9,346건·관광지 381건에 대응하는 768차원 임베딩을 저장. 기본 설정에서 가맹점 후보 9건·관광지 1건을 검색해 추천 답변에 활용. <a href="https://github.com/min03027/portfolio/blob/main/docs/project-metrics-evidence.md#jeju" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 underline underline-offset-2">코드·집계 근거</a></dd></div>
             </dl>
           </div>
         </div>
@@ -240,17 +240,17 @@
           </div>
           <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
             <span class="text-zinc-300">·</span><span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
-            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span><strong class="text-zinc-800">공공 통계 분포 기반 합성 데이터</strong>로 재무 유형 분류와 판정 근거 표시 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>가입 요건 필터와 추천 모델을 분리하고, 스키마가 다른 예금·펀드를 공통 축으로 통합해 비교 검색 구현</span></li></ul></span>
+            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>합성 사용자 데이터와 <strong class="text-zinc-800">예·적금 1,122행·펀드 9,598행</strong>의 공시 원본을 활용한 프로토타입 구현</span></li><li class="flex gap-1.5"><span class="text-zinc-300">-</span><span>상품명 중복 정리와 투자 조건 필터를 적용하고, 예·적금 최대 2개·펀드 최대 1개를 FAISS로 검색. <a href="https://github.com/min03027/portfolio/blob/main/docs/project-metrics-evidence.md#nohuae" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 underline underline-offset-2">코드·집계 근거</a></span></li></ul></span>
           </div>
         </div>
         <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
         <div class="space-y-6">
           <div class="decision">
-            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>가입 요건 필터와 추천 모델 분리 : 책임 범위 구분</h3>
+            <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>투자 조건 필터와 추천 모델 분리</h3>
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>금융 상품에는 최소투자금액·권장투자기간·투자성향처럼 충족하지 못하면 <strong class="text-zinc-800">가입 자체가 불가능한 조건</strong>이 존재. 학습 데이터에 포함해 모델이 걸러내게 할 수도 있었음.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>모델은 확률로 답하므로 가입 불가 상품을 낮은 확률로 추천함. 반드시 지켜야 하는 규칙과 추천 품질은 성격이 다르므로 <strong class="text-zinc-800">규칙은 룰로 확정하고 모델은 품질만 담당</strong>하도록 책임 분리. 모델은 정확도가 아니라 판정 근거를 설명할 수 있는지 기준으로 TabNet을 선정.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd>TabNet 위험군 분류 &rarr; 룰 기반 가입요건 필터 &rarr; FAISS L2 유사도 추천 3단계 구성. feature attribution으로 개인별 판정 근거 산출.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>예·적금과 펀드의 데이터 스키마가 다르고, 사용자 투자금액·기간·위험성향에 맞는 후보를 먼저 구분할 필요.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>유형 분류와 투자 조건 필터를 분리하고, 금액·수익률·기간을 공통 벡터로 구성해 조건을 통과한 후보 안에서 검색.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd>유형별 후보에 FAISS L2 검색을 적용해 최대 3개 상품 표시. 일부 누락 상품 속성은 난수로 보완하므로 실제 약관 검증이나 투자 적합성 검증이 아닌 시뮬레이션용 프로토타입으로 범위 한정.</dd></div>
             </dl>
           </div>
         </div>
