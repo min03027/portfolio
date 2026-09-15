@@ -48,7 +48,7 @@ body.portfolio-accent .accent-statement {
 }
 
 body.portfolio-accent .troubleshooting {
-  border-left-color: #f9b88c;
+  border-left-color: var(--portfolio-orange);
 }
 
 body.portfolio-accent #skills .bg-zinc-100 {
