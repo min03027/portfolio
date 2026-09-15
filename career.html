@@ -108,7 +108,7 @@
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>추천·로드맵 화면을 재조회할 때마다 모델을 호출하면, 내용이 바뀌지 않아도 사용자별 일일 한도를 소진하는 문제.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>사용자·기능·조건을 캐시 키로 분리해 분석 결과 재사용. 실패 결과는 저장하지 않아 복구 후 재시도할 수 있도록 하고, 권한·입력 길이·일일 한도는 모델 호출 전에 검사.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd><strong class="text-zinc-800">동일 키 20회 조회 시 생성 함수 1회 호출</strong>을 검사하는 캐시 테스트 포함. AI 패키지에 권한·인용·장애 처리 등 <strong class="text-zinc-800">41개 테스트</strong> 구성. <a href="https://github.com/min03027/portfolio/blob/main/docs/project-metrics-evidence.md#lxp" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 underline underline-offset-2">코드·집계 근거</a></dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">검증</dt><dd><strong class="text-zinc-800">AI 단위 테스트 39개 실행·통과</strong>. 동일 키 20회 순차 조회에서 생성 함수 1회 호출 확인. <span class="text-zinc-400">2026.09.15 사후 검증이며 DB 통합 테스트 2개·실제 API 호출은 제외.</span> <a href="https://github.com/min03027/portfolio/blob/main/docs/project-behavior-measurements.md" target="_blank" rel="noopener noreferrer" class="text-xs text-zinc-400 underline underline-offset-2">실행 결과·측정 조건</a></dd></div>
             </dl>
           </div>
           <div class="decision">
@@ -250,7 +250,7 @@
             <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
               <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">상황</dt><dd>예·적금과 펀드의 데이터 스키마가 다르고, 사용자 투자금액·기간·위험성향에 맞는 후보를 먼저 구분할 필요.</dd></div>
               <div class="flex gap-4"><dt class="w-10 shrink-0 font-medium text-zinc-800">판단</dt><dd>유형 분류와 투자 조건 필터를 분리하고, 금액·수익률·기간을 공통 벡터로 구성해 조건을 통과한 후보 안에서 검색.</dd></div>
-              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd>유형별 후보에 FAISS L2 검색을 적용해 최대 3개 상품 표시. 일부 누락 상품 속성은 난수로 보완하므로 실제 약관 검증이나 투자 적합성 검증이 아닌 시뮬레이션용 프로토타입으로 범위 한정.</dd></div>
+              <div class="flex gap-4"><dt class="w-10 shrink-0 text-zinc-400">결과</dt><dd>공시 원본 10,720행에서 상품명 기준 중복·누락을 정리해 <strong class="text-zinc-800">예·적금 440건·펀드 9,596건</strong>의 검색 후보 구성. 조건을 통과한 후보에 FAISS L2 검색을 적용해 최대 3개 상품 표시. 일부 누락 속성은 난수로 보완한 시뮬레이션용 프로토타입.</dd></div>
             </dl>
           </div>
         </div>

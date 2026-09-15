@@ -1,0 +1,3513 @@
+{
+  "measured_at_utc": "2026-09-15T08:29:23Z",
+  "environment": {
+    "os": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.11",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "faiss": "1.15.0",
+    "faiss_threads": 1
+  },
+  "source_revisions": {
+    "samsung_axi_2nd": "9c6b4003fc4e84bf58d3c23990cf4c4e2d26acfc",
+    "jeju_2024": "80a1dde19921a8f8671a0acd034e79b8bfb6cc2e",
+    "stayview": "5300c95c08ee5cf325935f7fa7f29f31727c3987",
+    "senior_finance_recommender": "ab024e6a1ddd177e610aa181ddb05fd022dc1bb0"
+  },
+  "external_llm_calls": 0,
+  "lxp": {
+    "suites": [
+      {
+        "name": "com.ssa.lms.ai.AiAdviceCacheTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          {
+            "name": "다시 분석을 누르면 그 사람 것만 지워진다 — 남의 캐시까지 날리면 안 된다",
+            "passed": true
+          },
+          {
+            "name": "실패한 결과는 캐시하지 않는다 — 복구돼도 계속 실패 화면이 나온다",
+            "passed": true
+          },
+          {
+            "name": "같은 키로 여러 번 불러도 모델은 한 번만 부른다 — 여기가 핵심이다",
+            "passed": true
+          },
+          {
+            "name": "조건이 다르면 다른 결과 — 직무를 바꿨는데 앞 직무 로드맵이 나오면 안 된다",
+            "passed": true
+          },
+          {
+            "name": "사용자가 다르면 결과가 섞이지 않는다 — 남의 추천이 보이면 안 된다",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "com.ssa.lms.ai.AiAssignmentDraftServiceTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          {
+            "name": "제목·설명·평가기준을 나눠 담는다",
+            "passed": true
+          },
+          {
+            "name": "담당하지 않는 과정은 만들 수 없다 — 모델도 부르지 않는다",
+            "passed": true
+          },
+          {
+            "name": "출력 상한을 반드시 지정한다 — 응답이 길어지면 그대로 비용이다",
+            "passed": true
+          },
+          {
+            "name": "보완 영역이 비면 모델을 부르기 전에 막는다 — 토큰은 비용이다",
+            "passed": true
+          },
+          {
+            "name": "모델 실패는 안내 문구로 내려간다",
+            "passed": true
+          },
+          {
+            "name": "형식이 어긋나도 버리지 않는다 — 빈 칸보다 고쳐 쓸 초안이 낫다",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "com.ssa.lms.ai.AiDiagnosisCostGuardTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          {
+            "name": "기간 내 훈련생 질문이 0건이면 모델을 부르지 않는다 — 여기가 비용 방어선이다",
+            "passed": true
+          },
+          {
+            "name": "보존기간이 지나면 질문 내용만 지우고 통계는 남긴다",
+            "passed": true
+          },
+          {
+            "name": "담당 과정이 없으면 모델을 부르지 않는다",
+            "passed": true
+          },
+          {
+            "name": "로그인 정보가 없으면 아무것도 하지 않는다",
+            "passed": true
+          },
+          {
+            "name": "질문 본문은 저장 길이를 넘기면 잘라 담는다 — 진단에는 앞부분이면 충분하다",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "com.ssa.lms.ai.AiQnaServiceTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          {
+            "name": "빈 질문·과도하게 긴 질문은 모델을 부르기 전에 막는다 — 토큰은 비용이다",
+            "passed": true
+          },
+          {
+            "name": "수강하지 않는 과정은 질문할 수 없다 — 모델도 부르지 않는다",
+            "passed": true
+          },
+          {
+            "name": "일반지식 표시와 자료 인용이 함께 오면 링크를 살린다 — 끊긴 참조를 남기지 않는다",
+            "passed": true
+          },
+          {
+            "name": "자료로 답한 경우에는 일반지식 표시가 붙지 않는다",
+            "passed": true
+          },
+          {
+            "name": "답변이 인용한 자료만 링크로 붙는다",
+            "passed": true
+          },
+          {
+            "name": "학습 자료가 없어도 답한다 — 단, 일반 지식임을 표시한다",
+            "passed": true
+          },
+          {
+            "name": "범위 밖 번호를 인용하면 무시한다 — 없는 자료 링크를 만들면 404 로 간다",
+            "passed": true
+          },
+          {
+            "name": "승인 전(신청) 수강도 차단한다 — 승인 나기 전엔 자료를 볼 권한이 없다",
+            "passed": true
+          },
+          {
+            "name": "모델 호출이 실패하면 안내 문구를 그대로 돌려주고 자료는 붙이지 않는다",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "com.ssa.lms.ai.AiStatusServiceTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          {
+            "name": "크레딧 소진은 최고 심각도 + 콘솔 링크를 준다",
+            "passed": true
+          },
+          {
+            "name": "자체 하루 한도는 경고 수준이고, 실제 한도 숫자를 문구에 넣는다",
+            "passed": true
+          },
+          {
+            "name": "호출 이력이 없으면 '정상'이라 단정하지 않는다",
+            "passed": true
+          },
+          {
+            "name": "모르는 실패 사유도 조용히 넘기지 않는다",
+            "passed": true
+          },
+          {
+            "name": "키 오류와 크레딧 소진은 서로 다른 조치를 안내한다",
+            "passed": true
+          },
+          {
+            "name": "켜두었는데 키가 없으면 경고한다 — 꺼둔 것과 구분해야 한다",
+            "passed": true
+          },
+          {
+            "name": "마지막 호출이 성공이면 배너를 띄우지 않는다 — 충전하면 저절로 사라진다",
+            "passed": true
+          },
+          {
+            "name": "꺼져 있으면 안내만 하고, 호출 기록은 아예 보지 않는다",
+            "passed": true
+          },
+          {
+            "name": "Anthropic 쪽 속도 제한은 기다리면 낫는다고 알린다",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "name": "com.ssa.lms.ai.ContentTextExtractorTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          {
+            "name": "업로드 폴더 밖 경로는 읽지 않는다 — 서버 파일이 답변으로 새면 안 된다",
+            "passed": true
+          },
+          {
+            "name": "파일이 없어도 예외를 던지지 않는다 — 자료 하나가 깨졌다고 질문이 실패하면 안 된다",
+            "passed": true
+          },
+          {
+            "name": "PDF 본문을 실제로 읽어 온다",
+            "passed": true
+          },
+          {
+            "name": "두 번째 호출은 캐시를 쓴다 — 매 질문마다 PDF 를 다시 열면 느려진다",
+            "passed": true
+          },
+          {
+            "name": "PDF 가 아닌 자료는 열지 않는다 — 영상·이미지는 본문이 없다",
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "totals": {
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "scope": "Six existing unit-test classes only; DB integration tests excluded."
+  },
+  "jeju": {
+    "index_type": "IndexFlatL2",
+    "store_vectors": 9346,
+    "tour_vectors": 381,
+    "dimensions": 768,
+    "sampled_vector_to_index_max_absolute_delta": 0.0,
+    "search_in_memory": {
+      "samples": 200,
+      "p50_ms": 0.6114,
+      "p95_ms": 0.8142
+    },
+    "index_load_plus_search": {
+      "samples": 200,
+      "p50_ms": 6.5564,
+      "p95_ms": 9.29
+    },
+    "price_filter_tests": [
+      {
+        "price": "상관 없음",
+        "expected_rows": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "actual_rows": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "passed": true
+      },
+      {
+        "price": "최고가",
+        "expected_rows": [
+          5
+        ],
+        "actual_rows": [
+          5
+        ],
+        "passed": true
+      },
+      {
+        "price": "고가",
+        "expected_rows": [
+          4
+        ],
+        "actual_rows": [
+          4
+        ],
+        "passed": true
+      },
+      {
+        "price": "평균 가격대",
+        "expected_rows": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "actual_rows": [
+          2,
+          6
+        ],
+        "passed": false
+      },
+      {
+        "price": "저가",
+        "expected_rows": [
+          1
+        ],
+        "actual_rows": [
+          1
+        ],
+        "passed": true
+      },
+      {
+        "price": "최저가",
+        "expected_rows": [
+          0,
+          8
+        ],
+        "actual_rows": [
+          0,
+          8
+        ],
+        "passed": true
+      }
+    ],
+    "scope": "200 stored-vector queries; 20 warmups; 1 FAISS thread; store k=9 + tour k=1. Loading uses warm OS file cache. Excludes text embedding, price filtering, LLM and network. Not natural-language relevance/accuracy or end-to-end response latency."
+  },
+  "stayview": {
+    "cases": [
+      {
+        "region": "강릉",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "강릉",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "강릉",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "강릉",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "강릉",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "강릉",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "경주",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "경주",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "경주",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "경주",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "경주",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "경주",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "대구",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "대구",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "대구",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "대구",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "대구",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "대구",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "부산",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "부산",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "부산",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "부산",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "부산",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "부산",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "서울",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "서울",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "서울",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "서울",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "서울",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "서울",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "속초",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "속초",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "속초",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "속초",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "속초",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "속초",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "여수",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "여수",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "여수",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "여수",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "여수",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "여수",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "전주",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "전주",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "전주",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "전주",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "전주",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "전주",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "제주",
+        "aspect": "소음",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "제주",
+        "aspect": "가격",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "제주",
+        "aspect": "위치",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "제주",
+        "aspect": "서비스",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "제주",
+        "aspect": "청결",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      },
+      {
+        "region": "제주",
+        "aspect": "편의시설",
+        "checks": {
+          "unique_names": true,
+          "row_count": true,
+          "descending": true,
+          "region_membership": true,
+          "top_five_scores": true
+        },
+        "passed": true
+      }
+    ],
+    "total": 54,
+    "passed": 54,
+    "scope": "9 regions × 6 aspects; original ranking statements. Functional checks only; not summary factuality or recommendation relevance."
+  },
+  "nohuae": {
+    "total_cases": 192,
+    "passed": 192,
+    "nonempty_cases": 102,
+    "returned_recommendations": 252,
+    "condition_violations": 0,
+    "timing": {
+      "samples": 192,
+      "p50_ms": 18.2371,
+      "p95_ms": 26.0594
+    },
+    "cases": [
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          101,
+          2127
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          202,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          100,
+          2121
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          202,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 24,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 23,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 24,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          54,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 11,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          47,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 23,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 12,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 12,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          85,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 23,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 11,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          120,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          53,
+          1051
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 36,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          178,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          222,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 23,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          39,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 24,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          298,
+          7180
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          222,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          440,
+          9596
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 23,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          85,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 24,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          15
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          108,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 36,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 6,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          23,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 36,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          178,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          92,
+          2127
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 12,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          85,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          120,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 6,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          23,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 6,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 11,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          4
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 24,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 11,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          23,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          189,
+          4261
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 24,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 24,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          132,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 6,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          47,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 12,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          39,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 11,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          23,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          57,
+          1048
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 6,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          202,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          120,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          394,
+          9596
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          120,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          440,
+          9596
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          108,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 12,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          9
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 6,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          47,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 6,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          144,
+          3181
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 24,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          331,
+          7180
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 24,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 12,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          58,
+          1051
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 23,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 6,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          222,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 23,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          85,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          52,
+          1048
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 36,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          17
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 11,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          4
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 36,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          178,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          108,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 11,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          222,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          222,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 23,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 36,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 23,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          9
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 23,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          85,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 12,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          85,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          188,
+          4243
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 36,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          72,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          298,
+          7180
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 11,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          47,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 36,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 23,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          39,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          202,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 11,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          440,
+          9596
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 12,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 12,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 6,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          101,
+          2127
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 36,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 12,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 23,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 36,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          331,
+          7180
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 99,
+        "months": 11,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          92,
+          2127
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 12,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          39,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          91,
+          2121
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          169,
+          4243
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 6,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          4
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 0,
+        "months": 36,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          91,
+          2121
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          57,
+          1048
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 999,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          170,
+          4261
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          131,
+          3193
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 23,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 12,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          202,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 11,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          394,
+          9596
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 12,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          9
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 11,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          47,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 6,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 500,
+        "months": 36,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          72,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          130,
+          3181
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          58,
+          1051
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 24,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 12,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 5000,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          120,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 6,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          47,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 11,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 1000,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          202,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 36,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          17
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 0,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 24,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          54,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          108,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 5000,
+        "months": 24,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          132,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          120,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          100,
+          2121
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 499,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 499,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 36,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          394,
+          9596
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          331,
+          7180
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 499,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          52,
+          1048
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 500,
+        "months": 6,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          53,
+          1051
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 999,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 12,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 1000,
+        "months": 23,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          222,
+          4775
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 500,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          145,
+          3193
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 6,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 99,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 24,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          298,
+          7180
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 999,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          108,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 0,
+        "months": 36,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 5000,
+        "months": 11,
+        "returned": 3,
+        "violations": 0,
+        "eligible_counts": [
+          108,
+          2369
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 23,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          9
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 5,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 100,
+        "months": 11,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "공격형",
+        "amount": 1000,
+        "months": 24,
+        "returned": 2,
+        "violations": 0,
+        "eligible_counts": [
+          132,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 100,
+        "months": 24,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          15
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "안정형",
+        "amount": 100,
+        "months": 6,
+        "returned": 1,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          4
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      },
+      {
+        "risk": "위험중립형",
+        "amount": 99,
+        "months": 0,
+        "returned": 0,
+        "violations": 0,
+        "eligible_counts": [
+          0,
+          0
+        ],
+        "empty_handling_valid": true,
+        "passed": true
+      }
+    ],
+    "recommendation_ui_risk_labels": [
+      "안정형",
+      "위험중립형",
+      "공격형"
+    ],
+    "scope": "3 explicitly supported risk labels × 8 amounts × 8 periods; original preprocessing, rules and FAISS recommendation functions; input CSVs preloaded, generated attributes seed=42 as in source; no TabNet, UI, network or real suitability validation. Empty cases counted separately and checked against independently counted eligible candidates. All 3 risk choices of the recommendation UI are included. Separate TabNet survey labels are not passed to this function by the recommendation form."
+  }
+}

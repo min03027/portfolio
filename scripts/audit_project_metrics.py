@@ -96,20 +96,31 @@ def audit_stayview():
     data = rows("stayview", "hotel_fin_0331_2.csv", "euc-kr")
     regions = {row["Location"] for row in data}
     names = {row["Hotel"] for row in data}
+    positive = sum(bool(row["Refined_Positive"].strip()) for row in data)
+    negative = sum(bool(row["Refined_Negative"].strip()) for row in data)
     assert (len(data), len(regions), len(names)) == (394, 9, 392)
+    assert (positive, negative) == (394, 386)
     return {"project": "Stayview", "hotel_summary_rows": len(data), "regions": len(regions),
-            "distinct_hotel_names": len(names), "unit": "aggregated hotel rows, not raw reviews"}
+            "distinct_hotel_names": len(names), "positive_summary_cells": positive,
+            "negative_summary_cells": negative, "total_summary_cells": positive + negative,
+            "unit": "aggregated hotel rows and nonempty summary cells, not raw reviews"}
 
 
 def audit_nohuae():
     result = {}
+    named_candidates = {}
     for entry in tree("senior_finance_recommender"):
         path = entry["path"]
         if path.endswith(".csv") and entry.get("size", 0) > 10000:
-            result[path] = len(rows("senior_finance_recommender", path, "utf-8-sig"))
+            data = rows("senior_finance_recommender", path, "utf-8-sig")
+            result[path] = len(data)
+            column = "상품명" if "상품명" in data[0] else "펀드명"
+            named_candidates[path] = len({r[column] for r in data if r[column] and r[column] != "무명상품"})
     assert sorted(result.values()) == [1122, 9598]
+    assert sorted(named_candidates.values()) == [440, 9596]
     return {"project": "Nohuae", "source_rows_by_file": result, "total_source_rows": sum(result.values()),
-            "unit": "source rows before product-name deduplication"}
+            "named_candidates_by_file": named_candidates, "total_named_candidates": sum(named_candidates.values()),
+            "unit": "source rows and candidate counts keyed by product name within each product group"}
 
 
 if __name__ == "__main__":
