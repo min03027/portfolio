@@ -47,6 +47,14 @@ body.portfolio-accent .accent-statement {
   border-left-color: var(--portfolio-orange);
 }
 
+body.portfolio-accent .troubleshooting {
+  border-left-color: var(--portfolio-orange-soft);
+}
+
+body.portfolio-accent #skills .bg-zinc-100 {
+  background-color: var(--portfolio-orange-soft);
+}
+
 @media print {
   body.portfolio-accent a:hover {
     color: inherit;
