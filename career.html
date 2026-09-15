@@ -59,7 +59,7 @@
             AI / Data Developer, 삼육대학교 인공지능융합학부 (GPA 3.93 / 4.5)
           </p>
           <p class="text-zinc-600 leading-relaxed max-w-2xl">
-            LLM 기능은 성능만큼 <strong class="text-zinc-800">비용과 신뢰</strong>가 좌우한다고 생각합니다. 훈련기관 LMS의 AI 학습지원을 단독으로 맡아 호출 게이트로 API 비용을 통제하고 검증된 인용만 노출하도록 설계해 운영 서버에 배포했으며, 이어서 플랫폼 기능 명세 211건을 소스코드와 대조해 검증하고 있습니다.
+            <strong class="text-zinc-800">문제 진단을 서비스 구현과 개선 제안으로 연결합니다.</strong> 교육 운영 LMS의 핵심 기능을 풀스택으로 개발하고 공개 홈페이지의 정보 구조와 사용자 경험을 개선했습니다. 산림 공공데이터 활동에서는 사용 목적에 필요한 정보를 점검하고 신규 개방 대상 발굴과 품질 개선안을 제출했습니다.
           </p>
           <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-5 text-sm">
             <a href="mailto:jiminkim03027@gmail.com" class="whitespace-nowrap text-zinc-500 hover:text-zinc-900 transition-colors">jiminkim03027@gmail.com</a>
@@ -77,28 +77,44 @@
       <!-- 01 -->
       <section id="lxp" class="border-t-2 border-zinc-800 pt-7">
         <div class="border-b border-zinc-200 pb-4 mb-6">
-          <div class="flex items-baseline justify-between mb-3">
-            <h2 class="text-lg font-semibold tracking-tight"><span class="text-zinc-300 font-mono text-base mr-2.5">01</span>삼성에이엑스아이 외주 프로젝트 개발<span class="block mt-1 text-sm font-normal text-zinc-500">Samsung Academy LXP, AI 학습지원</span></h2>
-            <span class="text-sm text-zinc-400 shrink-0 ml-4">(진행중)</span>
-          </div>
-          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
-            <span class="w-20 shrink-0 font-medium text-zinc-800">진행기간</span>
-            <span class="flex-1">2026.07 — 2026.10 (진행중)</span>
-          </div>
-          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
-            <span class="w-20 shrink-0 font-medium text-zinc-800">참여인원</span>
-            <span class="flex-1">3명 (2명으로 시작해 증원)</span>
-          </div>
-          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed mb-1.5">
-            <span class="w-20 shrink-0 font-medium text-zinc-800">담당업무</span>
-            <span class="flex-1">Java 17, Spring Boot 3 기반 AI 학습지원 전 영역(RAG Q&amp;A, 직무 로드맵, 학습진단, 커리큘럼 추천, 대시보드) 단독 설계 및 구현, Claude API 호출 통제 구조 개발, 플랫폼 4개 서비스 기능 구현 검증</span>
-          </div>
-          <div class="flex gap-2 text-sm text-zinc-600 leading-relaxed">
-            <span class="w-20 shrink-0 font-medium text-zinc-800">업무성과</span>
-            <span class="flex-1"><ul class="space-y-1"><li class="flex gap-1.5"><span>호출 전 게이트와 결과 캐시 도입으로 <strong class="text-zinc-800">일일 API 한도 소진 문제 해결</strong>, 배포 일정 내 반영</span></li><li class="flex gap-1.5"><span>채용공고 기반 직무 로드맵 <strong class="text-zinc-800">개발 직군 10종</strong> 지원</span></li><li class="flex gap-1.5"><span>기능 요구사항 <strong class="text-zinc-800">211건</strong> 코드 대조 감사, 오탐 3건 정정 &rarr; 구현 완료 판정 <strong class="text-zinc-800">21건 &rarr; 23건</strong> 보정</span></li><li class="flex gap-1.5"><span>운영 서버(<code class="bg-zinc-100 px-1 rounded text-xs">lms.samsungax.com</code>) 배포 및 운영</span></li></ul></span>
-          </div>
+          <h2 class="text-lg font-semibold tracking-tight mb-4"><span class="text-zinc-300 font-mono text-base mr-2.5">01</span>Samsung Academy LXP 구축 및 공개 서비스 리뉴얼<span class="block mt-1 text-sm font-normal text-zinc-500">삼성에이엑스아이 외주 프로젝트</span></h2>
+          <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed">
+            <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">계약 기간</dt><dd>2026.07 — 2026.10 (진행중)</dd></div>
+            <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">구현 이력 범위</dt><dd>2026.07.27 ~ 2026.09.15</dd></div>
+            <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">팀 규모</dt><dd>3명 (2명으로 시작해 증원)</dd></div>
+            <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">담당 역할</dt><dd>LMS 핵심 기능의 풀스택 개발, 권한별 접근 범위 설계, 공개 홈페이지 정보 구조와 반응형 UI 개선, Claude 기반 AI 학습지원 연동, 회귀 테스트와 배포 경로 및 정적 자산 캐시 관리</dd></div>
+            <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">주요 기술</dt><dd>Java 17, Spring Boot, Spring Security, JPA, Thymeleaf, PostgreSQL, JavaScript, Apache POI, OpenHTMLtoPDF, Claude API, JUnit, Cloudflare</dd></div>
+          </dl>
         </div>
-        <p class="text-xs font-semibold tracking-widest uppercase text-zinc-400 mb-4">주요 성과</p>
+        <p class="text-sm text-zinc-600 leading-relaxed mb-5">교육 운영 기능과 공개 사이트의 탐색 흐름을 함께 개발했습니다. 아래는 실제 구현과 수정 사례이며, 운영 효율이나 상담 전환율의 개선 효과를 별도로 측정한 결과는 아닙니다.</p>
+        <div class="space-y-6">
+          <article class="decision border border-zinc-200 rounded-lg p-5">
+            <h3 class="text-base font-semibold text-zinc-900 mb-4">실제 운영 데이터로 역할별 판단을 지원</h3>
+            <div class="grid gap-5 md:grid-cols-2 text-sm text-zinc-600 leading-relaxed">
+              <div><h4 class="font-semibold text-zinc-800 mb-2">As-Is: 기존 문제</h4><p>정적인 예시 차트와 역할별로 다른 지표 기준 때문에 실제 진도와 조치 대상을 확인하기 어려웠습니다.</p></div>
+              <div><h4 class="font-semibold text-zinc-800 mb-2">To-Be: 설계와 구현</h4><p>진도율과 기간 경과율, 이수 조건을 서버 집계로 연결했습니다. 관리자는 조치 대상, 강사는 담당 과정, 훈련생은 오늘 할 일을 우선 표시하도록 구성했습니다. 산출할 수 없는 값은 0으로 대체하지 않고 구분했습니다.</p></div>
+            </div>
+            <p class="mt-4 border-t border-zinc-100 pt-4 text-sm text-zinc-600 leading-relaxed"><strong class="text-zinc-800">구현된 변화:</strong> 대시보드에서 실제 집계 결과를 확인하고 각 역할의 업무로 이어지도록 구현했습니다. 예쁜 차트보다 업무 판단에 필요한 데이터와 표시 기준을 우선했습니다.</p>
+          </article>
+          <article class="decision border border-zinc-200 rounded-lg p-5">
+            <h3 class="text-base font-semibold text-zinc-900 mb-4">시험부터 이수까지 운영 규칙과 접근 경계를 구현</h3>
+            <div class="grid gap-5 md:grid-cols-2 text-sm text-zinc-600 leading-relaxed">
+              <div><h4 class="font-semibold text-zinc-800 mb-2">As-Is: 기존 문제</h4><p>모의시험 성적 반영과 응시 완료 문제 수정 과정에 정합성 오류가 있었고, 역할뿐 아니라 담당 과정에 따른 접근 통제가 필요했습니다.</p></div>
+              <div><h4 class="font-semibold text-zinc-800 mb-2">To-Be: 설계와 구현</h4><p>문제은행부터 시험 생성과 응시, 수동 채점, 성적 확정까지 연결하고 강사의 담당 과정 범위를 적용했습니다. 설문 집계와 Excel 리포트, 미응답 리마인드, 자동 이수 기준과 PDF 이수증 발급을 구현했습니다.</p></div>
+            </div>
+            <p class="mt-4 border-t border-zinc-100 pt-4 text-sm text-zinc-600 leading-relaxed"><strong class="text-zinc-800">구현된 변화:</strong> 화면별 기능을 교육 운영 흐름으로 연결하고, 성적 반영 및 수정 오류를 바로잡았습니다. 서버와 Thymeleaf 화면을 함께 개발하며 접근 범위와 데이터 상태를 맞췄습니다.</p>
+          </article>
+          <article class="decision border border-zinc-200 rounded-lg p-5">
+            <h3 class="text-base font-semibold text-zinc-900 mb-4">서비스 소개를 과정 선택과 상담으로 연결</h3>
+            <div class="grid gap-5 md:grid-cols-2 text-sm text-zinc-600 leading-relaxed">
+              <div><h4 class="font-semibold text-zinc-800 mb-2">As-Is: 기존 문제</h4><p>과정과 비용, 학생 프로젝트, 취업지원 정보가 분산돼 있어 사용자가 수강 판단에 필요한 정보를 모아 보기 어려웠습니다.</p></div>
+              <div><h4 class="font-semibold text-zinc-800 mb-2">To-Be: 설계와 구현</h4><p>과정 추천 설문과 비교, 상세 확인, 상담 신청을 연결했습니다. 학생 프로젝트 37건과 수료생 인터뷰 27건을 내부 콘텐츠로 통합하고 모바일 겹침과 내비게이션 가림, 글자 대비를 개선했습니다.</p></div>
+            </div>
+            <p class="mt-4 border-t border-zinc-100 pt-4 text-sm text-zinc-600 leading-relaxed"><strong class="text-zinc-800">구현된 변화:</strong> 통합홈과 교육과정, 취업캠퍼스, 기업교육 사이트를 탐색과 행동 중심으로 재구성했습니다. 취업캠퍼스 히어로는 여러 코드 시안과 반응형 인터랙션으로 발전시켰습니다. 콘텐츠 건수는 작업 규모이며 상담 전환율 개선을 측정한 수치는 아닙니다.</p>
+          </article>
+        </div>
+        <details class="mt-6 border-t border-zinc-200 pt-4">
+          <summary class="cursor-pointer text-sm font-semibold text-zinc-800 mb-4">AI 학습지원과 기능 명세 검증 상세</summary>
         <div class="space-y-6">
           <div class="decision">
             <h3 class="text-sm font-semibold text-zinc-900 mb-2.5"><span class="text-zinc-400 mr-1.5">1.</span>LLM 호출 비용 통제 : 호출 전 차단 게이트 설계</h3>
@@ -133,6 +149,48 @@
             </dl>
           </div>
         </div>
+        </details>
+        <div class="mt-5 flex flex-wrap gap-4 text-xs text-zinc-400">
+          <a href="walkthrough.html#lxp" class="underline underline-offset-2 hover:text-zinc-600">기존 구현 화면 보기</a>
+          <a href="https://github.com/min03027/portfolio/blob/main/docs/lxp-forest-case-evidence.md#lxp" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">구현 이력과 콘텐츠 수치의 범위</a>
+        </div>
+      </section>
+
+      <section id="forest-data" class="border-t-2 border-zinc-800 pt-7">
+        <h2 class="text-lg font-semibold tracking-tight mb-2">산림 공공데이터 품질 진단 및 신규 개방 대상 발굴</h2>
+        <p class="text-sm text-zinc-500 mb-4">2026 산림공공데이터 모니터링단, 산림청 위촉</p>
+        <dl class="space-y-2 text-sm text-zinc-600 leading-relaxed mb-6">
+          <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">활동 기간</dt><dd>2026.06.01 ~ 2026.08.30</dd></div>
+          <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">담당 역할</dt><dd>공공데이터의 품질과 현장 활용성 점검, 문제점별 개선 제안서 작성, 기관명과 데이터명 및 출처를 갖춘 신규 개방 대상 목록 작성</dd></div>
+          <div class="flex gap-3"><dt class="w-24 shrink-0 font-medium text-zinc-800">산출물과 결과</dt><dd>신규 개방 대상 데이터 <strong class="text-zinc-800">10건 이상 발굴 및 검수 인정</strong>. 담수용 사방댐 데이터의 품질 개선 제안도 검수에서 인정받았습니다.</dd></div>
+        </dl>
+        <article class="decision border border-zinc-200 rounded-lg p-5">
+          <h3 class="text-base font-semibold text-zinc-900 mb-4">담수용 사방댐 목록을 산불 대응에 활용하려면 무엇이 필요한가</h3>
+          <p class="text-sm text-zinc-500 mb-4">대상: 산림청 산불상황관제시스템 담수용 사방댐 데이터. 아래 진단은 활동 당시 제출 자료 기준입니다.</p>
+          <div class="grid gap-5 md:grid-cols-2 text-sm text-zinc-600 leading-relaxed">
+            <div>
+              <h4 class="font-semibold text-zinc-800 mb-2">As-Is: 진단한 문제</h4>
+              <p>등록 자료가 43건이며 완공 연도가 2003~2012년에 머물러 이후 준공분이 반영되지 않았습니다. 좌표계가 명시되지 않고 좌표 소수점 자릿수와 관리기관 표기 단위가 달랐습니다. 헬기 담수에 필요한 접근 조건과 수심, 동절기 결빙 정보도 없었습니다.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-zinc-800 mb-2">To-Be: 개선 제안</h4>
+              <p>2013년 이후 준공분을 포함한 전국 단위 갱신과 갱신주기 명시를 제안했습니다. 좌표계 메타데이터와 소수점 자릿수를 정리하고 관리기관을 시도와 시군 컬럼으로 분리하도록 제안했습니다. 접근 조건과 계절별 이용 가능성 항목도 추가하도록 제안했습니다.</p>
+            </div>
+          </div>
+          <p class="mt-4 border-t border-zinc-100 pt-4 text-sm text-zinc-600 leading-relaxed"><strong class="text-zinc-800">판단의 의미:</strong> 목록이 존재하는지만 확인하지 않고, 헬기 담수라는 사용 목적에 필요한 정보가 있는지 점검했습니다. 데이터 최신성과 표기 표준화 문제를 현장 활용성 관점의 개선 항목으로 구체화했습니다.</p>
+          <p class="mt-3 text-sm text-zinc-600"><strong class="text-zinc-800">검수 결과:</strong> 개선 제안 ‘인정’. 실제 데이터 수정이나 현장 적용이 완료됐다는 의미는 아닙니다.</p>
+        </article>
+        <div class="mt-6 text-sm text-zinc-600 leading-relaxed">
+          <h3 class="font-semibold text-zinc-800 mb-3">신규 개방 대상 발굴의 검수 예시</h3>
+          <p class="mb-3">국립산림과학원의 아래 자료는 검수표에 각각 ‘인정’으로 표시된 사례입니다. 인정받은 10건 이상의 신규 개방 대상 중 일부입니다.</p>
+          <ul class="space-y-2">
+            <li>분비나무 봉화군 현지외보존원 모니터링(2년차)</li>
+            <li>2025년도 구상나무 복원시험지(금원산, 월봉산) 모니터링</li>
+            <li>산림치유효과 현장데이터(2025년도)</li>
+            <li>연료 수분함량 일반화 자료 및 예측모델 고도화 자료</li>
+          </ul>
+        </div>
+        <p class="mt-5 text-xs text-zinc-400"><a href="https://github.com/min03027/portfolio/blob/main/docs/lxp-forest-case-evidence.md#forest" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-zinc-600">사례 근거와 결과의 범위</a></p>
       </section>
 
       <!-- 02 -->

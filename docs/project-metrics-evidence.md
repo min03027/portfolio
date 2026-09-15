@@ -6,6 +6,8 @@
 
 ## LXP
 
+LMS 풀스택 개발과 공개 홈페이지 개선으로 확장한 담당 범위, 학생 프로젝트 37건과 수료생 인터뷰 27건의 콘텐츠 통합 이력은 [추가 사례 근거](lxp-forest-case-evidence.md#lxp)에 기록했다. 본인 설명과 로컬 커밋 메시지 확인에 따른 자료이며, 아래의 기존 공개 소스 테스트 집계와 구분한다.
+
 - AI 패키지의 테스트 정의 **41개 / 7개 파일**: 캐시 5, 과제 초안 6, 진단 비용 방어 5, Q&A 9, 상태 안내 9, 자료 추출 5, 사용량 로그 트랜잭션 2.
 - [테스트 디렉터리](https://github.com/min03027/samsung_axi_2nd/tree/9c6b4003fc4e84bf58d3c23990cf4c4e2d26acfc/src/test/java/com/ssa/lms/ai): 주석을 제외한 `@Test`를 집계. `@TestConfiguration`은 제외. 해당 파일에 `@Disabled` 없음.
 - [캐시 테스트](https://github.com/min03027/samsung_axi_2nd/blob/9c6b4003fc4e84bf58d3c23990cf4c4e2d26acfc/src/test/java/com/ssa/lms/ai/AiAdviceCacheTest.java#L24-L36): **같은 키 20회 순차 조회 → 생성 함수 호출 수 1회**를 검사하도록 작성되어 있다.
