@@ -88,7 +88,7 @@
           </div>
           <p class="text-xs text-zinc-400 mb-3">2026.07 — 2026.10 (4개월 예정) (진행중)</p>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
-            시험과 평가, 설문, 알림, 이수 관리의 백엔드와 화면을 개발하고 Claude 기반 AI 학습지원을 연동했습니다. 공개 홈페이지에서는 과정 탐색부터 비교와 상담 신청까지 이어지는 정보 구조와 반응형 UI를 개선했습니다.
+            교육 운영 현황을 파악하기 어렵고 과정 정보가 분산된 문제를 해결하기 위한 프로젝트입니다. 역할별 대시보드를 실제 데이터와 연결하고 과정 탐색부터 상담 신청까지의 흐름을 재구성했습니다. 운영 오류를 수정하고 <strong class="text-zinc-800">학생 프로젝트 37건과 수료생 인터뷰 27건을 내부 콘텐츠로 통합</strong>했습니다.
           </p>
           <p class="text-sm text-zinc-700 mb-1 leading-relaxed"><strong class="text-zinc-800">팀 규모:</strong> 2명</p>
           <p class="text-sm text-zinc-700 mb-4 leading-relaxed"><strong class="text-zinc-800">담당 역할:</strong> LMS 핵심 기능 풀스택 개발, 권한 설계, 공개 홈페이지 UX/UI 개선, AI 연동, 회귀 테스트와 배포 경로 관리</p>
@@ -142,7 +142,7 @@
           </div>
           <p class="text-sm text-zinc-700 mt-2 mb-2 leading-relaxed"><strong class="text-zinc-800">팀 규모:</strong> 4명</p>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
-            고령층의 대화를 실시간 자막으로 옮기고, 의료, 공공 상담 내용을 쉬운 말 요약과 복약 체크리스트로 정리한다.
+            고령층 상담 내용을 자막과 쉬운 말로 전달하면서 진료 정보의 외부 전송을 막기 위한 프로젝트입니다. 음성 인식과 용어 변환을 분리하고 고령층 음성 파인튜닝과 로컬 처리를 적용했습니다. 프로젝트 평가에서 <strong class="text-zinc-800">WER 21.2%</strong>를 기록하고 공모전 <strong class="text-zinc-800">우수상</strong>을 받았습니다.
           </p>
 
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-3">
@@ -196,7 +196,7 @@
           </div>
           <p class="text-sm text-zinc-700 mt-2 mb-2 leading-relaxed"><strong class="text-zinc-800">팀 규모:</strong> 4명</p>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
-            가격대, 현지인 비중, 위치, 업종을 슬라이더로 좁힌 뒤, 자연어로 물으면 조건에 맞는 제주 맛집을 이유와 함께 답한다.
+            월별로 반복되는 가맹점 기록과 분산된 관광지 정보를 여행자의 질문에 맞게 연결하기 위한 프로젝트입니다. 가맹점별 최신 기록을 정리하고 FAISS 검색과 가격대 필터를 추천 답변에 연결했습니다. <strong class="text-zinc-800">가맹점명 기준 9,346건과 관광지 381건</strong>을 활용한 추천 서비스를 구현하고 빅콘테스트 <strong class="text-zinc-800">본선에 진출</strong>했습니다.
           </p>
 
           <div class="grid sm:grid-cols-2 gap-3 mb-4">
@@ -243,7 +243,7 @@
           </div>
           <p class="text-sm text-zinc-700 mt-2 mb-2 leading-relaxed"><strong class="text-zinc-800">팀 규모:</strong> 3명</p>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
-            지역과 호텔을 고르면 리뷰에서 뽑아낸 긍정 및 부정 요약과 항목별 점수를 한 화면에서 보여준다.
+            숙소 리뷰의 장단점을 읽고 서로 비교하기 어려운 문제를 해결하기 위한 프로젝트입니다. KoBART 요약을 Gemini로 다듬는 2단계 처리와 6개 항목별 비교 화면을 구성했습니다. <strong class="text-zinc-800">9개 지역의 요약문 780건</strong>을 연결해 상위 숙소를 비교하도록 구현하고 공모전 <strong class="text-zinc-800">대상</strong>을 받았습니다.
           </p>
 
           <figure class="mb-4">
@@ -284,7 +284,7 @@
           <p class="text-sm text-zinc-700 mb-1 leading-relaxed"><strong class="text-zinc-800">팀 규모:</strong> 3명</p>
           <p class="text-sm text-zinc-700 mb-2 leading-relaxed"><strong class="text-zinc-800">담당 역할:</strong> 상품 데이터 전처리와 위험도 및 안정성 기준의 재분류, TabNet 모델 학습, FAISS 추천 검색 설계 및 구현</p>
           <p class="text-sm text-zinc-500 mb-6 leading-relaxed">
-            9문항 설문으로 재무 유형을 진단하고, 예상 연금액 계산, 맞춤 상품 추천, 노후 자산 시뮬레이션까지 이어진다.
+            상품마다 다른 분류 기준 때문에 예금과 적금을 같은 관점에서 비교하기 어려운 문제를 해결하기 위한 프로젝트입니다. 위험도와 안정성을 기준으로 재분류하고 유형 진단과 투자 조건 필터를 추천 검색에 연결했습니다. <strong class="text-zinc-800">원본 10,720행을 상품명 기준 10,036건의 검색 후보로 정리</strong>하고 최대 3개 상품을 추천하도록 구현했습니다.
           </p>
 
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
