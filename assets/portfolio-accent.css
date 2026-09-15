@@ -40,7 +40,7 @@ body.portfolio-accent .accent-number {
 }
 
 body.portfolio-accent .career-entry {
-  border-top-color: #f9b88c;
+  border-top-color: #ff7900;
 }
 
 body.portfolio-accent .accent-statement {
@@ -48,7 +48,7 @@ body.portfolio-accent .accent-statement {
 }
 
 body.portfolio-accent .troubleshooting {
-  border-left-color: var(--portfolio-orange);
+  border-left-color: #ff7900;
 }
 
 body.portfolio-accent #skills .bg-zinc-100 {
